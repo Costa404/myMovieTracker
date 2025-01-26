@@ -1,0 +1,32 @@
+import { ApiErrorResponse } from "../Components/Utility/Interface/InterfaceError";
+
+export const useGetWatchlist = () => {
+  const handleGetWatchlist = async (): Promise<ApiErrorResponse | null> => {
+    try {
+      const token = localStorage.getItem("authToken");
+      const response = await fetch("http://localhost:3000/api/watchlist", {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error(
+          `Failed to fetch watchlist. Status: ${response.status}`
+        );
+      }
+
+      return (await response.json()) as ApiErrorResponse;
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        console.error("Error fetching watchlist:", error.message);
+        throw error;
+      } else {
+        throw new Error("An unknown error occurred");
+      }
+    }
+  };
+
+  return { handleGetWatchlist };
+};
