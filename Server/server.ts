@@ -61,14 +61,26 @@ dotenv.config();
 
 const app = express();
 
+const corsOrigin =
+  process.env.NODE_ENV === "production"
+    ? process.env.CORS_ORIGIN_PROD
+    : process.env.COR;
+
 app.use(
   cors({
-    origin: "https://mymovietracker.vercel.app/",
+    origin: corsOrigin,
     methods: ["GET", "POST", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true,
   })
 );
+
+const dbUrl =
+  process.env.NODE_ENV === "production"
+    ? process.env.DATABASE_URL_PROD
+    : process.env.DATABASE_URL;
+
+console.log(`Conectando ao banco: ${dbUrl}`);
 
 app.use(express.json());
 
