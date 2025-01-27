@@ -1,10 +1,11 @@
 import { ApiErrorResponse } from "../Components/Utility/Interface/InterfaceError";
+import { apiFetch } from "./api";
 
 export const useGetWatchlist = () => {
   const handleGetWatchlist = async (): Promise<ApiErrorResponse | null> => {
     try {
       const token = localStorage.getItem("authToken");
-      const response = await fetch("http://localhost:3000/api/watchlist", {
+      const response = await apiFetch("/api/watchlist", {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,

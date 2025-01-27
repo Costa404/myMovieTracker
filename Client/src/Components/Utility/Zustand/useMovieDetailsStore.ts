@@ -23,7 +23,7 @@ export const useMovieDetailsStore = create<ModalState>((set) => ({
     set({ isModalOpen: false, loading: false });
     document.body.style.overflow = "auto";
   },
-  loading: false, // Novo estado de carregamento
+  loading: false,
   setLoading: (loading) => set({ loading }),
 
   clearMovie: () => set({ movieId: null }),

@@ -1,5 +1,6 @@
 import { ApiErrorResponse } from "../Components/Utility/Interface/InterfaceError";
 import { useMovieDetailsStore } from "../Components/Utility/Zustand/useMovieDetailsStore";
+import { apiFetch } from "./api";
 
 export const useHandlePostWatchlist = () => {
   const { movieId } = useMovieDetailsStore();
@@ -16,8 +17,9 @@ export const useHandlePostWatchlist = () => {
 
     try {
       const token = localStorage.getItem("authToken");
-      const response = await fetch("http://localhost:3000/api/watchlist", {
+      const response = await apiFetch("/api/watchlist", {
         method: "POST",
+        isPublicRoute: true,
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,

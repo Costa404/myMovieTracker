@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useMovieDetailsStore } from "../Components/Utility/Zustand/useMovieDetailsStore";
+import { apiFetch } from "./api";
 
 type MovieDetails = {
   title: string;
@@ -15,9 +16,10 @@ export const useGetDetailsMovies = () => {
   useEffect(() => {
     if (movieId) {
       const getMovieDetails = async () => {
-        const response = await fetch(
-          `http://localhost:3000/api/movies/${movieId}`
-        );
+        const response = await apiFetch(`api/movies/${movieId}`, {
+          isPublicRoute: true,
+        });
+
         const data = await response.json();
         setMovieDetails(data);
       };

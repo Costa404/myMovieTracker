@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useError } from "../Context/ThemeContext/errorContext/useError";
+import { apiFetch } from "./api";
 
 export const usePostSignup = () => {
   const [email, setEmail] = useState("");
@@ -15,8 +16,9 @@ export const usePostSignup = () => {
     setError(null);
 
     try {
-      const response = await fetch("http://localhost:3000/api/signup", {
+      const response = await apiFetch("/api/signup", {
         method: "POST",
+        isPublicRoute: true,
         headers: {
           "Content-Type": "application/json",
         },

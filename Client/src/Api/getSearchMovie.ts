@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { apiFetch } from "./api";
 
 export const useGetSearchMovie = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -7,10 +8,8 @@ export const useGetSearchMovie = () => {
   const handleSearch = async () => {
     if (!searchTerm.trim()) return;
     try {
-      const response = await fetch(
-        `http://localhost:3000/api/movies/search?query=${encodeURIComponent(
-          searchTerm
-        )}`
+      const response = await apiFetch(
+        `api/movies/search?query=${encodeURIComponent(searchTerm)}`
       );
       console.log("searchTerm before sending:", searchTerm);
 

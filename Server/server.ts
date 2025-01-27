@@ -51,27 +51,27 @@
 // test
 
 // =====================================
-
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import apiRouter from "./src/Routes/routes.js";
 
 dotenv.config();
-
 const app = express();
 
-app.use(
-  cors({
-    origin: "http://localhost:5173",
-    methods: ["GET", "POST", "DELETE", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Authorization"],
-    credentials: true,
-  })
-);
+const corsOptions = {
+  origin:
+    process.env.NODE_ENV === "production"
+      ? process.env.CORS_ORIGIN_PROD
+      : process.env.CORS_ORIGIN_DEV,
+  methods: ["GET", "POST", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+  credentials: true,
+};
+
+app.use(cors(corsOptions));
 
 app.use(express.json());
-
 app.use("/api", apiRouter);
 
 app.use((req, res, next) => {
@@ -79,6 +79,7 @@ app.use((req, res, next) => {
   next();
 });
 
-app.listen(3000, () => {
-  console.log("Server port 3000 ");
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
+  console.log(`Server running on port ${port}`);
 });
