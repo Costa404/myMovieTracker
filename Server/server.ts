@@ -61,21 +61,21 @@ dotenv.config();
 
 const app = express();
 
-// const corsOrigin =
-//   process.env.NODE_ENV === "production"
-//     ? process.env.CORS_ORIGIN_PROD
-//     : process.env.CORS_ORIGIN_DEV;
+const corsOrigin =
+  process.env.NODE_ENV === "production"
+    ? process.env.CORS_ORIGIN_PROD
+    : process.env.CORS_ORIGIN_DEV;
 
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: corsOrigin,
     methods: ["GET", "POST", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true,
   })
 );
 
-// console.log("CORS Origin:", corsOrigin);
+console.log("CORS Origin:", corsOrigin);
 
 // const dbUrl =
 //   process.env.NODE_ENV === "production"
