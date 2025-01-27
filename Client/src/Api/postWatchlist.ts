@@ -19,7 +19,7 @@ export const useHandlePostWatchlist = () => {
       const token = localStorage.getItem("authToken");
       const response = await apiFetch("/api/watchlist", {
         method: "POST",
-        isPublicRoute: true,
+        isPublicRoute: false,
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
@@ -27,13 +27,7 @@ export const useHandlePostWatchlist = () => {
         body: JSON.stringify({ movieId }),
       });
 
-      if (!response.ok) {
-        throw new Error(
-          `Failed to add to watchlist. Status: ${response.status}`
-        );
-      }
-
-      return (await response.json()) as ApiErrorResponse;
+      return response;
     } catch (error: unknown) {
       if (error instanceof Error) {
         console.error("Error saving watchlist:", error.message);

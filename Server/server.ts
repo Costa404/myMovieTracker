@@ -61,26 +61,28 @@ dotenv.config();
 
 const app = express();
 
-const corsOrigin =
-  process.env.NODE_ENV === "production"
-    ? process.env.CORS_ORIGIN_PROD
-    : process.env.COR;
+// const corsOrigin =
+//   process.env.NODE_ENV === "production"
+//     ? process.env.CORS_ORIGIN_PROD
+//     : process.env.CORS_ORIGIN_DEV;
 
 app.use(
   cors({
-    origin: corsOrigin,
+    origin: "http://localhost:5173",
     methods: ["GET", "POST", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true,
   })
 );
 
-const dbUrl =
-  process.env.NODE_ENV === "production"
-    ? process.env.DATABASE_URL_PROD
-    : process.env.DATABASE_URL;
+// console.log("CORS Origin:", corsOrigin);
 
-console.log(`Conectando ao banco: ${dbUrl}`);
+// const dbUrl =
+//   process.env.NODE_ENV === "production"
+//     ? process.env.DATABASE_URL_PROD
+//     : process.env.DATABASE_URL;
+
+// console.log(`Conectando ao banco: ${dbUrl}`);
 
 app.use(express.json());
 

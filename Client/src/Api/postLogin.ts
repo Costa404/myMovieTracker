@@ -27,12 +27,7 @@ export const usePostLogin = () => {
         }),
       });
 
-      if (!response.ok) {
-        throw new Error("Invalid credentials");
-      }
-
-      const data = await response.json();
-      const { token } = data;
+      const { token } = response;
 
       localStorage.setItem("authToken", token);
 
@@ -44,5 +39,6 @@ export const usePostLogin = () => {
       setLoading(false);
     }
   };
+
   return { setEmail, setPassword, handleLogin, loading, password, email };
 };

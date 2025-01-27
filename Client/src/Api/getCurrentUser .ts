@@ -22,9 +22,7 @@ export const useGetCurrentUser = () => {
           throw new Error("Error when fetching movies");
         }
 
-        const userData = await response.json();
-        console.log("userData", userData);
-        setGetUser(userData);
+        setGetUser(response);
       } catch (error) {
         console.error("Error when fetching movies:", error);
       }

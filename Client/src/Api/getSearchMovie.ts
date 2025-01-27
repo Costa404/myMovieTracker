@@ -9,14 +9,13 @@ export const useGetSearchMovie = () => {
     if (!searchTerm.trim()) return;
     try {
       const response = await apiFetch(
-        `api/movies/search?query=${encodeURIComponent(searchTerm)}`
+        `/api/movies/search?query=${encodeURIComponent(searchTerm)}`
       );
       console.log("searchTerm before sending:", searchTerm);
 
-      const data = await response.json();
-      setMovies(data);
+      setMovies(response);
     } catch (error) {
-      console.error("ErroR searching movies:", error);
+      console.error("Error searching movies:", error);
     }
   };
   return { movies, setSearchTerm, searchTerm, handleSearch };

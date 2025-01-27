@@ -18,7 +18,7 @@ export const useGetWatchlist = () => {
         );
       }
 
-      return (await response.json()) as ApiErrorResponse;
+      return response;
     } catch (error: unknown) {
       if (error instanceof Error) {
         console.error("Error fetching watchlist:", error.message);

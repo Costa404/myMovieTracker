@@ -16,6 +16,7 @@ export const usePostSignup = () => {
     setError(null);
 
     try {
+      // Envia a requisição POST para a API de signup
       const response = await apiFetch("/api/signup", {
         method: "POST",
         isPublicRoute: true,
@@ -29,12 +30,7 @@ export const usePostSignup = () => {
         }),
       });
 
-      if (!response.ok) {
-        throw new Error("Failed to create account");
-      }
-
-      const data = await response.json();
-      const { token } = data;
+      const { token } = response;
 
       localStorage.setItem("authToken", token);
 

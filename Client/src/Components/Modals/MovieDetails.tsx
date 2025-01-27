@@ -119,7 +119,7 @@ export default MovieDetail;
 //     if (movieId) {
 //       const fetchMovieDetails = async () => {
 //         const response = await fetch(
-//           `http://localhost:3000/api/movies/${movieId}`
+//           `http://localhost:3000//api/movies/${movieId}`
 //         );
 //         const data = await response.json();
 //         setMovieDetails(data);
