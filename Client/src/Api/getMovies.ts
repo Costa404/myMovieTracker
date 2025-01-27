@@ -20,7 +20,7 @@ export const useGetMovies = () => {
     const getMovies = async () => {
       try {
         const response = await fetch(
-          "https://mymovietracker.vercel.app/api/movies"
+          "https://mymovietracker.onrender.com/api/movies"
         );
         const data: Movie[] = await response.json();
 
