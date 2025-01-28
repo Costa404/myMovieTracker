@@ -18,11 +18,9 @@ loginRouter.post("/login", async (req, res) => {
             client.release();
             return res.status(401).json({ error: "Invalid credentials" });
         }
-        // Gerar o token
         const token = generateToken(user.email, user.username, user.id);
         console.log("User logged in successfully:", user.email);
         client.release();
-        // Enviar o token na resposta
         res.json({ token });
     }
     catch (error) {

@@ -1,65 +1,68 @@
 import { useEffect, useState } from "react";
-import { useGetDetailsMovies } from "../../../Api/getDetailsMovies";
 import { useGetWatchlist } from "../../../Api/getWatchlist";
 import { useCurrentUser } from "../../../Context/useCurrentUserAuth";
 import Navbar from "../Navbar/Navbar";
+import { useIsOnline } from "../../Utility/Hooks/useIsOnline";
 
 const MyArea = () => {
   const { handleGetWatchlist } = useGetWatchlist();
   const { currentUser } = useCurrentUser();
-  const { movieDetails } = useGetDetailsMovies();
   const [watchlist, setWatchlist] = useState<any[]>([]);
+  const { handleLogout } = useIsOnline();
 
   useEffect(() => {
     const fetchWatchlist = async () => {
       if (currentUser) {
         const fetchedWatchlist = await handleGetWatchlist();
-
-        // Verificar se a resposta é um array
-        if (Array.isArray(fetchedWatchlist)) {
-          setWatchlist(fetchedWatchlist);
-        } else {
-          setWatchlist([]);
-        }
+        setWatchlist(Array.isArray(fetchedWatchlist) ? fetchedWatchlist : []);
       }
     };
 
     fetchWatchlist();
   }, [currentUser, handleGetWatchlist]);
 
-  console.log(watchlist);
-
   return (
-    <div className="d-flex justify-content-center" style={{ height: "100vh" }}>
+    <div
+      style={{ minHeight: "100vh" }}
+      className="d-flex justify-content-center"
+    >
       <Navbar />
 
-      <div style={{ marginTop: "10rem" }}>
-        {movieDetails?.title && <h1>{movieDetails.title}</h1>}
-        <p>{currentUser?.username}</p>
+      <div className="container  " style={{ paddingTop: "10rem" }}>
+        <h1 className="text-center ">Welcome, {currentUser?.username}!</h1>
 
-        <h2>My Watchlist</h2>
+        <h2 className="mb-4 text-center">My Watchlist</h2>
+
         {watchlist.length > 0 ? (
-          <ul className="d-flex g-5 h-50 w-100">
+          <div className="row">
             {watchlist.map((movie, index) => (
-              <li key={index} className="d-flex flex-column">
-                {movie.title}
-
-                <img
-                  src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                  alt={movie.title}
-                  style={{
-                    minHeight: "70%",
-                    maxHeight: "70%",
-                    minWidth: "25%",
-                    maxWidth: "25%",
-                  }}
-                />
-              </li>
+              <div
+                key={index}
+                className="col-12 col-sm-6 col-md-4 col-lg-3 mb-4"
+              >
+                <div className="card shadow-sm h-100">
+                  <img
+                    src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                    alt={movie.title}
+                    className="card-img-top img-fluid"
+                    style={{
+                      maxHeight: "300px",
+                      objectFit: "cover",
+                    }}
+                  />
+                  <div className="card-body text-center">
+                    <h5 className="card-title">{movie.title}</h5>
+                  </div>
+                </div>
+              </div>
             ))}
-          </ul>
+          </div>
         ) : (
-          <p>Your watchlist is empty.</p>
+          <p className="text-center text-muted">Your watchlist is empty.</p>
         )}
+        <button onClick={handleLogout} className="btn btn-danger p-3 px-5">
+          Logout
+        </button>
       </div>
     </div>
   );

@@ -11,7 +11,7 @@ deleteWatchlistRouter.delete("/watchlist/:movieId", authMiddleware, async (req, 
     }
     catch (error) {
         console.error("Erro ao remover da watchlist:", error);
-        res.status(500).json({ message: "eternal server error" });
+        res.status(500).json({ message: " server error" });
     }
 });
 export default deleteWatchlistRouter;

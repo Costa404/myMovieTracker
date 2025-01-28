@@ -8,10 +8,14 @@ import BtnDarkLightMode from "../../Utility/BtnDarkLight/BtnDarkLightMode";
 import Footer from "../Footer/Footer";
 import Login from "../Auth/Login/Login";
 import Signup from "../Auth/Signup/Signup";
-import PopularMovies from "./HomepageSubComponents/PopularMovies";
+import PopularMovies from "./PopularMovies/PopularMovies";
+import { useGetReviews } from "../../../Api/getReviewsMovies";
 
 const Homepage = () => {
   const { isModalOpen } = useMovieDetailsStore();
+  const { reviews } = useGetReviews();
+
+  console.log("reviews", reviews);
 
   return (
     <section className="w-100 d-flex flex-column align-items-center">

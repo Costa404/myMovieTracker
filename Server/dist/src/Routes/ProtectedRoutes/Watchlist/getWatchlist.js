@@ -12,8 +12,7 @@ getWatchlistRouter.get("/watchlist", authMiddleware, async (req, res) => {
         res.json(result.rows);
     }
     catch (error) {
-        console.error(`Error fetching watchlist for userId ${userId}:`, error.message // Afirmação de tipo
-        );
+        console.error(`Error fetching watchlist for userId ${userId}:`, error.message);
         res.status(500).json({ message: "Internal server error" });
     }
 });

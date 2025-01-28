@@ -11,6 +11,8 @@ import postWatchlistRouter from "./ProtectedRoutes/Watchlist/postWatchlist.js";
 import deleteWatchlistRouter from "./ProtectedRoutes/Watchlist/deleteWatchlist.js";
 import getWatchlistRouter from "./ProtectedRoutes/Watchlist/getWatchlist.js";
 
+import reviewsMovies from "./reviewsMovies.js";
+
 const apiRouter = Router();
 
 // auth
@@ -26,6 +28,7 @@ apiRouter.use("/", getWatchlistRouter);
 apiRouter.use("/", moviesRoutes);
 apiRouter.use("/", moviesDetails);
 apiRouter.use("/", moviesSearch);
+apiRouter.use("/", reviewsMovies);
 
 apiRouter.use("/", getCurrentUserRouter);
 

@@ -1,28 +1,46 @@
-import pool from "../Database/db.js";
-export const insertMovie = async (movie) => {
-    const query = `
-    INSERT INTO movies 
-      (id, title, overview, release_date, vote_average, poster_path, genre_ids, backdrop_path, original_language, original_title, popularity, vote_count, adult, video, is_popular)
-    VALUES 
-      ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15)
-    ON CONFLICT (id) DO NOTHING
-  `;
-    const values = [
-        movie.id,
-        movie.title,
-        movie.overview,
-        movie.release_date,
-        movie.vote_average,
-        movie.poster_path,
-        movie.genre_ids,
-        movie.backdrop_path,
-        movie.original_language,
-        movie.original_title,
-        movie.popularity,
-        movie.vote_count,
-        movie.adult,
-        movie.video,
-        movie.is_popular, // Passando o valor de is_popular
-    ];
-    await pool.query(query, values);
-};
+"use strict";
+// import pool from "../Database/db.js";
+// type Movie = {
+//   id: number;
+//   title: string;
+//   overview: string;
+//   release_date: string;
+//   vote_average: number;
+//   poster_path: string;
+//   genre_ids: number[];
+//   backdrop_path: string;
+//   original_language: string;
+//   original_title: string;
+//   popularity: number;
+//   vote_count: number;
+//   adult: boolean;
+//   video: boolean;
+//   is_popular: boolean;
+// };
+// export const insertMovie = async (movie: Movie) => {
+//   const query = `
+//     INSERT INTO movies
+//       (id, title, overview, release_date, vote_average, poster_path, genre_ids, backdrop_path, original_language, original_title, popularity, vote_count, adult, video, is_popular)
+//     VALUES
+//       ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15)
+//     ON CONFLICT (id) DO NOTHING
+//   `;
+//   const values = [
+//     movie.id,
+//     movie.title,
+//     movie.overview,
+//     movie.release_date,
+//     movie.vote_average,
+//     movie.poster_path,
+//     movie.genre_ids,
+//     movie.backdrop_path,
+//     movie.original_language,
+//     movie.original_title,
+//     movie.popularity,
+//     movie.vote_count,
+//     movie.adult,
+//     movie.video,
+//     movie.is_popular,
+//   ];
+//   await pool.query(query, values);
+// };

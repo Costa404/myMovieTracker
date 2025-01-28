@@ -8,24 +8,30 @@ import { usePostLogin } from "../../../../Api/postLogin";
 import { useEffect } from "react";
 
 const InputsLogin = () => {
-  const { closeModalLogin, isModalLogin } = useAuthStore();
+  const { closeModalLogin, isModalLogin, openModalSignup } = useAuthStore();
   const { theme } = useTheme();
   const { isOnline } = useIsOnline();
 
   const { handleLogin, setPassword, setEmail, email, password, loading } =
     usePostLogin();
 
-  useEffect(() => {}, [isOnline]); // console.log("email", email);
-  // console.log("password", password);
+  useEffect(() => {}, [isOnline]);
+
+  const handleChangeLoginForSignup = () => {
+    openModalSignup();
+    closeModalLogin();
+  };
 
   return ReactDOM.createPortal(
     isModalLogin && (
-      <div className="modal-overlay fs-3 h-100 w-100">
+      <div className="modal-overlay fs-3 h-100 w-100 modalInputMobile">
         <div className="w-100 h-100 d-flex justify-content-center align-items-center">
           <div
-            className="modal-content modal-signup d-flex flex-column border border-dark w-25 justify-content-center align-items-center"
+            className="modal-content modal-signup d-flex flex-column border border-dark w-25 justify-content-center align-items-center position-relative"
             style={{
               backgroundColor: theme === "dark" ? "black" : "white",
+              zIndex: 10,
+              minWidth: "35rem",
             }}
           >
             {!isOnline ? (
@@ -36,7 +42,7 @@ const InputsLogin = () => {
                   className="d-flex flex-column gap-2 w-100 justify-content-center align-items-center"
                 >
                   <input
-                    className="w-100"
+                    className="w-75"
                     name="email"
                     type="text"
                     placeholder="Email"
@@ -46,7 +52,7 @@ const InputsLogin = () => {
                   />
 
                   <input
-                    className="w-100"
+                    className="w-75"
                     name="password"
                     type="password"
                     placeholder="Password"
@@ -56,21 +62,31 @@ const InputsLogin = () => {
                   />
 
                   <button
-                    className="fs-3 btn border border-dark btn-primary hover w-100 mt-3"
+                    className="fs-3 btn border border-dark btn-primary hover w-75 mt-3"
                     disabled={loading}
                   >
-                    {loading ? "Logging ..." : "Login"}
+                    {loading ? "Logging.." : "Login"}
                   </button>
-
                   <button
-                    onClick={closeModalLogin}
+                    onClick={handleChangeLoginForSignup}
                     type="button"
-                    className="btn fs-3 btn-danger w-100 mt-3"
+                    className="btn fs-3 border-dark w-50 mt-3 mb-4"
                   >
-                    Close
+                    Create account
                   </button>
-                  <ErrorDisplay />
                 </form>
+
+                <div
+                  style={{
+                    position: "absolute",
+                    bottom: "2.5rem",
+                    left: "23%",
+                    width: "100%",
+                    textAlign: "center",
+                  }}
+                >
+                  <ErrorDisplay />
+                </div>
               </>
             ) : (
               <div className="text-center">
@@ -85,6 +101,18 @@ const InputsLogin = () => {
                 </button>
               </div>
             )}
+
+            <button
+              className="btn btn-danger position-absolute text-white px-3 fs-4"
+              onClick={closeModalLogin}
+              style={{
+                top: "1rem",
+                right: "1rem",
+                zIndex: 20,
+              }}
+            >
+              X
+            </button>
           </div>
         </div>
       </div>

@@ -40,6 +40,8 @@
 //   }
 // });
 
+// app.use("/api", apiRouter);
+
 // app.use(express.json());
 
 // app.listen(3000, () => {
@@ -85,7 +87,6 @@ console.log("CORS Origin:", corsOrigin);
 // console.log(`Conectando ao banco: ${dbUrl}`);
 
 app.use(express.json());
-
 app.use("/api", apiRouter);
 
 app.use((req, res, next) => {

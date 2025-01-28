@@ -35,11 +35,10 @@ export const fetchDataFromApi = async () => {
             throw new Error(`Erro na API: ${response.statusText}`);
         }
         const data = await response.json();
-        // Verifica se o JSON tem a estrutura esperada
         if (!data || !data.results || !Array.isArray(data.results)) {
             throw new Error("Formato inesperado da resposta da API.");
         }
-        return data.results; // Retorna apenas a array de resultados
+        return data.results;
     }
     catch (error) {
         console.error("Erro ao buscar dados da API:", error);

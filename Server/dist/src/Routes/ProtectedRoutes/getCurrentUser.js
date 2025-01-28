@@ -5,6 +5,6 @@ getCurrentUserRouter.get("/currentUser", authMiddleware, async (req, res) => {
     if (!req.user) {
         return res.status(401).json({ error: "User not authenticated" });
     }
-    res.json(req.user); // Retornando id e username
+    res.json(req.user);
 });
 export default getCurrentUserRouter;

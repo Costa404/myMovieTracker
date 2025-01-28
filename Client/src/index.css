@@ -20,6 +20,13 @@ html {
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
   transform: scale(1.05);
 }
+
+.movieCardReview {
+  padding: 20px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6); /* Sombra suave */
+}
 /* 
 ==========================
 
@@ -80,5 +87,31 @@ theme
 @media screen and (max-width: 1000px) {
   .contentHomepage {
     min-width: 100% !important;
+  }
+
+  .navbarMobile {
+    min-width: 100%;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .leftImgPopularMovies,
+  .rightImgPopularMovies {
+    display: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .smallImg {
+    display: none !important;
+  }
+  .modalInputMobile {
+    min-width: 100% !important;
+    max-width: 30rem !important;
+  }
+}
+@media (max-width: 600px) {
+  .searchMovieMobile {
+    display: none !important;
   }
 }

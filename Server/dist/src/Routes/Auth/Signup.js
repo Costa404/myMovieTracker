@@ -7,7 +7,6 @@ signupRouter.post("/signup", async (req, res) => {
     const { email, password, username } = req.body;
     try {
         const client = await pool.connect();
-        // Verificando se o email ou o username já existem
         const userCheck = await client.query("SELECT * FROM users WHERE email = $1 OR username = $2", [email, username]);
         if (userCheck.rows.length > 0) {
             client.release();
@@ -15,14 +14,10 @@ signupRouter.post("/signup", async (req, res) => {
                 .status(400)
                 .json({ error: "E-mail or Username already in use" });
         }
-        // Gerando a senha criptografada
         const hashedPassword = await bcrypt.hash(password, 4);
-        // Criando o novo usuário
         await client.query("INSERT INTO users (email, password, username) VALUES ($1, $2, $3)", [email, hashedPassword, username]);
-        // Buscando o usuário recém-criado para gerar o token
         const newUserResult = await client.query("SELECT * FROM users WHERE email = $1", [email]);
         const newUser = newUserResult.rows[0];
-        // Gerar o token para o novo usuário
         const token = generateToken(newUser.email, newUser.username, newUser.id);
         client.release();
         res.json({ message: "User created successfully", token });

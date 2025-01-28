@@ -5,7 +5,7 @@ const Login = () => {
   const { isModalLogin } = useAuthStore();
 
   return (
-    <div className=" w-100 h-100">
+    <div className=" w-100 h-100" style={{ minWidth: "40rem" }}>
       {/* <button className="btn btn-primary" onClick={() => navigate("/")}>
         Homepage
         </button> */}

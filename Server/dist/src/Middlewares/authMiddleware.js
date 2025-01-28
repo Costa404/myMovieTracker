@@ -12,7 +12,6 @@ export const authMiddleware = (req, res, next) => {
     }
     try {
         const decoded = jwt.verify(token, secret);
-        // Adicionando id e username ao req.user
         req.user = {
             userId: decoded.userId,
             username: decoded.username,
@@ -21,7 +20,6 @@ export const authMiddleware = (req, res, next) => {
         next();
     }
     catch (error) {
-        // Type assertion to ensure it's an instance of Error
         const err = error;
         console.warn("Invalid or expired token:", err.message);
         return res.status(401).json({ error: "Invalid or expired token" });

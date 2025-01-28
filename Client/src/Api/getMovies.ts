@@ -20,7 +20,7 @@ export const useGetMovies = () => {
   useEffect(() => {
     const getMovies = async () => {
       try {
-        // Aqui já retornamos o JSON diretamente da apiFetch
+    
         const data: Movie[] = await apiFetch("/api/movies", {
           isPublicRoute: true,
         });

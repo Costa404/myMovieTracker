@@ -6,7 +6,7 @@ const SearchMovie = () => {
   console.log("searchTerm antes de enviar:", searchTerm);
 
   return (
-    <section className="position w-100">
+    <section className="position w-100 searchMovieMobile">
       <div className="d-flex justify-content-end gap-2">
         <input
           className=" border rounded-3 fs-4"

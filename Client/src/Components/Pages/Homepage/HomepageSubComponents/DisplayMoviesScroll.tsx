@@ -29,7 +29,7 @@ const DisplayMoviesScroll: React.FC<DisplayMoviesScrollProps> = ({
 
   return (
     <div className="mb-4">
-      <h2 className="">{genreMapping[genre]}</h2>{" "}
+      <h2 className="fw-semibold">{genreMapping[genre]}</h2>{" "}
       <div className="position-relative">
         <button className="scroll-btn btn left fs-1" onClick={scrollLeft}>
           <FaChevronLeft />

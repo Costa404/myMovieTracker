@@ -6,6 +6,7 @@ import CustomErrorPage from "../../Context/ThemeContext/errorContext/ErrorRoute.
 
 const LazyHomepage = React.lazy(() => import("../Pages/Homepage/Homepage.tsx"));
 const LazyMyArea = React.lazy(() => import("../Pages/MyArea/MyArea.tsx"));
+const LazyReviews = React.lazy(() => import("../Pages/Reviews/Reviews.tsx"));
 
 export const useAppRoutes = () => {
   return createBrowserRouter([
@@ -17,6 +18,11 @@ export const useAppRoutes = () => {
     {
       path: "/myArea",
       element: <LazyMyArea />,
+      errorElement: <CustomErrorPage />,
+    },
+    {
+      path: "/reviews",
+      element: <LazyReviews />,
       errorElement: <CustomErrorPage />,
     },
   ]);
