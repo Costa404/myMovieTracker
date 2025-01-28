@@ -18,8 +18,11 @@ const Navbar = () => {
 
   return (
     <section
-      className="py-4 w-75 bg-black border-bottom border-dark position-fixed   navbarMobile"
-      style={{ zIndex: "99" }}
+      className="py-4 w-75  border-bottom border-dark position-fixed   navbarMobile"
+      style={{
+        zIndex: "99",
+        backgroundColor: theme === "dark" ? "black" : "white",
+      }}
     >
       <div className="d-flex justify-content-between  align-items-center ">
         <div className="d-flex gap-3 align-items-center fs-3 fw-semibold">
@@ -47,7 +50,7 @@ const Navbar = () => {
             <FaRegUser
               onClick={() => navigate("/myArea")}
               className="p-2 fw-semibold   hover"
-              style={{ fontSize: "3rem" }}
+              style={{ fontSize: "3.2rem" }}
             />
           </div>
           <SearchMovie />
@@ -56,8 +59,11 @@ const Navbar = () => {
               <span>
                 <button
                   onClick={openModalLogin}
-                  className="p-2 fw-semibold fs-3 btn  "
-                  style={{ color: theme === "dark" ? "white" : "black" }}
+                  className="p-2 fw-semibold fs-4  px-4 rounded-5 "
+                  style={{
+                    background: theme === "dark" ? "white" : "black",
+                    border: "none",
+                  }}
                 >
                   Login
                 </button>
