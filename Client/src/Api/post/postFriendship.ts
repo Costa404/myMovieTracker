@@ -17,8 +17,12 @@ export const usePostFriendship = () => {
       });
       console.log("response", response);
       setAdded(true);
-    } catch (error) {
-      console.error(error.message);
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        console.error(error.message);
+      } else {
+        console.error("An unknown error occurred");
+      }
     } finally {
       setLoading(false);
     }

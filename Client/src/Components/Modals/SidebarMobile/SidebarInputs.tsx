@@ -13,11 +13,7 @@ const SidebarInputs = () => {
         <div className="d-flex justify-content-around mt-5">
           <button
             onClick={handleLogout}
-            className="p-2 fw-semibold fs-4 px-4 rounded-5 bg-danger"
-            style={{
-              border: "none",
-              color: theme === "dark" ? "#333333" : " #e0e0e0",
-            }}
+            className="  p-2 fw-bold btn btn-danger fs-4 px-4 rounded-5  btnTransform"
           >
             Logout
           </button>

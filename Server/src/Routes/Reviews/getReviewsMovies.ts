@@ -1,9 +1,9 @@
 import express from "express";
-import pool from "../Database/db";
+import pool from "../../Database/db";
 
 const reviewsMovies = express.Router();
 
-reviewsMovies.get("/reviewsMovies", async (req, res) => {
+reviewsMovies.get("/postReviewsMovies", async (req, res) => {
   try {
     const query = `
        SELECT 

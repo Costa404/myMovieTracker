@@ -5,7 +5,7 @@ import pool from "../../../Database/db.js";
 const deleteWatchlistRouter = Router();
 
 deleteWatchlistRouter.delete(
-  "/deleteFromWatchlist/:movieId", // Use :movieId como um parâmetro de rota
+  "/deleteFromWatchlist/:movieId",
   authMiddleware,
   async (req: Request & { user?: { userId: number } }, res: Response) => {
     const { movieId } = req.params;

@@ -3,8 +3,8 @@ import { useGetReviews } from "../../../Api/get/getReviewsMovies";
 import LoadingSpinner from "../../Utility/Loading/Loading";
 
 import { motion } from "framer-motion";
+import ActionButton from "../../Utility/ActionButton";
 import { useMovieDetailsStore } from "../../Utility/Zustand/useMovieDetailsStore";
-import BtnNewReview from "../../Utility/BtnNewReview";
 
 const Reviews = () => {
   const { reviews } = useGetReviews();
@@ -25,14 +25,14 @@ const Reviews = () => {
   };
 
   return (
-    <div className=" px-3 mt-5">
+    <div className="px-3 mt-5">
       {reviews.length === 0 ? (
         <LoadingSpinner />
       ) : (
         <div className="row" style={{ marginTop: "10rem" }}>
-          <div className="d-flex  justify-content-between mb-3 align-items-center">
-            <h1 className="text-center mb-4">Movie Reviews</h1>
-            <BtnNewReview />
+          <div className="d-flex justify-content-between   p-3">
+            <h1 className=" h-100 ">Movie Reviews</h1>
+            <ActionButton label="New Review" />
           </div>
           {reviews.map((review) => (
             <motion.div
@@ -48,13 +48,16 @@ const Reviews = () => {
                   src={`https://image.tmdb.org/t/p/w500${review.movie_image}`}
                   alt={review.movie_title}
                   className="img-fluid w-100 h-100 object-fit-cover"
-                  style={{ width: "15rem", height: "20rem" }}
+                  style={{ minWidth: "15rem", height: "20rem" }}
                 />
               </div>
 
               <div className="d-flex flex-column justify-content-between w-100">
                 <h5 className="fs-3 fw-semibold">{review.movie_title}</h5>
-                <p className="fs-5 text-truncate" style={{ maxWidth: "100%" }}>
+                <p
+                  className="fs-5 text-truncate"
+                  style={{ maxWidth: "100%", whiteSpace: "normal" }}
+                >
                   {review.review}
                 </p>
 
@@ -64,7 +67,7 @@ const Reviews = () => {
                       <strong>Rating:</strong> {review.rating}/5
                     </p>
                     <footer className="blockquote-footer fs-5">
-                      Reviewed by{" "}
+                      Reviewed by
                       <strong
                         className="fw-bolder"
                         onClick={() => handleUsernameClick(review.username)}
@@ -75,7 +78,7 @@ const Reviews = () => {
                               src={review.profile_picture}
                               alt="Profile"
                               className="rounded-circle me-2"
-                              style={{ width: "30px", height: "30px" }}
+                              style={{ width: "3rem", height: "3rem" }}
                             />
                           ) : (
                             <div
@@ -93,11 +96,15 @@ const Reviews = () => {
                       </strong>
                     </footer>
                   </div>
-                  <button className="btn btn-primary px-4 fs-4 btnTransform fw-semibold">
-                    Watchlist
-                  </button>
                 </div>
               </div>
+
+              <section
+                id="mobileBtnReviews"
+                className="d-flex align-items-end justify-content-end w-100 mobileBtnReviews"
+              >
+                <ActionButton label="Movie Details" />
+              </section>
             </motion.div>
           ))}
         </div>

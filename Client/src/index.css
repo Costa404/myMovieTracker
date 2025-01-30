@@ -51,7 +51,12 @@ Modal
   width: 20%;
 }
 
-/* 
+.testing {
+  box-shadow: 0 2px 4px 0 rgba(231, 227, 227, 0.13),
+    0 1px 1px 0 rgba(193, 191, 191, 0.11);
+}
+
+/* }
 ==========================
 
 theme
@@ -98,7 +103,7 @@ theme
   }
 
   .navbarChildMobile {
-    display: none;
+    display: none !important;
   }
 }
 
@@ -113,6 +118,10 @@ theme
 }
 @media (max-width: 600px) {
   .searchMovieMobile {
+    display: none !important;
+  }
+
+  #mobileBtnReviews {
     display: none !important;
   }
 }

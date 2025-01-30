@@ -3,14 +3,15 @@ import ErrorDisplay from "../../../../Context/ThemeContext/errorContext/ErrorDis
 import { useAuthStore } from "../../../Utility/Zustand/useAuthStore";
 import { useTheme } from "../../../../Context/ThemeContext/ThemeContext";
 
-import { useIsOnline } from "../../../Utility/Hooks/useIsOnline";
 import { usePostLogin } from "../../../../Api/post/postLogin";
 import { useEffect } from "react";
+import { useIsOnline } from "../../../Utility/Hooks/useIsOnline";
 
 const InputsLogin = () => {
   const { closeModalLogin, isModalLogin, openModalSignup } = useAuthStore();
   const { theme } = useTheme();
   const { isOnline } = useIsOnline();
+  console.log("isOnline", isOnline);
 
   const { handleLogin, setPassword, setEmail, email, password, loading } =
     usePostLogin();

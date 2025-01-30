@@ -11,10 +11,11 @@ import postWatchlistRouter from "./ProtectedRoutes/Watchlist/postWatchlist.js";
 import deleteWatchlistRouter from "./ProtectedRoutes/Watchlist/deleteWatchlist.js";
 import getWatchlistRouter from "./ProtectedRoutes/Watchlist/getWatchlist.js";
 
-import reviewsMovies from "./reviewsMovies.js";
+import reviewsMovies from "./Reviews/getReviewsMovies.js";
 import profileUser from "./profileUser.js";
 import friendship from "./friendship.js";
 import feedContent from "./feedContent.js";
+import postReviewsMovie from "./Reviews/postReviewsMovie.js";
 
 const apiRouter = Router();
 
@@ -31,7 +32,10 @@ apiRouter.use("/", getWatchlistRouter);
 apiRouter.use("/", moviesRoutes);
 apiRouter.use("/", moviesDetails);
 apiRouter.use("/", moviesSearch);
+
+// review
 apiRouter.use("/", reviewsMovies);
+apiRouter.use("/", postReviewsMovie);
 
 // profile
 apiRouter.use("/", getCurrentUserRouter);

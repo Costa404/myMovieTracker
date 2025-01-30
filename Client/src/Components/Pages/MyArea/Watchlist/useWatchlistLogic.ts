@@ -1,27 +1,39 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useGetWatchlist } from "../../../../Api/get/getWatchlist";
 import { useDeleteWatchlist } from "../../../../Api/delete/deleteWatchlist";
-import { useCurrentUser } from "../../../../Context/useCurrentUserAuth";
 import { Movie } from "../../../Utility/Interface/geralInterfaces";
+import { useIsOnline } from "../../../Utility/Hooks/useIsOnline";
 
 export const useWatchlistLogic = () => {
   const { handleGetWatchlist } = useGetWatchlist();
   const { deleteResponse } = useDeleteWatchlist();
   const [watchlist, setWatchlist] = useState<Movie[]>([]);
   const [loading, setLoading] = useState(false);
-  const { currentUser } = useCurrentUser();
+  const { isOnline, isUnauthorized } = useIsOnline(); // Obtemos o estado de autorização também
+  const [localUnauthorized, setLocalUnauthorized] = useState(isUnauthorized);
+
+  useEffect(() => {
+    setLocalUnauthorized(isUnauthorized); // Atualiza o estado de unauthorized conforme a mudança de isOnline
+  }, [isUnauthorized]);
 
   const fetchWatchlist = async () => {
-    if (currentUser) {
-      setLoading(true);
-      try {
-        const fetchedWatchlist = await handleGetWatchlist();
-        setWatchlist(Array.isArray(fetchedWatchlist) ? fetchedWatchlist : []);
-      } catch (error) {
-        console.error("Erro ao obter a watchlist", error);
-      } finally {
-        setLoading(false);
-      }
+    console.log("isOnline~", isOnline);
+    if (!isOnline) {
+      setLocalUnauthorized(true);
+      console.log("isUnauthorized~", localUnauthorized);
+      return;
+    }
+
+    setLoading(true);
+    setLocalUnauthorized(false);
+
+    try {
+      const fetchedWatchlist = await handleGetWatchlist();
+      setWatchlist(Array.isArray(fetchedWatchlist) ? fetchedWatchlist : []);
+    } catch (error) {
+      console.error("Error fetching watchlist:", error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -36,11 +48,17 @@ export const useWatchlistLogic = () => {
       await deleteResponse({ movie_id: movieId });
       await fetchWatchlist();
     } catch (error) {
-      console.error("Erro ao excluir filme da watchlist", error);
+      console.error("Error deleting movie from watchlist:", error);
     } finally {
       setLoading(false);
     }
   };
 
-  return { watchlist, loading, handleDelete, fetchWatchlist };
+  return {
+    watchlist,
+    loading,
+    isUnauthorized: localUnauthorized,
+    handleDelete,
+    fetchWatchlist,
+  };
 };

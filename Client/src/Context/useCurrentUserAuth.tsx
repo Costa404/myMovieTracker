@@ -1,4 +1,3 @@
-// CurrentUserProvider.tsx
 import React, {
   createContext,
   useState,
@@ -34,13 +33,12 @@ export const CurrentUserProvider: React.FC<CurrentUserProviderProps> = ({
   const fetchedUser = useGetCurrentUser();
 
   useEffect(() => {
-    console.log("Fetched user:", fetchedUser);
     if (fetchedUser) {
       setCurrentUser(fetchedUser);
       console.log("Current user updated:", fetchedUser);
     }
   }, [fetchedUser]);
-
+  console.log(currentUser);
   return (
     <currentUserContext.Provider value={{ currentUser, setCurrentUser }}>
       {children}
@@ -51,7 +49,7 @@ export const CurrentUserProvider: React.FC<CurrentUserProviderProps> = ({
 export const useCurrentUser = (): CurrentUserContextType => {
   const context = useContext(currentUserContext);
   if (!context) {
-    throw new Error("useCurrentUser must be used within an AuthProvider");
+    throw new Error("You are not authenticated ");
   }
   return context;
 };

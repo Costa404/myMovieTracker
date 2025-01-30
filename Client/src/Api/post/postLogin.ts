@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { useError } from "../../Context/ThemeContext/errorContext/useError";
 import { apiFetch } from "../api";
+import { useNavigate } from "react-router-dom";
 
 export const usePostLogin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const { setError } = useError();
 
@@ -28,10 +30,9 @@ export const usePostLogin = () => {
       });
 
       const { token } = response;
+      navigate("/");
 
       localStorage.setItem("authToken", token);
-
-      console.log("Login successful! Token:", token);
     } catch (err: any) {
       console.error("Login failed:", err);
       setError("Invalid credentials. Please try again.");

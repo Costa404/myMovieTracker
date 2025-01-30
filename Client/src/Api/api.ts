@@ -42,6 +42,7 @@ export const apiFetch = async (
   endpoint: string,
   options: FetchOptions = { isPublicRoute: false }
 ) => {
+  const API_URL = import.meta.env.VITE_API_URL;
   const token = localStorage.getItem("authToken");
 
   const headers: Record<string, string> = {
@@ -59,6 +60,13 @@ export const apiFetch = async (
       headers,
     });
 
+    if (response.status === 401) {
+      console.warn("User not authenticated. Removing token and redirecting.");
+      localStorage.removeItem("authToken"); // Remove invalid token
+      window.location.href = "/login"; // Redirect to login page
+      throw new Error("Unauthorized - Invalid token or not authenticated.");
+    }
+
     if (!response.ok) {
       throw new Error(`Error: ${response.statusText}`);
     }
@@ -68,7 +76,9 @@ export const apiFetch = async (
     if (contentType && contentType.includes("application/json")) {
       return response.json();
     } else {
-      throw new Error("Expected JSON, but got a different content type.");
+      throw new Error(
+        "Expected JSON response, but received a different content type."
+      );
     }
   } catch (error) {
     console.error("Fetch error:", error);

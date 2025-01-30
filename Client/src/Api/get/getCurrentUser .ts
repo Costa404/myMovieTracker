@@ -6,7 +6,6 @@ export const useGetCurrentUser = () => {
 
   useEffect(() => {
     const token = localStorage.getItem("authToken");
-    console.log("token", token);
 
     if (!token) return;
 
@@ -18,15 +17,11 @@ export const useGetCurrentUser = () => {
           },
         });
 
-        console.log("Response Status:", response.status);
-
         setGetUser(response);
       } catch (error) {
         console.error("Error when fetching currentuser:", error);
       }
     };
-
-    console.log("get", getUser);
 
     getUser();
   }, []);

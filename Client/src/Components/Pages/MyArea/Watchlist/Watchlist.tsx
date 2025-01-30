@@ -1,24 +1,34 @@
 import { useEffect } from "react";
 import { FaRegTrashCan } from "react-icons/fa6";
 import { Spinner } from "react-bootstrap";
-import BtnNewReview from "../../../Utility/BtnNewReview";
+
 import { useWatchlistLogic } from "./useWatchlistLogic";
+import ActionButton from "../../../Utility/ActionButton";
+import { useReviewsModalStore } from "../../../Utility/Zustand/useReviewsModalStore";
 
 const Watchlist = () => {
-  const { watchlist, loading, handleDelete, fetchWatchlist } =
+  const { watchlist, loading, isUnauthorized, handleDelete, fetchWatchlist } =
     useWatchlistLogic();
+  const { openReviewModal, isReviewModalOpen } = useReviewsModalStore();
+  console.log("test", isReviewModalOpen);
 
   useEffect(() => {
     fetchWatchlist();
   }, []);
-
-  // atençao dependecia current user
 
   if (loading) {
     return (
       <div className="d-flex justify-content-center">
         <Spinner animation="border" variant="primary" />
       </div>
+    );
+  }
+
+  if (isUnauthorized) {
+    return (
+      <p className="text-center text-danger" style={{ fontSize: "1.2rem" }}>
+        You must be logged in to view your watchlist.
+      </p>
     );
   }
 
@@ -61,7 +71,8 @@ const Watchlist = () => {
             >
               <h5 className="card-title text-truncate">{movie.title}</h5>
               <div className="w-100 d-flex mt-3 justify-content-between align-items-center">
-                <BtnNewReview />
+                <ActionButton label="New Review" onClick={openReviewModal} />
+
                 <FaRegTrashCan
                   className="text-danger fs-1 hover btnTransform"
                   onClick={() => handleDelete(movie.id)}

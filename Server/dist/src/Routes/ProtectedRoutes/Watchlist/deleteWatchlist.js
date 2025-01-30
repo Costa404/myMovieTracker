@@ -2,8 +2,7 @@ import { Router } from "express";
 import { authMiddleware } from "../../../Middlewares/authMiddleware.js";
 import pool from "../../../Database/db.js";
 const deleteWatchlistRouter = Router();
-deleteWatchlistRouter.delete("/deleteFromWatchlist/:movieId", // Use :movieId como um parâmetro de rota
-authMiddleware, async (req, res) => {
+deleteWatchlistRouter.delete("/deleteFromWatchlist/:movieId", authMiddleware, async (req, res) => {
     const { movieId } = req.params;
     const userId = req.user?.userId;
     try {

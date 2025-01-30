@@ -5,11 +5,13 @@ import Navbar from "./Navbar/Navbar";
 import Login from "../Modals/Auth/Login/Login";
 import Signup from "../Modals/Auth/Signup/Signup";
 import SidebarMobile from "../Modals/SidebarMobile/SidebarMobile";
-import BtnDarkLightMode from "../Utility/BtnDarkLight/BtnDarkLightMode";
+
 import { Suspense } from "react";
 import LoadingSpinner from "../Utility/Loading/Loading";
-import MovieDetail from "../Modals/MovieDetails";
+import MovieDetail from "../Modals/MovieDetails/MovieDetails";
 import { useMovieDetailsStore } from "../Utility/Zustand/useMovieDetailsStore";
+import BtnDarkLightMode from "../Utility/Hooks/BtnDarkLight/BtnDarkLightMode";
+import ModalReviews from "../Modals/Reviews/ModalReviews";
 
 const AppLayout = () => {
   const { isModalOpen } = useMovieDetailsStore();
@@ -32,6 +34,7 @@ const AppLayout = () => {
       <Signup />
       <SidebarMobile />
       {isModalOpen && <MovieDetail />}
+      <ModalReviews />
     </section>
   );
 };

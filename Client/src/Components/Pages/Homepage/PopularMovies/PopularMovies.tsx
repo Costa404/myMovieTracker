@@ -6,7 +6,8 @@ const PopularMovies = () => {
   const { getVisibleMovies, isLoading } = usePopularMovies();
   const visibleMovies = getVisibleMovies();
 
-  if (isLoading) {
+  // Verifique se a lista de filmes está carregada e não está vazia
+  if (isLoading || !visibleMovies || visibleMovies.length < 5) {
     return <LoadingSpinner />;
   }
 
@@ -22,6 +23,7 @@ const PopularMovies = () => {
         className="d-flex justify-content-center align-items-center"
         style={{ overflow: "hidden" }}
       >
+        {/* Repetir o mesmo bloco para as outras imagens, adaptando o índice */}
         <div
           className="carousel-movie smallImg"
           style={{

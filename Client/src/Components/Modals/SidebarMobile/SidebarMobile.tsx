@@ -76,7 +76,6 @@ const SidebarMobile: React.FC = () => {
               myArea <FaRegUser />
             </a>
 
-            {/* <SearchMovie /> */}
             <SidebarInputs />
           </div>
         </motion.div>

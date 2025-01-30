@@ -1,5 +1,5 @@
 import { RouterProvider } from "react-router-dom";
-import { useAppRoutes } from "./Components/Utility/AppRouts";
+import { useAppRoutes } from "./Components/Utility/appRoutes";
 import LoadingSpinner from "./Components/Utility/Loading/Loading";
 import { Suspense } from "react";
 

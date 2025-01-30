@@ -1,13 +1,16 @@
 import { useAuthStore } from "../../Utility/Zustand/useAuthStore";
 import { useTheme } from "../../../Context/ThemeContext/ThemeContext";
 import { useNavigate } from "react-router-dom";
-import { useIsOnline } from "../../Utility/Hooks/useIsOnline";
+
 import { MdLocalMovies } from "react-icons/md";
-import { useEffect } from "react";
+
 import { FaBars, FaRegUser } from "react-icons/fa";
 
 import { useSidebarStore } from "../../Utility/Zustand/useSidebarStore";
 import { usePageStore } from "../../Utility/Zustand/usePageStore";
+import { useIsOnline } from "../../Utility/Hooks/useIsOnline";
+import { useWatchlistLogic } from "../MyArea/Watchlist/useWatchlistLogic";
+
 const Navbar = () => {
   const { openModalLogin } = useAuthStore();
   const { theme } = useTheme();
@@ -15,15 +18,20 @@ const Navbar = () => {
   const { isOnline } = useIsOnline();
   const { toggleSidebar } = useSidebarStore();
   const { page, setPage } = usePageStore();
+  const { isUnauthorized } = useWatchlistLogic();
 
-  useEffect(() => {}, [isOnline]);
+  const { handleLogout } = useIsOnline();
+
+  const handleLogoutAndExit = () => {
+    handleLogout();
+    navigate("/");
+  };
 
   const handleNavigation = (path: string, pageName: string) => {
     setPage(pageName);
     navigate(path);
   };
 
-  console.log("ola.");
   return (
     <section
       className="py-4 w-75 border-bottom border-dark position-fixed navbarMobile"
@@ -86,16 +94,19 @@ const Navbar = () => {
             />
           </div>
 
-          {isOnline ? null : (
+          {isOnline ? (
+            <button
+              onClick={handleLogoutAndExit}
+              className="p-2 fw-bold btn btn-danger fs-4 px-4 rounded-5  btnTransform navbarChildMobile"
+              disabled={isUnauthorized}
+            >
+              Logout
+            </button>
+          ) : (
             <span>
               <button
                 onClick={openModalLogin}
-                className="p-2 fw-bold fs-4 px-4 rounded-5 navbarChildMobile btnTransform"
-                style={{
-                  background: theme === "dark" ? "#c7c7c7" : "#121212",
-                  color: theme === "dark" ? "#333333" : " #e0e0e0",
-                  border: "none",
-                }}
+                className="p-2 fw-bold btn-primary btn fs-4 px-4 rounded-5  btnTransform"
               >
                 Login
               </button>

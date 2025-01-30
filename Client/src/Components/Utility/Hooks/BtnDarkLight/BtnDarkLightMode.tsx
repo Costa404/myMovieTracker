@@ -1,7 +1,6 @@
 import { MdDarkMode } from "react-icons/md";
 import { MdOutlineDarkMode } from "react-icons/md";
-import { useTheme } from "../../../Context/ThemeContext/ThemeContext";
-
+import { useTheme } from "../../../../Context/ThemeContext/ThemeContext";
 const BtnDarkLightMode = () => {
   const { theme, toggleTheme } = useTheme();
   return (

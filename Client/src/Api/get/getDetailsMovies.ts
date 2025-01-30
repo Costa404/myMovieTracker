@@ -13,20 +13,22 @@ export const useGetDetailsMovies = () => {
   const { movieId } = useMovieDetailsStore();
 
   const [movieDetails, setMovieDetails] = useState<MovieDetails | null>(null);
+  const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
     if (movieId) {
       const getMovieDetails = async () => {
+        setLoading(true);
         const data = await apiFetch(`/api/movies/${movieId}`, {
           isPublicRoute: true,
         });
-
         setMovieDetails(data);
+        setLoading(false);
       };
 
       getMovieDetails();
     }
   }, [movieId]);
 
-  return { movieDetails };
+  return { movieDetails, loading };
 };

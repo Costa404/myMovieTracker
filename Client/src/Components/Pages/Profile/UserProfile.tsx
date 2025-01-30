@@ -74,7 +74,10 @@ const UserProfile = () => {
             )}
           </div>
 
-          <AddFriendButton userId={currentUser?.username} friendId={friendId} />
+          <AddFriendButton
+            userId={currentUser?.username || ""}
+            friendId={friendId}
+          />
         </div>
       </div>
     </div>
