@@ -5,6 +5,9 @@ import pool from "../../Database/db.js";
 const signupRouter = Router();
 signupRouter.post("/signup", async (req, res) => {
     const { email, password, username } = req.body;
+    // if (!isValidEmail(email)) {
+    //   return res.status(400).json({ error: "Invalid email format" });
+    // }
     try {
         const client = await pool.connect();
         const userCheck = await client.query("SELECT * FROM users WHERE email = $1 OR username = $2", [email, username]);

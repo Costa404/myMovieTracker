@@ -6,7 +6,6 @@ export const useIsOnline = () => {
   useEffect(() => {
     const token = localStorage.getItem("authToken");
     setIsOnline(!!token);
-    console.log("aquiiiiiiiiiii");
   }, [[localStorage.getItem("authToken")]]);
 
   const handleLogout = () => {

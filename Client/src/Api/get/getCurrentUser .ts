@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { apiFetch } from "./api";
+import { apiFetch } from "../api";
 
 export const useGetCurrentUser = () => {
   const [getUser, setGetUser] = useState(null);
@@ -18,15 +18,15 @@ export const useGetCurrentUser = () => {
           },
         });
 
-        if (!response.ok) {
-          throw new Error("Error when fetching movies");
-        }
+        console.log("Response Status:", response.status);
 
         setGetUser(response);
       } catch (error) {
-        console.error("Error when fetching movies:", error);
+        console.error("Error when fetching currentuser:", error);
       }
     };
+
+    console.log("get", getUser);
 
     getUser();
   }, []);

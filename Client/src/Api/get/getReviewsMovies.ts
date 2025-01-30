@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { apiFetch } from "./api";
+import { apiFetch } from "../api";
 
 interface Review {
   review_id: string;
@@ -9,6 +9,7 @@ interface Review {
   movie_image: string;
   review: string;
   rating: number;
+  profile_picture: string;
 }
 
 export const useGetReviews = () => {

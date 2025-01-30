@@ -58,19 +58,16 @@ theme
 
 ========================== */
 
-/* Tema claro */
 .light {
-  background-color: white;
-  color: black;
+  background-color: #c7c7c7;
+  color: #333333;
 }
 
 /* Tema escuro */
 .dark {
-  background-color: black;
-
-  color: white;
+  background-color: #121212;
+  color: #e0e0e0;
 }
-
 /* 
 ==========================
 
@@ -99,6 +96,10 @@ theme
   .rightImgPopularMovies {
     display: none;
   }
+
+  .navbarChildMobile {
+    display: none;
+  }
 }
 
 @media (max-width: 900px) {
@@ -114,4 +115,143 @@ theme
   .searchMovieMobile {
     display: none !important;
   }
+}
+
+@media screen and (min-width: 501px) {
+  .faBars {
+    display: none;
+  }
+}
+
+/* Container para o grid */
+.mosaic-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+  justify-content: center;
+  margin-top: 20px;
+  transition: transform 0.5s ease; /* Transição para movimento suave */
+}
+
+/* Card base */
+.card-item {
+  position: relative;
+  perspective: 1000px;
+  border-radius: 20px;
+  overflow: hidden;
+  transition: transform 0.3s ease-in-out;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Sombras mais suaves */
+  transform-origin: center;
+}
+
+/* Card Flip Animation */
+.card-flip {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.6s ease-in-out;
+}
+
+.card-item:hover .card-flip {
+  transform: rotateY(180deg);
+}
+
+/* Frente do card */
+.card-front {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  backface-visibility: hidden;
+}
+
+.card-img {
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+  border-radius: 20px;
+  transform: scale(1.05);
+  transition: transform 0.3s ease;
+}
+
+/* Parte de trás do card (com conteúdo) */
+.card-back {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  backface-visibility: hidden;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 20px;
+  transform: rotateY(180deg);
+  opacity: 0;
+  transition: opacity 0.4s ease-in-out;
+}
+
+.card-item:hover .card-back {
+  opacity: 1; /* Revela a parte de trás ao passar o mouse */
+}
+
+.card-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.card-title:hover {
+  color: #007bff; /* Mudança de cor ao passar o mouse */
+}
+
+.card-subtitle {
+  font-size: 1rem;
+  margin-top: 10px;
+}
+
+.card-text {
+  font-size: 0.9rem;
+  margin-top: 10px;
+  color: #555;
+}
+
+.badge {
+  font-size: 0.9rem;
+}
+
+/* Efeito Parallax */
+.card-img {
+  transition: transform 0.5s ease;
+}
+
+.card-item:hover .card-img {
+  transform: scale(1.1);
+}
+
+.reviewCard:hover {
+  transform: scale(1.01);
+}
+.btnTransform:hover {
+  transform: scale(1.1);
+}
+.cardTransformWatchlist:hover {
+  transform: scale(1.03);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .card-img {
+    height: 250px;
+  }
+}
+
+@media (max-width: 576px) {
+  .card-img {
+    height: 200px;
+  }
+}
+.navbarChildMobile {
+  color: #7b7b7b; /* Cor padrão */
+}
+
+.navbarChildMobile.active {
+  color: white; /* Cor do botão ativo */
 }

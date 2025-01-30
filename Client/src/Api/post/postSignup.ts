@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { useError } from "../Context/ThemeContext/errorContext/useError";
-import { apiFetch } from "./api";
+import { useError } from "../../Context/ThemeContext/errorContext/useError";
+import { apiFetch } from "../api";
 
 export const usePostSignup = () => {
   const [email, setEmail] = useState("");
@@ -16,7 +16,6 @@ export const usePostSignup = () => {
     setError(null);
 
     try {
-      // Envia a requisição POST para a API de signup
       const response = await apiFetch("/api/signup", {
         method: "POST",
         isPublicRoute: true,

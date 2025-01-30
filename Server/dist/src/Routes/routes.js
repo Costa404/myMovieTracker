@@ -8,6 +8,10 @@ import getCurrentUserRouter from "./ProtectedRoutes/getCurrentUser.js";
 import postWatchlistRouter from "./ProtectedRoutes/Watchlist/postWatchlist.js";
 import deleteWatchlistRouter from "./ProtectedRoutes/Watchlist/deleteWatchlist.js";
 import getWatchlistRouter from "./ProtectedRoutes/Watchlist/getWatchlist.js";
+import reviewsMovies from "./reviewsMovies.js";
+import profileUser from "./profileUser.js";
+import friendship from "./friendship.js";
+import feedContent from "./feedContent.js";
 const apiRouter = Router();
 // auth
 apiRouter.use("/", loginRouter);
@@ -20,5 +24,10 @@ apiRouter.use("/", getWatchlistRouter);
 apiRouter.use("/", moviesRoutes);
 apiRouter.use("/", moviesDetails);
 apiRouter.use("/", moviesSearch);
+apiRouter.use("/", reviewsMovies);
+// profile
 apiRouter.use("/", getCurrentUserRouter);
+apiRouter.use("/", profileUser);
+apiRouter.use("/", friendship);
+apiRouter.use("/", feedContent);
 export default apiRouter;

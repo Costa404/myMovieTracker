@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { apiFetch } from "./api";
+import { apiFetch } from "../api";
 
 interface Movie {
   id: string;
@@ -20,7 +20,6 @@ export const useGetMovies = () => {
   useEffect(() => {
     const getMovies = async () => {
       try {
-    
         const data: Movie[] = await apiFetch("/api/movies", {
           isPublicRoute: true,
         });

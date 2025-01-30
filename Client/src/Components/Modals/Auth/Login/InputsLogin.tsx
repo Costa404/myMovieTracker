@@ -4,7 +4,7 @@ import { useAuthStore } from "../../../Utility/Zustand/useAuthStore";
 import { useTheme } from "../../../../Context/ThemeContext/ThemeContext";
 
 import { useIsOnline } from "../../../Utility/Hooks/useIsOnline";
-import { usePostLogin } from "../../../../Api/postLogin";
+import { usePostLogin } from "../../../../Api/post/postLogin";
 import { useEffect } from "react";
 
 const InputsLogin = () => {
@@ -24,12 +24,15 @@ const InputsLogin = () => {
 
   return ReactDOM.createPortal(
     isModalLogin && (
-      <div className="modal-overlay fs-3 h-100 w-100 modalInputMobile">
+      <div
+        className="modal-overlay fs-3 h-100 w-100 modalInputMobile"
+        style={{ zIndex: "9999" }}
+      >
         <div className="w-100 h-100 d-flex justify-content-center align-items-center">
           <div
             className="modal-content modal-signup d-flex flex-column border border-dark w-25 justify-content-center align-items-center position-relative"
             style={{
-              backgroundColor: theme === "dark" ? "black" : "white",
+              backgroundColor: theme === "dark" ? "#121212" : "#c7c7c7",
               zIndex: 10,
               minWidth: "35rem",
             }}

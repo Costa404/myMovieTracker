@@ -9,7 +9,7 @@ export const generateToken = (email, username, userId) => {
     const signOptions = {
         expiresIn: process.env.JWT_EXPIRES_IN
             ? parseInt(process.env.JWT_EXPIRES_IN)
-            : 3600,
+            : 36000,
     };
     const token = jwt.sign(payload, secretKey, signOptions);
     return token;

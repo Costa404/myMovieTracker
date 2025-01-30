@@ -1,5 +1,6 @@
 import LoadingSpinner from "../../../Utility/Loading/Loading";
 import { usePopularMovies } from "./useMoviePopular";
+import { motion } from "framer-motion";
 
 const PopularMovies = () => {
   const { getVisibleMovies, isLoading } = usePopularMovies();
@@ -10,7 +11,12 @@ const PopularMovies = () => {
   }
 
   return (
-    <div className="mb-4">
+    <motion.div
+      className="mb-4"
+      whileInView={{ opacity: 1, x: 0 }}
+      initial={{ opacity: 0, x: -100 }}
+      transition={{ duration: 1.5 }}
+    >
       <h2 className="text-center fw-semibold mb-5">Popular Movies</h2>
       <div
         className="d-flex justify-content-center align-items-center"
@@ -23,7 +29,7 @@ const PopularMovies = () => {
             height: "15rem",
             margin: "0 5px",
             transition: "transform 0.5s ease, opacity 0.5s ease",
-            opacity: 0.3, // Mais transparente
+            opacity: 0.3,
           }}
         >
           <img
@@ -107,7 +113,7 @@ const PopularMovies = () => {
           />
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

@@ -1,5 +1,5 @@
-import { ApiErrorResponse } from "../Components/Utility/Interface/InterfaceError";
-import { apiFetch } from "./api";
+import { ApiErrorResponse } from "../../Components/Utility/Interface/InterfaceError";
+import { apiFetch } from "../api";
 
 export const useGetWatchlist = () => {
   const handleGetWatchlist = async (): Promise<ApiErrorResponse | null> => {
@@ -11,12 +11,6 @@ export const useGetWatchlist = () => {
           Authorization: `Bearer ${token}`,
         },
       });
-
-      if (!response.ok) {
-        throw new Error(
-          `Failed to fetch watchlist. Status: ${response.status}`
-        );
-      }
 
       return response;
     } catch (error: unknown) {

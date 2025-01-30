@@ -1,6 +1,6 @@
 const Footer = () => {
   return (
-    <div className="w-75 border-top border-dark p-4  d-flex justify-content-center align-items-centerS">
+    <div className=" border-top border-dark p-4  d-flex justify-content-center align-items-centerS">
       <div>
         <p className="fs-5"> &copy; 2025 Nuno Costa. All rights reserved.</p>
         <p className="fs-5 gap-5 d-flex">

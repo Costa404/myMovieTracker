@@ -6,7 +6,7 @@ import React, {
   useContext,
   ReactNode,
 } from "react";
-import { useGetCurrentUser } from "../Api/getCurrentUser ";
+import { useGetCurrentUser } from "../Api/get/getCurrentUser ";
 
 interface DecodedToken {
   username: string;
@@ -27,16 +27,17 @@ const currentUserContext = createContext<CurrentUserContextType | undefined>(
 interface CurrentUserProviderProps {
   children: ReactNode;
 }
-
 export const CurrentUserProvider: React.FC<CurrentUserProviderProps> = ({
   children,
 }) => {
   const [currentUser, setCurrentUser] = useState<DecodedToken | null>(null);
-
   const fetchedUser = useGetCurrentUser();
+
   useEffect(() => {
+    console.log("Fetched user:", fetchedUser);
     if (fetchedUser) {
-      setCurrentUser(fetchedUser); //
+      setCurrentUser(fetchedUser);
+      console.log("Current user updated:", fetchedUser);
     }
   }, [fetchedUser]);
 

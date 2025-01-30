@@ -1,6 +1,6 @@
-import { ApiErrorResponse } from "../Components/Utility/Interface/InterfaceError";
-import { useMovieDetailsStore } from "../Components/Utility/Zustand/useMovieDetailsStore";
-import { apiFetch } from "./api";
+import { ApiErrorResponse } from "../../Components/Utility/Interface/InterfaceError";
+import { useMovieDetailsStore } from "../../Components/Utility/Zustand/useMovieDetailsStore";
+import { apiFetch } from "../api";
 
 export const useHandlePostWatchlist = () => {
   const { movieId } = useMovieDetailsStore();

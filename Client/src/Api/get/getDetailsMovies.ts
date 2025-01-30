@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { useMovieDetailsStore } from "../Components/Utility/Zustand/useMovieDetailsStore";
-import { apiFetch } from "./api";
+import { useMovieDetailsStore } from "../../Components/Utility/Zustand/useMovieDetailsStore";
+import { apiFetch } from "../api";
 
 type MovieDetails = {
   title: string;

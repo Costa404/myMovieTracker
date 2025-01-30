@@ -3,16 +3,17 @@ import ReactDOM from "react-dom";
 import { useMovieDetailsStore } from "../Utility/Zustand/useMovieDetailsStore";
 import { useTheme } from "../../Context/ThemeContext/ThemeContext";
 import { AnimatePresence, motion } from "framer-motion";
-import { useHandlePostWatchlist } from "../../Api/postWatchlist";
-import { useGetDetailsMovies } from "../../Api/getDetailsMovies";
+import { useHandlePostWatchlist } from "../../Api/post/postWatchlist";
+import { useGetDetailsMovies } from "../../Api/get/getDetailsMovies";
 import { useIsOnline } from "../Utility/Hooks/useIsOnline";
 
+import WatchlistButton from "../Pages/MyArea/Watchlist/WatchlistButton";
+
 const MovieDetail: React.FC = () => {
-  const { isModalOpen, closeModal, clearMovie } = useMovieDetailsStore();
+  const { isModalOpen, closeModal, clearMovie, movieId } =
+    useMovieDetailsStore();
   const { isOnline } = useIsOnline();
-
   const { handlePostWatchlist } = useHandlePostWatchlist();
-
   const { movieDetails } = useGetDetailsMovies();
 
   const handleClose = () => {
@@ -35,8 +36,9 @@ const MovieDetail: React.FC = () => {
             transition={{ duration: 0.5 }}
             className="modal-content w-50 h-50"
             style={{
-              background: theme === "dark" ? "black" : "white",
-              color: theme === "dark" ? "white" : "black",
+              background: theme === "dark" ? "#121212" : "#c7c7c7",
+              color: theme === "dark" ? "#333333" : " #e0e0e0",
+              zIndex: "999",
             }}
           >
             <div
@@ -63,14 +65,11 @@ const MovieDetail: React.FC = () => {
                   {movieDetails.release_date}
                 </p>
                 <div className="d-flex gap-3">
-                  <button
-                    className="btn fs-4 fw-semibold px-5"
-                    style={{ backgroundColor: "#ae8c35", border: "none" }}
-                    onClick={handlePostWatchlist}
-                    disabled={!isOnline}
-                  >
-                    Watchlist
-                  </button>
+                  <WatchlistButton
+                    movieId={movieId ? parseInt(movieId) : 0}
+                    isOnline={isOnline}
+                    handlePostWatchlist={handlePostWatchlist}
+                  />
                   <button
                     className="btn fs-4 fw-semibold btn-primary px-5"
                     onClick={handleClose}

@@ -2,7 +2,7 @@ import ReactDOM from "react-dom";
 import ErrorDisplay from "../../../../Context/ThemeContext/errorContext/ErrorDisplay";
 import { useAuthStore } from "../../../Utility/Zustand/useAuthStore";
 import { useTheme } from "../../../../Context/ThemeContext/ThemeContext";
-import { usePostSignup } from "../../../../Api/postSignup";
+import { usePostSignup } from "../../../../Api/post/postSignup";
 import { useIsOnline } from "../../../Utility/Hooks/useIsOnline";
 
 const InputsSignup = () => {
@@ -23,12 +23,15 @@ const InputsSignup = () => {
 
   return ReactDOM.createPortal(
     isModalSignUp && (
-      <div className="modal-overlay fs-3 h-100 w-100">
+      <div
+        className="modal-overlay fs-3 h-100 w-100"
+        style={{ zIndex: "9999" }}
+      >
         <div className="w-100 h-100 d-flex justify-content-center align-items-center">
           <div
             className="modal-content modal-signup d-flex flex-column border border-dark w-25 justify-content-center align-items-center"
             style={{
-              backgroundColor: theme === "dark" ? "black" : "white",
+              backgroundColor: theme === "dark" ? "#121212" : "#c7c7c7",
               position: "relative",
               zIndex: 10,
               minWidth: "35rem",

@@ -21,7 +21,7 @@ export const generateToken = (
   const signOptions: SignOptions = {
     expiresIn: process.env.JWT_EXPIRES_IN
       ? parseInt(process.env.JWT_EXPIRES_IN)
-      : 3600,
+      : 36000,
   };
 
   const token = jwt.sign(payload, secretKey as string, signOptions);

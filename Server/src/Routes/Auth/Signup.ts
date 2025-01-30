@@ -9,9 +9,9 @@ const signupRouter = Router();
 signupRouter.post("/signup", async (req, res) => {
   const { email, password, username } = req.body;
 
-  if (!isValidEmail(email)) {
-    return res.status(400).json({ error: "Invalid email format" });
-  }
+  // if (!isValidEmail(email)) {
+  //   return res.status(400).json({ error: "Invalid email format" });
+  // }
 
   try {
     const client = await pool.connect();

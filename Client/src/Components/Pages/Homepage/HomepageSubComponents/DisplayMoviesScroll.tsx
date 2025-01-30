@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { genreMapping } from "../../../../StaticContent/genreMapping ";
+import { motion } from "framer-motion";
 
 interface DisplayMoviesScrollProps {
   genre: number;
@@ -28,7 +29,12 @@ const DisplayMoviesScroll: React.FC<DisplayMoviesScrollProps> = ({
   };
 
   return (
-    <div className="mb-4">
+    <motion.div
+      className="mb-4"
+      whileInView={{ opacity: 1, x: 0 }}
+      initial={{ opacity: 0, x: -100 }}
+      transition={{ duration: 1.5 }}
+    >
       <h2 className="fw-semibold">{genreMapping[genre]}</h2>{" "}
       <div className="position-relative">
         <button className="scroll-btn btn left fs-1" onClick={scrollLeft}>
@@ -36,7 +42,7 @@ const DisplayMoviesScroll: React.FC<DisplayMoviesScrollProps> = ({
         </button>
         <div
           ref={scrollRef}
-          className="d-flex flex-row overflow-auto pb-2"
+          className="d-flex flex-row overflow-auto pb-2 gap-2"
           style={{
             scrollBehavior: "smooth",
             scrollbarWidth: "none",
@@ -46,7 +52,7 @@ const DisplayMoviesScroll: React.FC<DisplayMoviesScrollProps> = ({
           {movies.map((movie) => (
             <div
               key={movie.id}
-              className="me-3 hover"
+              className="me-3 hover tests"
               onClick={() => onMovieClick(movie.id)}
             >
               <img
@@ -65,7 +71,7 @@ const DisplayMoviesScroll: React.FC<DisplayMoviesScrollProps> = ({
           <FaChevronRight />
         </button>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
