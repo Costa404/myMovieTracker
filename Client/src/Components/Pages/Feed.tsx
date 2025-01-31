@@ -8,7 +8,7 @@ const FeedDisplay = () => {
 
   const { setMovieId, openModal } = useMovieDetailsStore();
 
-  const handleMovieClick = (movieId: string) => {
+  const handleMovieClick = (movieId: number) => {
     setMovieId(movieId);
     openModal();
   };
@@ -29,7 +29,7 @@ const FeedDisplay = () => {
                 transition={{ duration: 1.5 }}
               >
                 <img
-                  onClick={() => handleMovieClick(String(item.movie_id))}
+                  onClick={() => handleMovieClick(item.movie_id)}
                   src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
                   alt={item.moviename}
                   className="card-img-top hover"

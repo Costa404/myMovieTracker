@@ -2,11 +2,12 @@ import React, { useRef } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { genreMapping } from "../../../../StaticContent/genreMapping ";
 import { motion } from "framer-motion";
+import { Movie } from "../../../Utility/Interface/geralInterfaces";
 
 interface DisplayMoviesScrollProps {
   genre: number;
-  movies: Array<{ id: string; title: string; poster_path: string }>;
-  onMovieClick: (movieId: string) => void;
+  movies: Movie[];
+  onMovieClick: (movieId: number) => void;
 }
 
 const DisplayMoviesScroll: React.FC<DisplayMoviesScrollProps> = ({

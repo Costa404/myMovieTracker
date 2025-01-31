@@ -14,7 +14,7 @@ const Reviews = () => {
     navigate(`/profile/${username}`);
   };
 
-  const handleMovieClick = (movieId: string) => {
+  const handleMovieClick = (movieId: number) => {
     setMovieId(movieId);
     openModal();
   };
@@ -31,7 +31,7 @@ const Reviews = () => {
           </div>
           {reviews.map((review) => (
             <motion.div
-              onClick={() => handleMovieClick(String(review.movie_id))}
+              onClick={() => handleMovieClick(review.movie_id)}
               className="col-12 mb-4 d-flex flex-row border border-dark rounded-3 p-3 reviewCard hover"
               key={review.review_id}
               whileInView={{ opacity: 1, x: 0 }}

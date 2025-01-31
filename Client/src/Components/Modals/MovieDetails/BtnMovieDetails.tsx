@@ -1,9 +1,9 @@
 import { useIsOnline } from "../../Utility/Hooks/useIsOnline";
 import { useHandlePostWatchlist } from "../../../Api/post/postWatchlist";
 
-import { useMovieDetailsStore } from "./useMovieDetailsStore";
 import WatchlistButton from "../../Pages/MyArea/Watchlist/WatchlistButton";
 import ActionButton from "../../Utility/ActionButton";
+import { useMovieDetailsStore } from "./useMovieDetailsStore";
 
 const BtnMovieDetails = () => {
   const { closeModal, clearMovie, movieId } = useMovieDetailsStore();
@@ -21,7 +21,7 @@ const BtnMovieDetails = () => {
         <p className="fs-3">Please login first to add to your watchlist.</p>
       ) : (
         <WatchlistButton
-          movieId={movieId ? parseInt(movieId) : 0}
+          movieId={movieId ? Number(movieId) : 0}
           isOnline={isOnline}
           handlePostWatchlist={handlePostWatchlist}
         />

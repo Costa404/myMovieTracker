@@ -1,8 +1,8 @@
 import { create } from "zustand";
 
 type ModalState = {
-  movieId: string | null;
-  setMovieId: (id: string | null) => void;
+  movieId: number | null;
+  setMovieId: (id: number | null) => void;
   isModalOpen: boolean;
   openModal: () => void;
   closeModal: () => void;

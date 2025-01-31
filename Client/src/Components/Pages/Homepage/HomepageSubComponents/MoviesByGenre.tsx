@@ -6,7 +6,7 @@ const MoviesByGenre = () => {
   const { groupedMovies } = useGetMovies();
   const { setMovieId, openModal } = useMovieDetailsStore();
 
-  const handleMovieClick = (movieId: string) => {
+  const handleMovieClick = (movieId: number) => {
     setMovieId(movieId);
     openModal();
   };
