@@ -18,7 +18,7 @@ export const useGetReviews = () => {
   useEffect(() => {
     const getReviews = async () => {
       try {
-        const data: Review[] = await apiFetch("/api/reviewsMovies", {
+        const data: Review[] = await apiFetch("/api/postReviewsMovies", {
           isPublicRoute: false,
         });
 

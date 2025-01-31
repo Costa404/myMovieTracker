@@ -9,19 +9,14 @@ import { useMovieDetailsStore } from "../../Utility/Zustand/useMovieDetailsStore
 const Reviews = () => {
   const { reviews } = useGetReviews();
   const navigate = useNavigate();
-
+  const { setMovieId, openModal } = useMovieDetailsStore();
   const handleUsernameClick = (username: string) => {
     navigate(`/profile/${username}`);
   };
 
-  const { setMovieId, openModal, isModalOpen } = useMovieDetailsStore();
-  console.log("Estado do modal:", isModalOpen);
-
   const handleMovieClick = (movieId: string) => {
-    console.log("Clicou no filme:", movieId);
     setMovieId(movieId);
     openModal();
-    console.log("Chamou openModal");
   };
 
   return (
@@ -63,14 +58,17 @@ const Reviews = () => {
 
                 <div className="d-flex justify-content-between align-items-center">
                   <div>
-                    <p className="fs-5">
-                      <strong>Rating:</strong> {review.rating}/5
+                    <p className="fs-5 fw-semibold fs-4">
+                      <strong className="fw-semibold fs-4">Rating:</strong>{" "}
+                      {review.rating}/5
                     </p>
-                    <footer className="blockquote-footer fs-5">
-                      Reviewed by
+                    <footer className=" fs-5 fw-semibold ">
                       <strong
                         className="fw-bolder"
-                        onClick={() => handleUsernameClick(review.username)}
+                        onClick={(event) => {
+                          event.stopPropagation();
+                          handleUsernameClick(review.username);
+                        }}
                       >
                         <div className="d-flex align-items-center hover">
                           {review.profile_picture ? (

@@ -36,13 +36,13 @@ const DisplayMoviesScroll: React.FC<DisplayMoviesScrollProps> = ({
       transition={{ duration: 1.5 }}
     >
       <h2 className="fw-semibold">{genreMapping[genre]}</h2>{" "}
-      <div className="position-relative">
+      <div className="position-relative ">
         <button className="scroll-btn btn left fs-1" onClick={scrollLeft}>
           <FaChevronLeft />
         </button>
         <div
           ref={scrollRef}
-          className="d-flex flex-row overflow-auto pb-2 gap-2"
+          className="d-flex flex-row overflow-auto pb-2 gap-2 "
           style={{
             scrollBehavior: "smooth",
             scrollbarWidth: "none",
@@ -52,7 +52,7 @@ const DisplayMoviesScroll: React.FC<DisplayMoviesScrollProps> = ({
           {movies.map((movie) => (
             <div
               key={movie.id}
-              className="me-3 hover tests"
+              className="me-3 hover "
               onClick={() => onMovieClick(movie.id)}
             >
               <img

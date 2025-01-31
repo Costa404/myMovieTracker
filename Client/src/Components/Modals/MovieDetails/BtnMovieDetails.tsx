@@ -16,7 +16,7 @@ const BtnMovieDetails = () => {
   };
 
   return (
-    <div className="d-flex flex-column gap-3">
+    <div className="d-flex flex-column gap-3 align-items-center">
       {!isOnline ? (
         <p className="fs-3">Please login first to add to your watchlist.</p>
       ) : (
@@ -27,14 +27,12 @@ const BtnMovieDetails = () => {
         />
       )}
 
-      <span>
-        <ActionButton
-          onClick={handleClose}
-          label="close"
-          className="w-100 p-2 fw-bold btn-primary btn fs-4 px-4 rounded-5 btnTransform"
-          style={{ width: "20rem" }}
-        />
-      </span>
+      <ActionButton
+        onClick={handleClose}
+        label="close"
+        className=" p-2 fw-bold btn-primary btn fs-4 px-4 rounded-5 btnTransform"
+        style={{ width: "20rem" }}
+      />
     </div>
   );
 };

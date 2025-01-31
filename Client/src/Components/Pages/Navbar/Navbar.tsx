@@ -10,6 +10,7 @@ import { useSidebarStore } from "../../Utility/Zustand/useSidebarStore";
 import { usePageStore } from "../../Utility/Zustand/usePageStore";
 import { useIsOnline } from "../../Utility/Hooks/useIsOnline";
 import { useWatchlistLogic } from "../MyArea/Watchlist/useWatchlistLogic";
+import ActionButton from "../../Utility/ActionButton";
 
 const Navbar = () => {
   const { openModalLogin } = useAuthStore();
@@ -103,13 +104,8 @@ const Navbar = () => {
               Logout
             </button>
           ) : (
-            <span>
-              <button
-                onClick={openModalLogin}
-                className="p-2 fw-bold btn-primary btn fs-4 px-4 rounded-5  btnTransform"
-              >
-                Login
-              </button>
+            <span id="mobileBtnReviews">
+              <ActionButton label="Login" onClick={openModalLogin} />
             </span>
           )}
         </div>

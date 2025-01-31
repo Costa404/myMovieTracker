@@ -25,8 +25,8 @@ const WatchlistButton: React.FC<WatchlistButtonProps> = ({
 
   return (
     <button
-      className="btn fs-4 fw-semibold px-5 btnTransform rounded-5 "
-      style={{ backgroundColor: "#ae8c35", border: "none", maxWidth: "20rem" }}
+      className="btn fs-4 fw-bold px-4 btnTransform rounded-5 "
+      style={{ backgroundColor: "#ae8c35", border: "none", width: "20rem" }}
       onClick={handlePostWatchlist}
       disabled={!isOnline || isInWatchlist}
     >

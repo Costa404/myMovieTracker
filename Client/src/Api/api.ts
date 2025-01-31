@@ -62,8 +62,7 @@ export const apiFetch = async (
 
     if (response.status === 401) {
       console.warn("User not authenticated. Removing token and redirecting.");
-      localStorage.removeItem("authToken"); // Remove invalid token
-      window.location.href = "/login"; // Redirect to login page
+      localStorage.removeItem("authToken");
       throw new Error("Unauthorized - Invalid token or not authenticated.");
     }
 

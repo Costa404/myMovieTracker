@@ -51,15 +51,15 @@ Modal
   width: 20%;
 }
 
-.testing {
+/* .testing {
   box-shadow: 0 2px 4px 0 rgba(231, 227, 227, 0.13),
     0 1px 1px 0 rgba(193, 191, 191, 0.11);
-}
+} */
 
 /* }
 ==========================
 
-theme
+
 
 ========================== */
 
@@ -68,7 +68,6 @@ theme
   color: #333333;
 }
 
-/* Tema escuro */
 .dark {
   background-color: #121212;
   color: #e0e0e0;
@@ -93,67 +92,29 @@ theme
 
   .navbarMobile {
     min-width: 100%;
+    padding: 0rem 2rem;
   }
 }
 
-@media screen and (max-width: 500px) {
-  .leftImgPopularMovies,
-  .rightImgPopularMovies {
-    display: none;
-  }
-
-  .navbarChildMobile {
-    display: none !important;
-  }
-}
-
-@media (max-width: 900px) {
-  .smallImg {
-    display: none !important;
-  }
-  .modalInputMobile {
-    min-width: 100% !important;
-    max-width: 30rem !important;
-  }
-}
-@media (max-width: 600px) {
-  .searchMovieMobile {
-    display: none !important;
-  }
-
-  #mobileBtnReviews {
-    display: none !important;
-  }
-}
-
-@media screen and (min-width: 501px) {
-  .faBars {
-    display: none;
-  }
-}
-
-/* Container para o grid */
 .mosaic-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 20px;
   justify-content: center;
   margin-top: 20px;
-  transition: transform 0.5s ease; /* Transição para movimento suave */
+  transition: transform 0.5s ease;
 }
 
-/* Card base */
 .card-item {
   position: relative;
   perspective: 1000px;
   border-radius: 20px;
   overflow: hidden;
   transition: transform 0.3s ease-in-out;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Sombras mais suaves */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   transform-origin: center;
 }
 
-/* Card Flip Animation */
 .card-flip {
   position: relative;
   width: 100%;
@@ -245,7 +206,13 @@ theme
   transform: scale(1.03);
 }
 
-/* Responsividade */
+/* 
+==========================
+
+mediaquerys
+
+========================== */
+
 @media (max-width: 768px) {
   .card-img {
     height: 250px;
@@ -262,5 +229,63 @@ theme
 }
 
 .navbarChildMobile.active {
-  color: white; /* Cor do botão ativo */
+  color: white;
+}
+
+@media screen and (max-width: 500px) {
+  .leftImgPopularMovies,
+  .rightImgPopularMovies {
+    display: none;
+  }
+
+  .navbarChildMobile {
+    display: none !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .smallImg {
+    display: none !important;
+  }
+  .modalInputMobile {
+    min-width: 100% !important;
+    max-width: 30rem !important;
+  }
+}
+@media (max-width: 600px) {
+  .searchMovieMobile {
+    display: none !important;
+  }
+
+  #mobileBtnReviews {
+    display: none !important;
+  }
+}
+
+@media screen and (min-width: 501px) {
+  .faBars {
+    display: none;
+  }
+}
+@media screen and (min-width: 501px) {
+  .faBars {
+    display: none;
+  }
+}
+
+/* ==============
+
+modalMovieDetails
+
+============== */
+
+@media screen and (max-width: 1100px) {
+  .modalMovieDetailsMobile {
+    min-width: 95%;
+  }
+}
+@media screen and (max-width: 767px) {
+  .modalMovieDetailsMobile {
+    min-height: 80%;
+  }
 }

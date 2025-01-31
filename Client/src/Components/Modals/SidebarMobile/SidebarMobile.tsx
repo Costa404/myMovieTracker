@@ -75,6 +75,12 @@ const SidebarMobile: React.FC = () => {
             >
               myArea <FaRegUser />
             </a>
+            <a
+              className="d-flex justify-content-between align-items-center hover"
+              onClick={() => handleNavigation("/feed")}
+            >
+              Feed <FaRegUser />
+            </a>
 
             <SidebarInputs />
           </div>
