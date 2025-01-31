@@ -1,18 +1,17 @@
 import { useGetFeedContent } from "../../Api/get/getFeedContent";
 import LoadingSpinner from "../Utility/Loading/Loading";
 import { motion } from "framer-motion";
-import { useMovieDetailsStore } from "../Utility/Zustand/useMovieDetailsStore";
+import { useMovieDetailsStore } from "../Modals/MovieDetails/useMovieDetailsStore";
 
 const FeedDisplay = () => {
   const { feedContent } = useGetFeedContent();
-  console.log("aaaaaaaa", feedContent);
-  const { setMovieId, openModal, movieId } = useMovieDetailsStore();
+
+  const { setMovieId, openModal } = useMovieDetailsStore();
 
   const handleMovieClick = (movieId: string) => {
     setMovieId(movieId);
     openModal();
   };
-  console.log("movieId", movieId);
 
   return (
     <div className="container mt-5">

@@ -1,4 +1,4 @@
-import { useAuthStore } from "../../Utility/Zustand/useAuthStore";
+import { useAuthStore } from "../../Modals/Auth/useAuthStore";
 import { useTheme } from "../../../Context/ThemeContext/ThemeContext";
 import { useNavigate } from "react-router-dom";
 
@@ -6,11 +6,12 @@ import { MdLocalMovies } from "react-icons/md";
 
 import { FaBars, FaRegUser } from "react-icons/fa";
 
-import { useSidebarStore } from "../../Utility/Zustand/useSidebarStore";
-import { usePageStore } from "../../Utility/Zustand/usePageStore";
+import { useSidebarStore } from "../../Modals/SidebarMobile/useSidebarStore";
+
 import { useIsOnline } from "../../Utility/Hooks/useIsOnline";
 import { useWatchlistLogic } from "../MyArea/Watchlist/useWatchlistLogic";
 import ActionButton from "../../Utility/ActionButton";
+import { usePageStore } from "./usePageStore";
 
 const Navbar = () => {
   const { openModalLogin } = useAuthStore();

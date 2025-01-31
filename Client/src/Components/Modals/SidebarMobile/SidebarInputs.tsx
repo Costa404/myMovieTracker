@@ -1,6 +1,6 @@
 import ActionButton from "../../Utility/ActionButton";
 import { useIsOnline } from "../../Utility/Hooks/useIsOnline";
-import { useAuthStore } from "../../Utility/Zustand/useAuthStore";
+import { useAuthStore } from "../Auth/useAuthStore";
 
 const SidebarInputs = () => {
   const { openModalLogin, openModalSignup } = useAuthStore();

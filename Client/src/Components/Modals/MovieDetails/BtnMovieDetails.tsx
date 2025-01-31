@@ -1,7 +1,7 @@
 import { useIsOnline } from "../../Utility/Hooks/useIsOnline";
 import { useHandlePostWatchlist } from "../../../Api/post/postWatchlist";
 
-import { useMovieDetailsStore } from "../../Utility/Zustand/useMovieDetailsStore";
+import { useMovieDetailsStore } from "./useMovieDetailsStore";
 import WatchlistButton from "../../Pages/MyArea/Watchlist/WatchlistButton";
 import ActionButton from "../../Utility/ActionButton";
 

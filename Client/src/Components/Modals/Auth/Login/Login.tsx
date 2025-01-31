@@ -1,4 +1,4 @@
-import { useAuthStore } from "../../../Utility/Zustand/useAuthStore";
+import { useAuthStore } from "../useAuthStore";
 import InputsLogin from "./InputsLogin";
 
 const Login = () => {

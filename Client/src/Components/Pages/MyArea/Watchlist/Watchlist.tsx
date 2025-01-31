@@ -4,7 +4,7 @@ import { Spinner } from "react-bootstrap";
 
 import { useWatchlistLogic } from "./useWatchlistLogic";
 import ActionButton from "../../../Utility/ActionButton";
-import { useReviewsModalStore } from "../../../Utility/Zustand/useReviewsModalStore";
+import { useReviewsModalStore } from "../../Reviews/useReviewsModalStore";
 
 const Watchlist = () => {
   const { watchlist, loading, isUnauthorized, handleDelete, fetchWatchlist } =

@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { useSidebarStore } from "../../Utility/Zustand/useSidebarStore";
+import { useSidebarStore } from "./useSidebarStore";
 // import SearchMovie from "../../Pages/Homepage/HomepageSubComponents/SearchMovie";
 import { FaRegUser } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";

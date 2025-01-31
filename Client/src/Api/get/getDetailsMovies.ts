@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useMovieDetailsStore } from "../../Components/Utility/Zustand/useMovieDetailsStore";
+import { useMovieDetailsStore } from "../../Components/Modals/MovieDetails/useMovieDetailsStore";
 import { apiFetch } from "../api";
 
 type MovieDetails = {

@@ -1,13 +1,6 @@
 import { useEffect, useState } from "react";
 import { apiFetch } from "../api";
-
-interface Movie {
-  id: string;
-  title: string;
-  poster_path: string;
-  genre: string[];
-  is_popular: boolean;
-}
+import { Movie } from "../../Components/Utility/Interface/geralInterfaces";
 
 type GroupedMovies = {
   [genre: string]: Movie[];
@@ -16,22 +9,20 @@ type GroupedMovies = {
 export const useGetMovies = () => {
   const [groupedMovies, setGroupedMovies] = useState<GroupedMovies>({});
   const [popularMovies, setPopularMovies] = useState<Movie[]>([]);
+  const [allMovies, setAllMovies] = useState<Movie[]>([]);
+  const [loading, setLoading] = useState<boolean>(true); //
 
   useEffect(() => {
     const getMovies = async () => {
+      setLoading(true);
       try {
         const data: Movie[] = await apiFetch("/api/movies", {
           isPublicRoute: true,
         });
 
-        // console.log("data", data);
-
-        // Filtrar popular movies
         const popularMoviesArray = data.filter((movie) => movie.is_popular);
         setPopularMovies(popularMoviesArray);
-        // console.log(popularMovies);
 
-        // Agrupar todos os movies por categoria
         const grouped: GroupedMovies = {};
         data.forEach((movie) => {
           movie.genre.forEach((genre) => {
@@ -41,15 +32,17 @@ export const useGetMovies = () => {
             grouped[genre].push(movie);
           });
         });
-
+        setAllMovies(data);
         setGroupedMovies(grouped);
       } catch (error) {
         console.error("Error when fetching movies:", error);
+      } finally {
+        setLoading(false);
       }
     };
 
     getMovies();
   }, []);
 
-  return { groupedMovies, popularMovies };
+  return { groupedMovies, popularMovies, allMovies, loading };
 };

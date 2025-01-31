@@ -1,6 +1,6 @@
 import ReactDOM from "react-dom";
 
-import { useMovieDetailsStore } from "../../Utility/Zustand/useMovieDetailsStore";
+import { useMovieDetailsStore } from "./useMovieDetailsStore";
 import { useTheme } from "../../../Context/ThemeContext/ThemeContext";
 import { AnimatePresence, motion } from "framer-motion";
 import { useGetDetailsMovies } from "../../../Api/get/getDetailsMovies";

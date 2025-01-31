@@ -1,11 +1,5 @@
 import { createContext, useContext, useState, ReactNode } from "react";
-
-interface Movie {
-  id: string;
-  title: string;
-  poster_path: string;
-  description: string;
-}
+import { Movie } from "../Components/Utility/Interface/geralInterfaces";
 
 interface SelectedMovieContextType {
   selectedMovie: Movie | null;

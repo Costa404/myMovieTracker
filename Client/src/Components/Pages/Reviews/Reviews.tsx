@@ -4,7 +4,7 @@ import LoadingSpinner from "../../Utility/Loading/Loading";
 
 import { motion } from "framer-motion";
 import ActionButton from "../../Utility/ActionButton";
-import { useMovieDetailsStore } from "../../Utility/Zustand/useMovieDetailsStore";
+import { useMovieDetailsStore } from "../../Modals/MovieDetails/useMovieDetailsStore";
 
 const Reviews = () => {
   const { reviews } = useGetReviews();
@@ -50,7 +50,7 @@ const Reviews = () => {
               <div className="d-flex flex-column justify-content-between w-100">
                 <h5 className="fs-3 fw-semibold">{review.movie_title}</h5>
                 <p
-                  className="fs-5 text-truncate"
+                  className="fs-5 text-truncate fw-semibold"
                   style={{ maxWidth: "100%", whiteSpace: "normal" }}
                 >
                   {review.review}

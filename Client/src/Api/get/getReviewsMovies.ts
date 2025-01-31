@@ -22,7 +22,7 @@ export const useGetReviews = () => {
           isPublicRoute: false,
         });
 
-        console.log("data", data);
+        // console.log("data", data);
 
         setReviews(data);
       } catch (error) {

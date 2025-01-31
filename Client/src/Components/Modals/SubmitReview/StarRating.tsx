@@ -16,7 +16,7 @@ const StarRating = ({ rating, setRating }: StarRatingProps) => {
   console.log("rating", rating);
 
   return (
-    <div className="star-rating">
+    <div className="star-rating pt-4">
       {[1, 2, 3, 4, 5].map((value) => (
         <FaStar
           key={value}

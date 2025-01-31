@@ -1,6 +1,6 @@
 import ReactDOM from "react-dom";
 import ErrorDisplay from "../../../../Context/ThemeContext/errorContext/ErrorDisplay";
-import { useAuthStore } from "../../../Utility/Zustand/useAuthStore";
+import { useAuthStore } from "../useAuthStore";
 import { useTheme } from "../../../../Context/ThemeContext/ThemeContext";
 
 import { usePostLogin } from "../../../../Api/post/postLogin";

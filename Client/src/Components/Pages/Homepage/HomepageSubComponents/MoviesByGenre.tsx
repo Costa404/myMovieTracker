@@ -1,4 +1,4 @@
-import { useMovieDetailsStore } from "../../../Utility/Zustand/useMovieDetailsStore";
+import { useMovieDetailsStore } from "../../../Modals/MovieDetails/useMovieDetailsStore";
 import LoadingSpinner from "../../../Utility/Loading/Loading";
 import { useGetMovies } from "../../../../Api/get/getMovies";
 import DisplayMoviesScroll from "./DisplayMoviesScroll";

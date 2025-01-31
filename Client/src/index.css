@@ -43,14 +43,17 @@ Modal
   background-color: rgba(0, 0, 0, 0.8);
   z-index: 1000;
 }
+.overlayDisplayMovieReview {
+  background-color: rgba(0, 0, 0, 0.2);
+}
 
 .modal-content {
   background: white;
   padding: 20px;
   z-index: 1001;
   width: 20%;
+  border-radius: 2rem !important;
 }
-
 /* .testing {
   box-shadow: 0 2px 4px 0 rgba(231, 227, 227, 0.13),
     0 1px 1px 0 rgba(193, 191, 191, 0.11);

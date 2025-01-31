@@ -1,5 +1,5 @@
 import { ApiErrorResponse } from "../../Components/Utility/Interface/InterfaceError";
-import { useMovieDetailsStore } from "../../Components/Utility/Zustand/useMovieDetailsStore";
+import { useMovieDetailsStore } from "../../Components/Modals/MovieDetails/useMovieDetailsStore";
 import { apiFetch } from "../api";
 
 export const usePostReview = () => {
