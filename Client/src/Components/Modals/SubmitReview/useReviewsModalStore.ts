@@ -8,6 +8,12 @@ interface ReviewsModal {
 
 export const useReviewsModalStore = create<ReviewsModal>((set) => ({
   isReviewModalOpen: false,
-  openReviewModal: () => set({ isReviewModalOpen: true }),
-  closeReviewModal: () => set({ isReviewModalOpen: false }),
+  openReviewModal: () => {
+    set({ isReviewModalOpen: true });
+    document.body.style.overflow = "hidden";
+  },
+  closeReviewModal: () => {
+    set({ isReviewModalOpen: false });
+    document.body.style.overflow = "auto";
+  },
 }));

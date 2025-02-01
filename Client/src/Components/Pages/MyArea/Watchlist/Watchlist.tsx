@@ -4,13 +4,12 @@ import { Spinner } from "react-bootstrap";
 
 import { useWatchlistLogic } from "./useWatchlistLogic";
 import ActionButton from "../../../Utility/ActionButton";
-import { useReviewsModalStore } from "../../Reviews/useReviewsModalStore";
+import { useReviewsModalStore } from "../../../Modals/SubmitReview/useReviewsModalStore";
 
 const Watchlist = () => {
   const { watchlist, loading, isUnauthorized, handleDelete, fetchWatchlist } =
     useWatchlistLogic();
-  const { openReviewModal, isReviewModalOpen } = useReviewsModalStore();
-  console.log("test", isReviewModalOpen);
+  const { openReviewModal } = useReviewsModalStore();
 
   useEffect(() => {
     fetchWatchlist();

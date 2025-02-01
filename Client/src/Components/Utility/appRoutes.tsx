@@ -12,6 +12,7 @@ const LazyUserProfile = React.lazy(
   () => import("../Pages/Profile/UserProfile.tsx")
 );
 const LazyFeed = React.lazy(() => import("../Pages/Feed.tsx"));
+const LazyTvShows = React.lazy(() => import("../Pages/TvShows/TvShows.tsx"));
 
 export const useAppRoutes = () => {
   return createBrowserRouter([
@@ -39,6 +40,10 @@ export const useAppRoutes = () => {
         {
           path: "/feed",
           element: <LazyFeed />,
+        },
+        {
+          path: "/tvShows",
+          element: <LazyTvShows />,
         },
       ],
     },

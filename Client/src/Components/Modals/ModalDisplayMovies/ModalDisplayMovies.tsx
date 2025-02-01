@@ -1,14 +1,12 @@
 import ReactDOM from "react-dom";
 import { useGetMovies } from "../../../Api/get/getMovies";
-import {
-  useSearchMovieStore,
-  useSelectedMovieModalStore,
-} from "./useSearchMovieStore";
+import { useSearchMovieStore } from "./useSearchMovieStore";
 
 import { useTheme } from "../../../Context/ThemeContext/ThemeContext";
 import ActionButton from "../../Utility/ActionButton";
 import { Movie } from "../../Utility/Interface/geralInterfaces";
 import LoadingSpinner from "../../Utility/Loading/Loading";
+import { useSelectedMovieModalStore } from "./useSelectedMovieModalStore";
 
 const ModalDisplayMovies = () => {
   const { closeSelectedMovieModal, setSelectedMovieId, isSelectedMovieOpen } =
@@ -86,9 +84,9 @@ const ModalDisplayMovies = () => {
                         src={`https://image.tmdb.org/t/p/w185${movie.poster_path}`}
                         alt={movie.title}
                         style={{
-                          width: "120px",
-                          height: "180px",
-                          marginBottom: "10px",
+                          width: "12rem",
+                          height: "18rem",
+                          marginBottom: "1rem",
                           borderRadius: "5px",
                         }}
                       />

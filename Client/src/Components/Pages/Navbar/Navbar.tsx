@@ -61,7 +61,7 @@ const Navbar = () => {
             Movies
           </a>
           <a
-            onClick={() => handleNavigation("/tvshows", "Tv Shows")}
+            onClick={() => handleNavigation("/tvShows", "Tv Shows")}
             className={`btnTransform hover navbarChildMobile ${
               page === "Tv Shows" ? "active" : ""
             }`}

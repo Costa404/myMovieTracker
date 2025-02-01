@@ -7,11 +7,8 @@ const MyArea = () => {
   const { currentUser } = useCurrentUser();
 
   const { isUnauthorized } = useWatchlistLogic();
-  console.log("curre", currentUser);
 
-  useEffect(() => {
-    console.log("curre", currentUser);
-  }, [isUnauthorized, currentUser]);
+  useEffect(() => {}, [isUnauthorized, currentUser]);
 
   return (
     <div

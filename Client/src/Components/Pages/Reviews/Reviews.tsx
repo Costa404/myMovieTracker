@@ -5,6 +5,7 @@ import LoadingSpinner from "../../Utility/Loading/Loading";
 import { motion } from "framer-motion";
 import ActionButton from "../../Utility/ActionButton";
 import { useMovieDetailsStore } from "../../Modals/MovieDetails/useMovieDetailsStore";
+import { useReviewsModalStore } from "../../Modals/SubmitReview/useReviewsModalStore";
 
 const Reviews = () => {
   const { reviews } = useGetReviews();
@@ -13,7 +14,7 @@ const Reviews = () => {
   const handleUsernameClick = (username: string) => {
     navigate(`/profile/${username}`);
   };
-
+  const { openReviewModal } = useReviewsModalStore();
   const handleMovieClick = (movieId: number) => {
     setMovieId(movieId);
     openModal();
@@ -27,7 +28,7 @@ const Reviews = () => {
         <div className="row" style={{ marginTop: "10rem" }}>
           <div className="d-flex justify-content-between   p-3">
             <h1 className=" h-100 ">Movie Reviews</h1>
-            <ActionButton label="New Review" />
+            <ActionButton label="New Review" onClick={openReviewModal} />
           </div>
           {reviews.map((review) => (
             <motion.div
