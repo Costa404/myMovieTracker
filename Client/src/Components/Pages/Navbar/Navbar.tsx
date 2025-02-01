@@ -88,7 +88,7 @@ const Navbar = () => {
         <div className=" d-flex gap-3 align-items-center">
           <div className="d-flex gap-3 align-items-center">
             <FaRegUser
-              onClick={() => handleNavigation("/myArea", "myArea")}
+              onClick={() => handleNavigation("/myArea/watchlist", "myArea")}
               className={`btnTransform p-2 fw-semibold navbarChildMobile hover ${
                 page === "myArea" ? "active" : ""
               }`}

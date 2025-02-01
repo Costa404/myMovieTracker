@@ -1,24 +1,43 @@
-import { useCurrentUser } from "../../../Context/useCurrentUserAuth";
-import Watchlist from "./Watchlist/Watchlist";
-import { useWatchlistLogic } from "./Watchlist/useWatchlistLogic";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { useCurrentUser } from "../../../Context/useCurrentUserAuth";
+import { useWatchlistLogic } from "./Watchlist/useWatchlistLogic";
 
 const MyArea = () => {
+  const navigate = useNavigate(); // Hook de navegação
   const { currentUser } = useCurrentUser();
-
   const { isUnauthorized } = useWatchlistLogic();
 
-  useEffect(() => {}, [isUnauthorized, currentUser]);
+  useEffect(() => {
+    if (isUnauthorized) {
+      navigate("/"); // Redireciona para a Home se o usuário não tiver permissão
+    }
+  }, [isUnauthorized, currentUser, navigate]);
 
   return (
-    <div
-      style={{ minHeight: "100vh" }}
-      className="d-flex justify-content-center"
-    >
-      <div className="container" style={{ paddingTop: "10rem" }}>
-        <h1 className="text-center mb-4">Hi {currentUser?.username}</h1>
-        <h2 className="mb-4 text-center">My Watchlist</h2>
-        <Watchlist />
+    <div className="container" style={{ paddingTop: "10rem" }}>
+      <div className="d-flex justify-content-between">
+        <h2
+          className="mb-4 text-center fw-semibold"
+          style={{ cursor: "pointer" }}
+          onClick={() => navigate("/myArea/watchlist")}
+        >
+          My Watchlist
+        </h2>
+        <h2
+          className="mb-4 text-center fw-semibold"
+          style={{ cursor: "pointer" }}
+          onClick={() => navigate("/myArea/favouriteMovies")}
+        >
+          Favourites
+        </h2>
+        <h2
+          className="mb-4 text-center fw-semibold"
+          style={{ cursor: "pointer" }}
+          onClick={() => navigate("/myArea/moviesHistory")}
+        >
+          History
+        </h2>
       </div>
     </div>
   );

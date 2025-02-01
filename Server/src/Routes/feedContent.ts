@@ -9,8 +9,6 @@ feedContent.get("/feedContent", authMiddleware, async (req, res) => {
     const username = req.user?.username;
     const usernameArray = String(username);
 
-    console.log("usernameArray", usernameArray);
-
     if (!usernameArray) {
       return res.status(400).json({ error: "usernameArray is required" });
     }
@@ -48,7 +46,7 @@ ORDER BY r.created_at DESC;
     const result = await pool.query(query, [usernameArray]);
 
     const feed = result.rows;
-    console.log("FEes", feed);
+
     res.json(feed);
   } catch (error) {
     console.error("Error fetching feed:", error);

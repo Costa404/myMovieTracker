@@ -35,7 +35,7 @@
 export const fetchDataFromApi = async () => {
   try {
     const response = await fetch(
-      "https://api.themoviedb.org/3/movie/popular?api_key=d351f155e840f50339b0982ce6baccc7"
+      "https://api.themoviedb.org/3/discover/movie?api_key=d351f155e840f50339b0982ce6baccc7&with_genres=10770"
     );
 
     if (!response.ok) {

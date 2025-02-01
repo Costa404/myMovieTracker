@@ -3,7 +3,7 @@ import pool from "../../Database/db";
 
 const reviewsMovies = express.Router();
 
-reviewsMovies.get("/postReviewsMovies", async (req, res) => {
+reviewsMovies.get("/getReviewsMovies", async (req, res) => {
   try {
     const query = `
        SELECT 

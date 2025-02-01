@@ -5,11 +5,12 @@ import pool from "../../Database/db.js";
 const postReviewsMovie = Router();
 
 postReviewsMovie.post(
-  "/postReview",
+  "/postReviewsMovies",
   authMiddleware,
   async (req: Request & { user?: { username: string } }, res: Response) => {
-    const { movieId, review, rating } = req.body;
+    const { movie_id, review, rating } = req.body;
     const username = req.user?.username;
+    console.log("req", req.body);
 
     if (!username) {
       return res.status(400).json({ message: "User is not authenticated." });
@@ -18,7 +19,7 @@ postReviewsMovie.post(
     try {
       const result = await pool.query(
         "INSERT INTO reviews (username, movie_id, review, rating) VALUES ($1, $2, $3, $4) RETURNING *",
-        [username, movieId, review, rating]
+        [username, movie_id, review, rating]
       );
 
       res.json({
