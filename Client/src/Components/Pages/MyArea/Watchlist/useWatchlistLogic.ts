@@ -9,11 +9,11 @@ export const useWatchlistLogic = () => {
   const { deleteResponse } = useDeleteWatchlist();
   const [watchlist, setWatchlist] = useState<Movie[]>([]);
   const [loading, setLoading] = useState(false);
-  const { isOnline, isUnauthorized } = useIsOnline(); // Obtemos o estado de autorização também
+  const { isOnline, isUnauthorized } = useIsOnline();
   const [localUnauthorized, setLocalUnauthorized] = useState(isUnauthorized);
 
   useEffect(() => {
-    setLocalUnauthorized(isUnauthorized); // Atualiza o estado de unauthorized conforme a mudança de isOnline
+    setLocalUnauthorized(isUnauthorized);
   }, [isUnauthorized]);
 
   const fetchWatchlist = async () => {

@@ -1,7 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect } from "react";
 import { FaRegTrashCan } from "react-icons/fa6";
-import { Spinner } from "react-bootstrap";
 
 import { useWatchlistLogic } from "./useWatchlistLogic";
 import ActionButton from "../../../Utility/ActionButton";
@@ -27,7 +26,10 @@ const Watchlist = () => {
 
   if (isUnauthorized) {
     return (
-      <p className="text-center text-danger" style={{ fontSize: "1.2rem" }}>
+      <p
+        className="text-center text-danger min-vh-100"
+        style={{ fontSize: "1.2rem" }}
+      >
         You must be logged in to view your watchlist.
       </p>
     );
@@ -35,14 +37,17 @@ const Watchlist = () => {
 
   if (watchlist.length === 0) {
     return (
-      <p className="text-center text-muted" style={{ fontSize: "1.2rem" }}>
+      <p
+        className="text-center text-muted min-vh-100"
+        style={{ fontSize: "1.2rem" }}
+      >
         Your watchlist is empty.
       </p>
     );
   }
 
   return (
-    <section style={{ minHeight: "calc(100vh - 100px)" }}>
+    <section className="min-vh-100">
       <div className="row">
         {watchlist.map((movie, index) => (
           <div key={index} className="col-12 col-sm-6 col-md-4 col-lg-3 mb-5">

@@ -14,10 +14,10 @@ reviewsMovies.get("/getReviewsMovies", async (req, res) => {
   m.poster_path AS movie_image, 
   r.review, 
   r.rating,
-  u.profile_picture  -- Adicionando o campo profile_picture da tabela users
+  u.profile_picture  
 FROM reviews r
 JOIN movies m ON r.movie_id = m.id
-JOIN users u ON r.username = u.username;  -- Associando a tabela users para pegar a profile_picture
+JOIN users u ON r.username = u.username;  
 
       `;
 

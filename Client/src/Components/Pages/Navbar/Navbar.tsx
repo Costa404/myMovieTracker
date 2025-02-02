@@ -11,7 +11,7 @@ import { useSidebarStore } from "../../Modals/SidebarMobile/useSidebarStore";
 import { useIsOnline } from "../../Utility/Hooks/useIsOnline";
 import { useWatchlistLogic } from "../MyArea/Watchlist/useWatchlistLogic";
 import ActionButton from "../../Utility/ActionButton";
-import { usePageStore } from "./usePageStore";
+import { usePageStoreNavbar } from "./usePageStore";
 
 const Navbar = () => {
   const { openModalLogin } = useAuthStore();
@@ -19,7 +19,7 @@ const Navbar = () => {
   const navigate = useNavigate();
   const { isOnline } = useIsOnline();
   const { toggleSidebar } = useSidebarStore();
-  const { page, setPage } = usePageStore();
+  const { page, setPage } = usePageStoreNavbar();
   const { isUnauthorized } = useWatchlistLogic();
 
   const { handleLogout } = useIsOnline();
@@ -43,10 +43,7 @@ const Navbar = () => {
       }}
     >
       <div className="d-flex justify-content-between align-items-center ">
-        <div
-          className="d-flex gap-3 align-items-center fs-3 fw-semibold navbarContentMobile"
-          style={{ color: theme === "dark" ? "#e0e0e0" : " #333333" }}
-        >
+        <div className="d-flex gap-3 align-items-center fs-3 fw-semibold navbarContentMobile">
           <MdLocalMovies
             onClick={() => handleNavigation("/", "Movies")}
             style={{ fontSize: "5rem" }}

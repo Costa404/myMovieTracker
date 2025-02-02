@@ -16,6 +16,7 @@ import profileUser from "./profileUser.js";
 import friendship from "./friendship.js";
 import feedContent from "./feedContent.js";
 import postReviewsMovie from "./Reviews/postReviewsMovie.js";
+import moviesHistory from "./moviesHistory.js";
 
 const apiRouter = Router();
 
@@ -43,5 +44,6 @@ apiRouter.use("/", profileUser);
 
 apiRouter.use("/", friendship);
 apiRouter.use("/", feedContent);
+apiRouter.use("/", moviesHistory);
 
 export default apiRouter;

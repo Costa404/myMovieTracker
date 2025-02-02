@@ -7,7 +7,6 @@ friendship.post("/friendship", async (req, res) => {
   try {
     const { user_id, friend_id } = req.body;
 
-    // Verifica se já existe amizade
     const existingFriendship = await pool.query(
       "SELECT * FROM friends WHERE (user_id = $1 AND friend_id = $2) OR (user_id = $2 AND friend_id = $1)",
       [user_id, friend_id]
@@ -17,7 +16,6 @@ friendship.post("/friendship", async (req, res) => {
       return res.status(400).json({ message: "Amizade já existe!" });
     }
 
-    // Insere a amizade
     await pool.query(
       "INSERT INTO friends (user_id, friend_id) VALUES ($1, $2)",
       [user_id, friend_id]
