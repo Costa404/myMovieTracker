@@ -8,7 +8,7 @@ interface SelectedMovieProps {
 const SelectedMovie: React.FC<SelectedMovieProps> = ({ selectedMovie }) => {
   return (
     <div
-      className="selected-movie d-flex flex-column align-items-center justify-content-center"
+      className="selected-movie d-flex flex-column align-items-center justify-content-center "
       style={{
         minHeight: "20rem",
         width: "100%",

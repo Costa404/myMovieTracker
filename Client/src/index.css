@@ -93,9 +93,17 @@ theme
     min-width: 100% !important;
   }
 
+  .modalReviewsMobile {
+    min-width: 100% !important;
+  }
+
   .navbarMobile {
     min-width: 100%;
     padding: 0rem 2rem;
+  }
+
+  .cardModalDisplayMovies {
+    max-width: 100% !important;
   }
 }
 

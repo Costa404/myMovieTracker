@@ -59,7 +59,7 @@ const ModalReviews = () => {
       onClick={hancleCloseModalReview}
     >
       <div
-        className="modal-content modal-overlay d-flex justify-content-center align-items-center h-50 w-50 testing"
+        className="modal-content modal-overlay d-flex justify-content-center align-items-center h-50 w-50 testing modalReviewsMobile"
         onClick={(e) => e.stopPropagation()}
         style={{
           background: theme === "dark" ? "#121212" : "#c7c7c7",

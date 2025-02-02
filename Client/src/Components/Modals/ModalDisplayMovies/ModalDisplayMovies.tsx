@@ -35,7 +35,7 @@ const ModalDisplayMovies = () => {
         ReactDOM.createPortal(
           <div className="modal-overlay overlayDisplayMovieReview d-flex justify-content-center align-items-center">
             <div
-              className="modal-content h-50 w-50"
+              className="modal-content h-50 w-50 modalReviewsMobile"
               style={{
                 background: theme === "dark" ? "#121212" : "#c7c7c7",
                 color: theme === "dark" ? "#333333" : " #e0e0e0",
@@ -47,7 +47,7 @@ const ModalDisplayMovies = () => {
               <ActionButton
                 onClick={closeSelectedMovieModal}
                 label="Close"
-                style={{ background: "#dc3545", border: "none", width: "15%" }}
+                style={{ background: "#dc3545", border: "none", width: "25%" }}
               />
 
               <input
@@ -73,7 +73,7 @@ const ModalDisplayMovies = () => {
                   filteredMovies.map((movie) => (
                     <div
                       key={movie.id}
-                      className="movie-item d-flex flex-column align-items-center reviewCard hover py-2 rounded-2 border border-dark"
+                      className="movie-item d-flex flex-column align-items-center reviewCard hover py-2 rounded-2 border border-dark cardModalDisplayMovies"
                       style={{
                         flex: "1 1 30%",
                         maxWidth: "33%",
