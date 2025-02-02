@@ -60,7 +60,7 @@ const MovieDetail: React.FC = () => {
                   minWidth: "30rem",
                 }}
               />
-              <div className="text-center text-md-start">
+              <div className="text-center f gap-3 text-md-start">
                 <h2 className="text-white fw-semibold">{movieDetails.title}</h2>
                 <p className="fs-5 fw-semibold" style={{ color: "#ae8c35" }}>
                   {movieDetails.overview}

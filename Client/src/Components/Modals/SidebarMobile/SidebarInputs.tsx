@@ -11,12 +11,11 @@ const SidebarInputs = () => {
     <div>
       {isOnline ? (
         <div className="d-flex justify-content-around mt-5">
-          <button
+          <ActionButton
             onClick={handleLogout}
-            className="  p-2 fw-bold btn btn-danger fs-4 px-4 rounded-5  btnTransform"
-          >
-            Logout
-          </button>
+            label="Logout"
+            style={{ background: "#dc3545", border: "none" }}
+          />
         </div>
       ) : (
         <div className="d-flex justify-content-around mt-5">

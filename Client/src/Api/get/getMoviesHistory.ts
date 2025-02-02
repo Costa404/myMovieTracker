@@ -2,7 +2,7 @@ import { useCallback } from "react";
 import { apiFetch } from "../api";
 
 export const useGetMoviesHistory = () => {
-  const GetMoviesHistory = useCallback(async () => {
+  const handleGetMoviesHistory = useCallback(async () => {
     try {
       const token = localStorage.getItem("authToken");
       if (!token) return null;
@@ -25,5 +25,5 @@ export const useGetMoviesHistory = () => {
     }
   }, []);
 
-  return { GetMoviesHistory };
+  return { handleGetMoviesHistory };
 };

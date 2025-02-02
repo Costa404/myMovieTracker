@@ -3,6 +3,13 @@ import { useGetProfileUser } from "../../../Api/get/getProfileUser";
 
 import { useCurrentUser } from "../../../Context/useCurrentUserAuth";
 import AddFriendButton from "./AddFriendButton";
+interface Review {
+  id: number;
+  movietitle?: string;
+  review?: string;
+  rating?: number;
+  created_at?: string;
+}
 
 const UserProfile = () => {
   const { profileData, loading, error } = useGetProfileUser();
@@ -52,7 +59,7 @@ const UserProfile = () => {
             <h3 className="mb-3">Reviews</h3>
             {profileData.length > 0 ? (
               <div className="list-group">
-                {profileData.map((review: any) => (
+                {profileData.map((review: Review) => (
                   <div key={review.id} className="list-group-item mb-3">
                     <h5>{review.movietitle || "Unknown Movie"}</h5>
                     <p>{review.review || "No review provided."}</p>

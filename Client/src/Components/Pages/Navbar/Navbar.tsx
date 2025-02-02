@@ -96,8 +96,9 @@ const Navbar = () => {
           {isOnline ? (
             <button
               onClick={handleLogoutAndExit}
-              className="p-2 fw-bold btn btn-danger fs-4 px-4 rounded-5  btnTransform navbarChildMobile"
+              className="p-2 fw-bold btn  text-white fs-4 px-4 rounded-5  btnTransform navbarChildMobile"
               disabled={isUnauthorized}
+              style={{ background: "#dc3545" }}
             >
               Logout
             </button>

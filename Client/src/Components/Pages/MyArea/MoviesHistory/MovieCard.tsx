@@ -1,6 +1,6 @@
 import React from "react";
 
-interface MovieCardProps {
+export interface MovieCardProps {
   movie: {
     movietitle: string;
     moviegenre: number[];

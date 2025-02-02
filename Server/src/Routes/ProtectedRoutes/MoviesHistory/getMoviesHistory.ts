@@ -1,6 +1,6 @@
 import express from "express";
-import pool from "../Database/db";
-import { authMiddleware } from "../Middlewares/authMiddleware";
+import pool from "../../../Database/db";
+import { authMiddleware } from "../../../Middlewares/authMiddleware";
 
 const moviesHistory = express.Router();
 
@@ -15,7 +15,7 @@ moviesHistory.get("/moviesHistory", authMiddleware, async (req, res) => {
     const result = await pool.query(
       `SELECT 
             h.user_id, 
-            h.movie_id, 
+            h.movie_id AS id, 
             m.title AS MovieTitle,
             m.genre_ids AS MovieGenre,
             m.poster_path AS MovieImg,

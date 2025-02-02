@@ -13,7 +13,7 @@ export const useHandlePostWatchlist = () => {
       return null;
     }
 
-    console.log("Saving movie to watchlist:", movieId);
+    // console.log("Saving movie to watchlist:", movieId);
 
     try {
       const token = localStorage.getItem("authToken");

@@ -1,19 +1,21 @@
 import React from "react";
 import { Spinner } from "react-bootstrap";
-import { useIsMovieInWatchlist } from "./useIsMovieInWatchlist";
+import { useIsMovieInHistory } from "./useIsMovieInHistory";
 
-interface WatchlistButtonProps {
+interface MoviesHistoryButtonProps {
   movieId: number;
   isOnline: boolean;
   handlePostWatchlist: () => void;
 }
 
-const WatchlistButton: React.FC<WatchlistButtonProps> = ({
+const MoviesHistoryButton: React.FC<MoviesHistoryButtonProps> = ({
   movieId,
   isOnline,
   handlePostWatchlist,
 }) => {
-  const { isInWatchlist, loading } = useIsMovieInWatchlist(movieId);
+  const { isMovieInHistory, loading } = useIsMovieInHistory(movieId);
+
+  console.log("isMovieInHistory", isMovieInHistory);
 
   if (loading) {
     return (
@@ -33,11 +35,11 @@ const WatchlistButton: React.FC<WatchlistButtonProps> = ({
         height: "3.5rem",
       }}
       onClick={handlePostWatchlist}
-      disabled={!isOnline || isInWatchlist}
+      disabled={!isOnline || isMovieInHistory}
     >
-      {isInWatchlist ? "Already in Watchlist" : "Add to Watchlist"}
+      {isMovieInHistory ? "Already watched" : "Mark as watched"}
     </button>
   );
 };
 
-export default WatchlistButton;
+export default MoviesHistoryButton;

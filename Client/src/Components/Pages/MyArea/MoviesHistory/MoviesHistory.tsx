@@ -6,7 +6,7 @@ import { useWatchlistLogic } from "../Watchlist/useWatchlistLogic";
 
 const HistoryMovie = () => {
   const { isUnauthorized } = useWatchlistLogic();
-  const { GetMoviesHistory } = useGetMoviesHistory();
+  const { handleGetMoviesHistory } = useGetMoviesHistory();
   const [moviesHistory, setMoviesHistory] = useState<any[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
@@ -15,7 +15,7 @@ const HistoryMovie = () => {
     const fetchHistory = async () => {
       try {
         setLoading(true);
-        const response = await GetMoviesHistory();
+        const response = await handleGetMoviesHistory();
         if (response && !response.error) {
           setMoviesHistory(response);
         } else {
@@ -30,7 +30,7 @@ const HistoryMovie = () => {
     };
 
     fetchHistory();
-  }, [GetMoviesHistory]);
+  }, [handleGetMoviesHistory]);
 
   if (loading) {
     return (
