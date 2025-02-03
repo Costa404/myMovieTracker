@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { apiFetch } from "../api";
 
-interface Review {
+export interface Review {
   review_id: string;
   username: string;
   movie_id: number;

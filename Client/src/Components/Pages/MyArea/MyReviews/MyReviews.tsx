@@ -1,13 +1,25 @@
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { useGetReviews } from "../../../../Api/get/getReviewsMovies";
+import { Review, useGetReviews } from "../../../../Api/get/getReviewsMovies";
 import { useCurrentUser } from "../../../../Context/useCurrentUserAuth";
 import LoadingSpinner from "../../../Utility/Loading/Loading";
+import { useWatchlistLogic } from "../Watchlist/useWatchlistLogic";
 
 const MyReviews = () => {
-  const { reviews, loading } = useGetReviews();
+  const { reviews: fetchedReviews, loading } = useGetReviews();
   const { currentUser } = useCurrentUser();
+  const { isUnauthorized } = useWatchlistLogic();
+
+  const [reviews, setReviews] = useState<Review[]>([]);
+
+  useEffect(() => {
+    if (fetchedReviews) {
+      setReviews(fetchedReviews);
+    }
+  }, [fetchedReviews]);
 
   const currentUsername = currentUser?.username;
+  console.log("currentUsername", currentUsername);
   const userReviews =
     reviews?.filter((item) => item.username === currentUsername) || [];
 
@@ -18,8 +30,8 @@ const MyReviews = () => {
       </div>
     );
   }
-
-  if (!currentUsername) {
+  console.log("isUnauthorized", isUnauthorized);
+  if (isUnauthorized) {
     return (
       <p className="text-danger text-center min-vh-100 fs-4">
         You must be logged in to view your movie reviews.
@@ -34,7 +46,7 @@ const MyReviews = () => {
         <div className="row g-4">
           {userReviews.map((review) => (
             <div
-              key={review.review_id}
+              key={review?.review_id}
               className="col-12 col-sm-6 col-md-3 col-lg-2"
             >
               <motion.div
