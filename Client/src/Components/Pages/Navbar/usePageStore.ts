@@ -6,7 +6,7 @@ type PageStoreNavbar = {
 };
 
 export const usePageStoreNavbar = create<PageStoreNavbar>((set) => ({
-  page: "",
+  page: "Movies",
   setPage: (page) => set({ page }),
 }));
 
@@ -16,6 +16,6 @@ type PageStoreMyArea = {
 };
 
 export const usePageStoreMyArea = create<PageStoreMyArea>((set) => ({
-  page: "",
+  page: "Watchlist",
   setPage: (page) => set({ page }),
 }));

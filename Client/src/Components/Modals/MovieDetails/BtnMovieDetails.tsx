@@ -10,8 +10,12 @@ import MoviesHistoryButton from "../../Pages/MyArea/MoviesHistory/MoviesHistoryB
 const BtnMovieDetails = () => {
   const { closeModal, clearMovie, movieId } = useMovieDetailsStore();
   const { isOnline } = useIsOnline();
-  const { handlePostWatchlist } = useHandlePostWatchlist();
-  const { handlePostMoviesHistory } = useHandlePostMoviesHistory();
+  const { loading, added, handlePostWatchlist } = useHandlePostWatchlist();
+  const {
+    loading: historyLoading,
+    added: historyAdded,
+    handlePostMoviesHistory,
+  } = useHandlePostMoviesHistory();
 
   const handleClose = () => {
     clearMovie();
@@ -19,7 +23,7 @@ const BtnMovieDetails = () => {
   };
 
   return (
-    <div className="d-flex flex-column gap-3 align-items-center">
+    <div className="d-flex flex-column gap-3 ">
       {!isOnline ? (
         <p className="fs-3">Please login first to add to your watchlist.</p>
       ) : (
@@ -27,22 +31,23 @@ const BtnMovieDetails = () => {
           movieId={movieId ? Number(movieId) : 0}
           isOnline={isOnline}
           handlePostWatchlist={handlePostWatchlist}
+          loading={loading}
+          added={added}
         />
       )}
-      {/* <ActionButton
-        label="Mark as Watched"
-        onClick={handlePostMoviesHistory}
-        style={{ width: "20rem", height: "3.5rem" }}
-      /> */}
+
       <MoviesHistoryButton
         movieId={movieId ? Number(movieId) : 0}
         isOnline={isOnline}
         handlePostWatchlist={handlePostMoviesHistory}
+        loading={historyLoading}
+        added={historyAdded}
       />
+
       <ActionButton
         onClick={handleClose}
-        label="close"
-        className=" p-2 fw-bold  btn fs-4 px-4 rounded-5 btnTransform"
+        label="Close"
+        className="p-2 fw-bold btn fs-4 px-4 rounded-5 btnTransform"
         style={{
           background: "#dc3545",
           border: "none",

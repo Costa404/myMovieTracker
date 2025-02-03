@@ -12,11 +12,11 @@ import { useSelectedMovieModalStore } from "../ModalDisplayMovies/useSelectedMov
 const ModalReviews = () => {
   const {
     openSelectedMovieModal,
-    isSelectedMovieOpen,
+
     selectedMovieId,
     setSelectedMovieId,
   } = useSelectedMovieModalStore();
-  console.log("isSelectedMovieOpen", isSelectedMovieOpen);
+
   const { closeReviewModal, isReviewModalOpen } = useReviewsModalStore();
 
   const [review, setReview] = useState("");

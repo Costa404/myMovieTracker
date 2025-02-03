@@ -1,23 +1,21 @@
+import { useState } from "react";
 import { ApiErrorResponse } from "../../Components/Utility/Interface/InterfaceError";
 import { useMovieDetailsStore } from "../../Components/Modals/MovieDetails/useMovieDetailsStore";
 import { apiFetch } from "../api";
 
 export const useHandlePostWatchlist = () => {
   const { movieId } = useMovieDetailsStore();
-
-  console.log("movieId", movieId);
+  const [loading, setLoading] = useState(false);
+  const [added, setAdded] = useState(false);
 
   const handlePostWatchlist = async (): Promise<ApiErrorResponse | null> => {
-    if (!movieId) {
-      console.warn("No movie selected to add to watchlist.");
-      return null;
-    }
+    if (!movieId || added || loading) return null;
 
-    // console.log("Saving movie to watchlist:", movieId);
+    setLoading(true);
 
     try {
       const token = localStorage.getItem("authToken");
-      const response = await apiFetch("/api/watchlist", {
+      await apiFetch("/api/watchlist", {
         method: "POST",
         isPublicRoute: false,
         headers: {
@@ -27,16 +25,15 @@ export const useHandlePostWatchlist = () => {
         body: JSON.stringify({ movieId }),
       });
 
-      return response;
-    } catch (error: unknown) {
-      if (error instanceof Error) {
-        console.error("Error saving watchlist:", error.message);
-        throw error;
-      } else {
-        throw new Error("An unknown error occurred");
-      }
+      setAdded(true);
+      return null;
+    } catch (error) {
+      console.error("Error saving watchlist:", error);
+      throw error;
+    } finally {
+      setLoading(false);
     }
   };
 
-  return { handlePostWatchlist };
+  return { loading, added, handlePostWatchlist };
 };

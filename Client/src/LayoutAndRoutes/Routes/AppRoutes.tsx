@@ -20,6 +20,9 @@ const LazyTvShows = React.lazy(
   () => import("../../Components/Pages/TvShows/TvShows.tsx")
 );
 const LazyMyAreaLayout = React.lazy(() => import("../Layout/MyAreaLayout.tsx"));
+const LazySearchResult = React.lazy(
+  () => import("../../Components/Pages/SearchResult/SearchResult.tsx")
+);
 
 export const useAppRoutes = () => {
   return createBrowserRouter([
@@ -31,8 +34,9 @@ export const useAppRoutes = () => {
         { path: "/", element: <LazyHomepage /> },
         { path: "/reviews", element: <LazyReviews /> },
         { path: "/profile/:username", element: <LazyUserProfile /> },
-        { path: "/feed", element: <LazyFeed /> },
         { path: "/tvShows", element: <LazyTvShows /> },
+        { path: "/feed", element: <LazyFeed /> },
+        { path: "/search", element: <LazySearchResult /> },
         {
           path: "/myArea",
           element: <LazyMyAreaLayout />,

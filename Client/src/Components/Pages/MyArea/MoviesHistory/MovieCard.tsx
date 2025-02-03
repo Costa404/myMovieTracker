@@ -11,20 +11,25 @@ export interface MovieCardProps {
 
 const MovieCard: React.FC<MovieCardProps> = ({ movie }) => {
   return (
-    <div className="card shadow h-100">
+    <div
+      className="card shadow h-100 border-0"
+      style={{ borderRadius: "2rem" }}
+    >
       <img
         src={`https://image.tmdb.org/t/p/w500${movie.movieimg}`}
         alt={movie.movietitle}
-        className="card-img-top"
+        className="card-img-top img-fluid"
         style={{
-          height: "auto",
-          objectFit: "cover",
-          borderRadius: "0.5rem",
+          height: "30rem",
+          objectFit: "contain",
+          borderTopLeftRadius: "2rem",
+          borderTopRightRadius: "2rem",
         }}
       />
+
       <div className="card-body">
         <h5 className="card-title">{movie.movietitle}</h5>{" "}
-        <p className="card-text">
+        <p className="card-text fs-5 fw-bold">
           Watched on: {new Date(movie.watched_at).toLocaleDateString()}
         </p>
       </div>

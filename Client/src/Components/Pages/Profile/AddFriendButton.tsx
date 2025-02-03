@@ -1,4 +1,5 @@
 import { usePostFriendship } from "../../../Api/post/postFriendship";
+import ActionButton from "../../Utility/ActionButton";
 
 type AddFriendButtonType = {
   userId: string;
@@ -9,13 +10,20 @@ const AddFriendButton = ({ userId, friendId }: AddFriendButtonType) => {
   const { loading, added, handleAddFriend } = usePostFriendship();
 
   return (
-    <button
-      className="btn btn-primary px-3"
-      onClick={() => handleAddFriend(userId, friendId)}
-      disabled={loading || added}
-    >
-      {added ? "Friend Added" : loading ? "Adding..." : "Add Friend"}
-    </button>
+    <div className=" d-flex justify-content-between">
+      <ActionButton
+        label={added ? "Friend Added" : loading ? "Adding..." : "Add Friend"}
+        onClick={() => handleAddFriend(userId, friendId)}
+        disabled={loading || added}
+      />
+      {added && (
+        <ActionButton
+          label="Remove Friend"
+          className="btn btn-danger"
+          style={{ background: "#dc3545", border: "none" }}
+        />
+      )}
+    </div>
   );
 };
 

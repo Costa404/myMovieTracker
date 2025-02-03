@@ -9,14 +9,14 @@ export const useIsMovieInHistory = (movieId: number) => {
   const [error, setError] = useState<string | null>(null);
   const { handleGetMoviesHistory } = useGetMoviesHistory();
 
-  console.log("movieId recebido:", movieId);
+  // console.log("movieId recebido:", movieId);
 
   const checkIfMovieInHistory = async () => {
     setLoading(true);
     setError(null);
     try {
       const response = await handleGetMoviesHistory();
-      console.log("Resposta da API:", response);
+      // console.log("Resposta da API:", response);
 
       if (Array.isArray(response) && response.length > 0) {
         const movieFound = response.some(
