@@ -42,10 +42,7 @@ const HistoryMovie = () => {
 
   if (isUnauthorized) {
     return (
-      <p
-        className="text-center text-danger min-vh-100"
-        style={{ fontSize: "1.2rem" }}
-      >
+      <p className="text-center text-danger fs-4 min-vh-100">
         You must be logged in to view your movie History.
       </p>
     );
@@ -70,7 +67,7 @@ const HistoryMovie = () => {
     <section className="min-vh-100">
       <div className="row">
         {moviesHistory.map((movie, index) => (
-          <div key={index} className="col-12 col-sm-6 col-md-4 col-lg-3 mb-5">
+          <div key={index} className="col-12 col-sm-6 col-md-3 col-lg-2 mb-4">
             <MovieCard movie={movie} />
           </div>
         ))}

@@ -4,6 +4,7 @@ import { useAuthStore } from "../useAuthStore";
 import { useTheme } from "../../../../Context/ThemeContext/ThemeContext";
 import { usePostSignup } from "../../../../Api/post/postSignup";
 import { useIsOnline } from "../../../Utility/Hooks/useIsOnline";
+import ActionButton from "../../../Utility/ActionButton";
 
 const InputsSignup = () => {
   const { closeModalSignup, isModalSignUp } = useAuthStore();
@@ -66,7 +67,7 @@ const InputsSignup = () => {
                     required
                   />
                   <input
-                    className="w-75"
+                    className="w-75 mb-3"
                     name="username"
                     type="text"
                     placeholder="Username"
@@ -74,13 +75,11 @@ const InputsSignup = () => {
                     onChange={(e) => setUsername(e.target.value)}
                     required
                   />
-
-                  <button
-                    className="fs-3 btn border border-dark btn-primary hover w-75 mt-3 mb-4"
+                  <ActionButton
+                    label={loading ? "Creating Account..." : "Sign Up"}
                     disabled={loading}
-                  >
-                    {loading ? "Creating Account..." : "Sign Up"}
-                  </button>
+                    style={{ width: "50%" }}
+                  />
                 </form>
               </>
             )}

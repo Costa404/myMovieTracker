@@ -14,6 +14,7 @@ interface Review {
 
 export const useGetReviews = () => {
   const [reviews, setReviews] = useState<Review[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     const getReviews = async () => {
@@ -22,16 +23,16 @@ export const useGetReviews = () => {
           isPublicRoute: false,
         });
 
-        // console.log("data", data);
-
         setReviews(data);
+        setLoading(false);
       } catch (error) {
         console.error("Error when fetching movies:", error);
+        setLoading(false);
       }
     };
 
     getReviews();
   }, []);
 
-  return { reviews };
+  return { reviews, loading };
 };

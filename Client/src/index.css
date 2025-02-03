@@ -236,10 +236,16 @@ mediaquerys
   }
 }
 .navbarChildMobile {
-  color: #7b7b7b; /* Cor padrão */
+  color: #7b7b7b;
+}
+.optionListMyArea {
+  color: #7b7b7b;
 }
 
 .navbarChildMobile.active {
+  color: white;
+}
+.optionListMyArea.active {
   color: white;
 }
 

@@ -9,9 +9,8 @@ const LazyWatchlist = React.lazy(
   () => import("../../Components/Pages/MyArea/Watchlist/Watchlist.tsx")
 );
 
-const LazyFavouriteMovies = React.lazy(
-  () =>
-    import("../../Components/Pages/MyArea/FavouriteMovies/FavouriteMovies.tsx")
+const LazyMyReviews = React.lazy(
+  () => import("../../Components/Pages/MyArea/MyReviews/MyReviews.tsx")
 );
 
 const LazyMoviesHistory = React.lazy(
@@ -24,7 +23,7 @@ export const myAreaRoutes: RouteObject = {
   children: [
     { index: true, element: <Navigate to="watchlist" replace /> },
     { path: "watchlist", element: <LazyWatchlist /> },
-    { path: "favouriteMovies", element: <LazyFavouriteMovies /> },
+    { path: "myReviews", element: <LazyMyReviews /> },
     { path: "moviesHistory", element: <LazyMoviesHistory /> },
   ],
 };

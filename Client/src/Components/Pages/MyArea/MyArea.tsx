@@ -11,7 +11,7 @@ const MyArea = () => {
   const { page, setPage } = usePageStoreMyArea();
 
   const getClassName = (pageName: string) => {
-    return `mb-4 navbarChildMobile text-center hover fw-semibold ${
+    return `mb-4 optionListMyArea text-center hover fw-semibold ${
       page === pageName ? "active" : ""
     }`;
   };
@@ -30,15 +30,13 @@ const MyArea = () => {
           className={getClassName("Watchlist")}
           onClick={() => handleNavigation("/myArea/watchlist", "Watchlist")}
         >
-          My Watchlist
+          myWatchlist
         </h2>
         <h2
-          className={getClassName("Favourites")}
-          onClick={() =>
-            handleNavigation("/myArea/favouriteMovies", "Favourites")
-          }
+          className={getClassName("myReviews")}
+          onClick={() => handleNavigation("/myArea/myReviews", "myReviews")}
         >
-          Favourites
+          myReviews
         </h2>
         <h2
           className={getClassName("History")}

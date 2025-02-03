@@ -20,10 +20,9 @@ const MovieCard: React.FC<MovieCardProps> = ({ movie }) => {
         alt={movie.movietitle}
         className="card-img-top img-fluid"
         style={{
-          height: "30rem",
+          height: "25rem",
           objectFit: "contain",
-          borderTopLeftRadius: "2rem",
-          borderTopRightRadius: "2rem",
+          borderRadius: "1.5rem 1.5rem 0 0",
         }}
       />
 

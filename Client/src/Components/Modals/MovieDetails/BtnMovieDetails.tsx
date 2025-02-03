@@ -23,7 +23,7 @@ const BtnMovieDetails = () => {
   };
 
   return (
-    <div className="d-flex flex-column gap-3 ">
+    <div className="d-flex flex-column gap-3 align-items-center">
       {!isOnline ? (
         <p className="fs-3">Please login first to add to your watchlist.</p>
       ) : (

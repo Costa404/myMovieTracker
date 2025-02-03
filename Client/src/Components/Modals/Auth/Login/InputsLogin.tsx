@@ -6,6 +6,7 @@ import { useTheme } from "../../../../Context/ThemeContext/ThemeContext";
 import { usePostLogin } from "../../../../Api/post/postLogin";
 import { useEffect } from "react";
 import { useIsOnline } from "../../../Utility/Hooks/useIsOnline";
+import ActionButton from "../../../Utility/ActionButton";
 
 const InputsLogin = () => {
   const { closeModalLogin, isModalLogin, openModalSignup } = useAuthStore();
@@ -56,7 +57,7 @@ const InputsLogin = () => {
                   />
 
                   <input
-                    className="w-75"
+                    className="w-75 mb-3"
                     name="password"
                     type="password"
                     placeholder="Password"
@@ -65,12 +66,19 @@ const InputsLogin = () => {
                     required
                   />
 
-                  <button
+                  <ActionButton
+                    label={loading ? "Logging.." : "Login"}
+                    disabled={loading}
+                    style={{ minWidth: "50%" }}
+                  />
+
+                  {/* <button
                     className="fs-3 btn border border-dark btn-primary hover w-75 mt-3"
                     disabled={loading}
                   >
                     {loading ? "Logging.." : "Login"}
-                  </button>
+                  </button> */}
+
                   <button
                     onClick={handleChangeLoginForSignup}
                     type="button"
@@ -93,30 +101,18 @@ const InputsLogin = () => {
                 </div>
               </>
             ) : (
-              <div className="text-center">
+              <div className="text-center d-flex flex-column gap-3">
                 <h2 className="text-success">Login Successfully!</h2>
-
-                <button
-                  onClick={closeModalLogin}
+                <ActionButton onClick={closeModalLogin} label="Close" />
+                {/* <button
+       
                   type="button"
                   className="btn fs-3 btn-primary w-50 mt-4"
                 >
                   Close
-                </button>
+                </button> */}
               </div>
             )}
-
-            <button
-              className="btn btn-danger position-absolute text-white px-3 fs-4"
-              onClick={closeModalLogin}
-              style={{
-                top: "1rem",
-                right: "1rem",
-                zIndex: 20,
-              }}
-            >
-              X
-            </button>
           </div>
         </div>
       </div>
