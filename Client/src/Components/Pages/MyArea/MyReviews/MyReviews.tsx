@@ -40,8 +40,7 @@ const MyReviews = () => {
   }
 
   return (
-    <div className="container min-vh-100 mt-5">
-      <h2 className="text-center mb-4">My Reviews</h2>
+    <div className="container min-vh-100 ">
       {userReviews.length > 0 ? (
         <div className="row g-4">
           {userReviews.map((review) => (

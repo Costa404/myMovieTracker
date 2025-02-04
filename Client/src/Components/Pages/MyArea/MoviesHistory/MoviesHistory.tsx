@@ -3,6 +3,7 @@ import { useGetMoviesHistory } from "../../../../Api/get/getMoviesHistory";
 import LoadingSpinner from "../../../Utility/Loading/Loading";
 import MovieCard from "./MovieCard";
 import { useWatchlistLogic } from "../Watchlist/useWatchlistLogic";
+import { motion } from "framer-motion";
 
 const HistoryMovie = () => {
   const { isUnauthorized } = useWatchlistLogic();
@@ -67,9 +68,14 @@ const HistoryMovie = () => {
     <section className="min-vh-100">
       <div className="row">
         {moviesHistory.map((movie, index) => (
-          <div key={index} className="col-12 col-sm-6 col-md-3 col-lg-2 mb-4">
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            transition={{ duration: 0.3 }}
+            key={index}
+            className="col-12 col-sm-6 col-md-3 col-lg-2 mb-4"
+          >
             <MovieCard movie={movie} />
-          </div>
+          </motion.div>
         ))}
       </div>
     </section>

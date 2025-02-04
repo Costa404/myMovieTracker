@@ -6,7 +6,7 @@ import { useWatchlistLogic } from "./useWatchlistLogic";
 import ActionButton from "../../../Utility/ActionButton";
 import { useReviewsModalStore } from "../../../Modals/SubmitReview/useReviewsModalStore";
 import LoadingSpinner from "../../../Utility/Loading/Loading";
-
+import { motion } from "framer-motion";
 const Watchlist = () => {
   const { watchlist, loading, isUnauthorized, handleDelete, fetchWatchlist } =
     useWatchlistLogic();
@@ -44,7 +44,12 @@ const Watchlist = () => {
     <section className="min-vh-100">
       <div className="row g-4">
         {watchlist.map((movie) => (
-          <div key={movie.id} className="col-12 col-sm-6 col-md-3 col-lg-2">
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            transition={{ duration: 0.3 }}
+            key={movie.id}
+            className="col-12 col-sm-6 col-md-3 col-lg-2"
+          >
             <div
               className="card shadow h-100 border-0"
               style={{ borderRadius: "1.5rem" }}
@@ -71,7 +76,7 @@ const Watchlist = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
     </section>

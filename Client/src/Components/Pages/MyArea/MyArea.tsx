@@ -27,22 +27,22 @@ const MyArea = () => {
     <div className="container" style={{ paddingTop: "10rem" }}>
       <div className="d-flex justify-content-between">
         <h2
-          className={getClassName("Watchlist")}
+          className={`fw-bold ${getClassName("Watchlist")}`}
           onClick={() => handleNavigation("/myArea/watchlist", "Watchlist")}
         >
           myWatchlist
         </h2>
         <h2
-          className={getClassName("myReviews")}
+          className={`fw-bold ${getClassName("myReviews")}`}
           onClick={() => handleNavigation("/myArea/myReviews", "myReviews")}
         >
           myReviews
         </h2>
         <h2
-          className={getClassName("History")}
-          onClick={() => handleNavigation("/myArea/moviesHistory", "History")}
+          className={`fw-bold ${getClassName("myHistory")}`}
+          onClick={() => handleNavigation("/myArea/moviesHistory", "myHistory")}
         >
-          History
+          myHistory
         </h2>
       </div>
     </div>
