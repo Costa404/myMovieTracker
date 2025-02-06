@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { ApiErrorResponse } from "../../Components/Utility/Interface/InterfaceError";
-import { useMovieDetailsStore } from "../../Components/Modals/MovieDetails/useMovieDetailsStore";
+import { ApiErrorResponse } from "../../../Components/Utility/Interface/InterfaceError";
+import { useMovieDetailsStore } from "../../../Components/Modals/ModalMovieDetails/useMovieDetailsStore";
 import { apiFetch } from "../api";
 
 export const useHandlePostWatchlist = () => {

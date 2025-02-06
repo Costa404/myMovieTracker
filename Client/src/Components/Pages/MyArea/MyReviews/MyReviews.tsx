@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { Review, useGetReviews } from "../../../../Api/get/getReviewsMovies";
+import {
+  Review,
+  useGetReviews,
+} from "../../../../Api/ApiNode/get/getReviewsMovies";
 import { useCurrentUser } from "../../../../Context/useCurrentUserAuth";
 import LoadingSpinner from "../../../Utility/Loading/Loading";
 import { useWatchlistLogic } from "../Watchlist/useWatchlistLogic";

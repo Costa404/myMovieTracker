@@ -302,6 +302,11 @@ modalMovieDetails
 }
 @media screen and (max-width: 767px) {
   .modalMovieDetailsMobile {
-    min-height: 80%;
+    min-height: 90%;
+  }
+
+  .imgMovieDetails {
+    max-height: 30rem !important;
+    min-width: 90% !important;
   }
 }

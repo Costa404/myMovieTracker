@@ -1,5 +1,5 @@
 import { useCallback } from "react";
-import { ApiErrorResponse } from "../../Components/Utility/Interface/InterfaceError";
+import { ApiErrorResponse } from "../../../Components/Utility/Interface/InterfaceError";
 import { apiFetch } from "../api";
 
 export const useGetWatchlist = () => {

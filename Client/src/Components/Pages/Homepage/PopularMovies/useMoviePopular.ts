@@ -1,6 +1,6 @@
 // usePopularMovies.js
 import { useState, useEffect } from "react";
-import { useGetMovies } from "../../../../Api/get/getMovies";
+import { useGetMovies } from "../../../../Api/ApiNode/get/getMovies";
 
 export const usePopularMovies = () => {
   const { popularMovies } = useGetMovies();

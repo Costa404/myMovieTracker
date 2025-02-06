@@ -1,4 +1,4 @@
-import { useGetProfileUser } from "../../../Api/get/getProfileUser";
+import { useGetProfileUser } from "../../../Api/ApiNode/get/getProfileUser";
 
 import { useCurrentUser } from "../../../Context/useCurrentUserAuth";
 import AddFriendButton from "./AddFriendButton";

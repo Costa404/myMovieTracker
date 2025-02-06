@@ -1,4 +1,4 @@
-import { usePostFriendship } from "../../../Api/post/postFriendship";
+import { usePostFriendship } from "../../../Api/ApiNode/post/postFriendship";
 import ActionButton from "../../Utility/ActionButton";
 
 type AddFriendButtonType = {

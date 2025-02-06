@@ -1,22 +1,26 @@
 import ReactDOM from "react-dom";
-
 import { useMovieDetailsStore } from "./useMovieDetailsStore";
 import { useTheme } from "../../../Context/ThemeContext/ThemeContext";
 import { AnimatePresence, motion } from "framer-motion";
-import { useGetDetailsMovies } from "../../../Api/get/getDetailsMovies";
+import { useGetDetailsMovies } from "../../../Api/ApiNode/get/getDetailsMovies";
 import BtnMovieDetails from "./BtnMovieDetails";
+import ActionButton from "../../Utility/ActionButton";
+import { useModalRecommendedMovieStore } from "./ModalRecommendedMovies/useRecommendedMoviesStore";
+import LoadingSpinner from "../../Utility/Loading/Loading";
 
 const MovieDetail: React.FC = () => {
-  const { isModalOpen } = useMovieDetailsStore();
+  const { isMovieDetailOpen } = useMovieDetailsStore();
   const { movieDetails, loading } = useGetDetailsMovies();
-
   const { theme } = useTheme();
+  const { openModalRecommendedMovie } = useModalRecommendedMovieStore();
 
   if (!movieDetails && loading) {
     return ReactDOM.createPortal(
-      <div className="modal-overlay d-flex justify-content-center align-items-center ">
+      <div className="modal-overlay d-flex justify-content-center align-items-center">
         <div className="spinner-border text-primary" role="status">
-          <span className="visually-hidden">Loading...</span>
+          <span className="visually-hidden">
+            <LoadingSpinner />
+          </span>
         </div>
       </div>,
       document.getElementById("root-movieDetails")!
@@ -27,20 +31,21 @@ const MovieDetail: React.FC = () => {
 
   return ReactDOM.createPortal(
     <AnimatePresence>
-      {isModalOpen && (
+      {isMovieDetailOpen && (
         <div className="modal-overlay d-flex justify-content-center align-items-center">
           <motion.div
             initial={{ opacity: 0, x: -100 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: 100 }}
             transition={{ duration: 0.5 }}
-            className="modal-content w-50 h-50 modalMovieDetailsMobile"
+            className="modal-content  modalMovieDetailsMobile"
             style={{
               background: theme === "dark" ? "#121212" : "#c7c7c7",
-              color: theme === "dark" ? "#333333" : " #e0e0e0",
+              color: theme === "dark" ? "#333333" : "#e0e0e0",
               zIndex: "999",
               maxWidth: "50%",
-              maxHeight: "50vh",
+              minHeight: "50vh",
+
               overflow: "hidden",
             }}
           >
@@ -51,13 +56,11 @@ const MovieDetail: React.FC = () => {
               <img
                 src={`https://image.tmdb.org/t/p/w500${movieDetails.poster_path}`}
                 alt={movieDetails.title}
-                className="img-fluid"
+                className=" imgMovieDetails"
                 style={{
                   objectFit: "contain",
-                  maxHeight: "100%",
-                  maxWidth: "100%",
-                  minHeight: "30rem",
-                  minWidth: "30rem",
+                  maxHeight: "90%",
+                  maxWidth: "20rem",
                 }}
               />
               <div className="text-center f gap-3 text-md-start">
@@ -69,6 +72,14 @@ const MovieDetail: React.FC = () => {
                 <p className="fs-4 fw-semibold" style={{ color: "#ae8c35" }}>
                   {movieDetails.release_date}
                 </p>
+                <h5 className="text-white fs-4 fw-semibold">
+                  {`Recommended movies based on ${movieDetails?.title}: `}
+                </h5>
+                <ActionButton
+                  onClick={openModalRecommendedMovie}
+                  label="Here"
+                />
+
                 <BtnMovieDetails />
               </div>
             </div>

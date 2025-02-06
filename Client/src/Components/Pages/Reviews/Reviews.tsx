@@ -1,23 +1,23 @@
 import { useNavigate } from "react-router-dom";
-import { useGetReviews } from "../../../Api/get/getReviewsMovies";
+import { useGetReviews } from "../../../Api/ApiNode/get/getReviewsMovies";
 import LoadingSpinner from "../../Utility/Loading/Loading";
 
 import { motion } from "framer-motion";
 import ActionButton from "../../Utility/ActionButton";
-import { useMovieDetailsStore } from "../../Modals/MovieDetails/useMovieDetailsStore";
+import { useMovieDetailsStore } from "../../Modals/ModalMovieDetails/useMovieDetailsStore";
 import { useReviewsModalStore } from "../../Modals/SubmitReview/useReviewsModalStore";
 
 const Reviews = () => {
   const { reviews } = useGetReviews();
   const navigate = useNavigate();
-  const { setMovieId, openModal } = useMovieDetailsStore();
+  const { setMovieId, openMovieDetail } = useMovieDetailsStore();
   const handleUsernameClick = (username: string) => {
     navigate(`/profile/${username}`);
   };
   const { openReviewModal } = useReviewsModalStore();
   const handleMovieClick = (movieId: number) => {
     setMovieId(movieId);
-    openModal();
+    openMovieDetail();
   };
 
   return (

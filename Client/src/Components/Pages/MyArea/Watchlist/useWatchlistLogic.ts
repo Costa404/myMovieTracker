@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { useGetWatchlist } from "../../../../Api/get/getWatchlist";
-import { useDeleteWatchlist } from "../../../../Api/delete/deleteWatchlist";
+import { useGetWatchlist } from "../../../../Api/ApiNode/get/getWatchlist";
+import { useDeleteWatchlist } from "../../../../Api/ApiNode/delete/deleteWatchlist";
 import { Movie } from "../../../Utility/Interface/geralInterfaces";
 import { useIsOnline } from "../../../Utility/Hooks/useIsOnline";
 

@@ -6,14 +6,15 @@ import Signup from "../../Components/Modals/Auth/Signup/Signup";
 import SidebarMobile from "../../Components/Modals/SidebarMobile/SidebarMobile";
 import { Suspense } from "react";
 import LoadingSpinner from "../../Components/Utility/Loading/Loading";
-import MovieDetail from "../../Components/Modals/MovieDetails/MovieDetails";
-import { useMovieDetailsStore } from "../../Components/Modals/MovieDetails/useMovieDetailsStore";
+import MovieDetail from "../../Components/Modals/ModalMovieDetails/ModalMovieDetails";
+import { useMovieDetailsStore } from "../../Components/Modals/ModalMovieDetails/useMovieDetailsStore";
 import BtnDarkLightMode from "../../Components/Utility/Hooks/BtnDarkLight/BtnDarkLightMode";
 import ModalReviews from "../../Components/Modals/SubmitReview/ModalReviews";
 import ModalDisplayMovies from "../../Components/Modals/ModalDisplayMovies/ModalDisplayMovies";
+import ModalRecommendedMovies from "../../Components/Modals/ModalMovieDetails/ModalRecommendedMovies/ModalRecommendedMovies";
 
 const AppLayout = () => {
-  const { isModalOpen } = useMovieDetailsStore();
+  const { isMovieDetailOpen } = useMovieDetailsStore();
   return (
     <section className="w-100 d-flex flex-column align-items-center">
       <div className="w-75 contentHomepage ">
@@ -32,9 +33,10 @@ Modals
       <Login />
       <Signup />
       <SidebarMobile />
-      {isModalOpen && <MovieDetail />}
+      {isMovieDetailOpen && <MovieDetail />}
       <ModalReviews />
       <ModalDisplayMovies />
+      <ModalRecommendedMovies />
     </section>
   );
 };

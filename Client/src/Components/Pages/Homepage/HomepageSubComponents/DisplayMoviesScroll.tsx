@@ -43,7 +43,7 @@ const DisplayMoviesScroll: React.FC<DisplayMoviesScrollProps> = ({
         </button>
         <div
           ref={scrollRef}
-          className="d-flex flex-row overflow-auto pb-2 gap-2 "
+          className="d-flex flex-row overflow-auto pb-2 gap-2  overflow-hidden"
           style={{
             scrollBehavior: "smooth",
             scrollbarWidth: "none",

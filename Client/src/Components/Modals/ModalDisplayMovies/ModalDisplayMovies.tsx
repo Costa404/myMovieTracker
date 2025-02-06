@@ -3,7 +3,7 @@ import { useTheme } from "../../../Context/ThemeContext/ThemeContext";
 import { useSelectedMovieModalStore } from "./useSelectedMovieModalStore";
 import ActionButton from "../../Utility/ActionButton";
 import LoadingSpinner from "../../Utility/Loading/Loading";
-import { useGetMovies } from "../../../Api/get/getMovies";
+import { useGetMovies } from "../../../Api/ApiNode/get/getMovies";
 import SearchInput from "./SearchInput";
 import MovieList from "./MovieList";
 import { Movie } from "../../Utility/Interface/geralInterfaces";

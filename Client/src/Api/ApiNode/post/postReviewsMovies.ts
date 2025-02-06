@@ -1,6 +1,6 @@
-import { useSelectedMovieModalStore } from "../../Components/Modals/ModalDisplayMovies/useSelectedMovieModalStore";
+import { useSelectedMovieModalStore } from "../../../Components/Modals/ModalDisplayMovies/useSelectedMovieModalStore";
 
-import { ApiErrorResponse } from "../../Components/Utility/Interface/InterfaceError";
+import { ApiErrorResponse } from "../../../Components/Utility/Interface/InterfaceError";
 import { apiFetch } from "../api";
 export const usePostReview = () => {
   const { selectedMovieId } = useSelectedMovieModalStore();

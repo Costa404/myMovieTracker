@@ -1,14 +1,14 @@
-import { useMovieDetailsStore } from "../../../Modals/MovieDetails/useMovieDetailsStore";
+import { useMovieDetailsStore } from "../../../Modals/ModalMovieDetails/useMovieDetailsStore";
 import LoadingSpinner from "../../../Utility/Loading/Loading";
-import { useGetMovies } from "../../../../Api/get/getMovies";
+import { useGetMovies } from "../../../../Api/ApiNode/get/getMovies";
 import DisplayMoviesScroll from "./DisplayMoviesScroll";
 const MoviesByGenre = () => {
   const { groupedMovies } = useGetMovies();
-  const { setMovieId, openModal } = useMovieDetailsStore();
+  const { setMovieId, openMovieDetail } = useMovieDetailsStore();
 
   const handleMovieClick = (movieId: number) => {
     setMovieId(movieId);
-    openModal();
+    openMovieDetail();
   };
 
   if (Object.keys(groupedMovies).length === 0) {

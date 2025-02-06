@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useGetWatchlist } from "../../../../Api/get/getWatchlist";
+import { useGetWatchlist } from "../../../../Api/ApiNode/get/getWatchlist";
 import { useState, useEffect } from "react";
 import { Movie } from "../../../Utility/Interface/geralInterfaces";
 

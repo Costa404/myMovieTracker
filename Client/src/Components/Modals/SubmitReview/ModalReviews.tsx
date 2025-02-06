@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
-import { usePostReview } from "../../../Api/post/postReviewsMovies";
+import { usePostReview } from "../../../Api/ApiNode/post/postReviewsMovies";
 import { useReviewsModalStore } from "./useReviewsModalStore";
 import { useTheme } from "../../../Context/ThemeContext/ThemeContext";
 import StarRating from "./StarRating";

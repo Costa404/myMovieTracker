@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useGetMoviesHistory } from "../../../../Api/get/getMoviesHistory";
+import { useGetMoviesHistory } from "../../../../Api/ApiNode/get/getMoviesHistory";
 import { useState, useEffect } from "react";
 import { Movie } from "../../../Utility/Interface/geralInterfaces";
 
@@ -23,7 +23,7 @@ export const useIsMovieInHistory = (movieId: number) => {
           (movie: Movie) => Number(movie.id) === movieId
         );
 
-        console.log("Filme encontrado?", movieFound);
+        // console.log("Filme encontrado?", movieFound);
         setIsMovieInHistory(movieFound);
       } else {
         setIsMovieInHistory(false);
@@ -37,13 +37,10 @@ export const useIsMovieInHistory = (movieId: number) => {
   };
 
   useEffect(() => {
-    console.log("Executando useEffect...");
     checkIfMovieInHistory();
   }, [movieId]);
 
-  useEffect(() => {
-    console.log("isMovieInHistory atualizado:", isMovieInHistory);
-  }, [isMovieInHistory]);
+  useEffect(() => {}, [isMovieInHistory]);
 
   return { isMovieInHistory, loading, error };
 };

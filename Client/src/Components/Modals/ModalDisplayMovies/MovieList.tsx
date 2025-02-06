@@ -67,7 +67,7 @@
 import React from "react";
 import { Movie } from "../../Utility/Interface/geralInterfaces";
 import { useSearchMovieStore } from "./useSearchMovieStore";
-import { useGetMovies } from "../../../Api/get/getMovies";
+import { useGetMovies } from "../../../Api/ApiNode/get/getMovies";
 
 interface MovieListProps {
   onMovieClick?: (movieId: number) => void;

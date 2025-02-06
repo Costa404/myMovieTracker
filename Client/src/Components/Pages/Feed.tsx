@@ -1,16 +1,16 @@
-import { useGetFeedContent } from "../../Api/get/getFeedContent";
+import { useGetFeedContent } from "../../Api/ApiNode/get/getFeedContent";
 import LoadingSpinner from "../Utility/Loading/Loading";
 import { motion } from "framer-motion";
-import { useMovieDetailsStore } from "../Modals/MovieDetails/useMovieDetailsStore";
+import { useMovieDetailsStore } from "../Modals/ModalMovieDetails/useMovieDetailsStore";
 
 const FeedDisplay = () => {
   const { feedContent } = useGetFeedContent();
 
-  const { setMovieId, openModal } = useMovieDetailsStore();
+  const { setMovieId, openMovieDetail } = useMovieDetailsStore();
 
   const handleMovieClick = (movieId: number) => {
     setMovieId(movieId);
-    openModal();
+    openMovieDetail();
   };
 
   return (

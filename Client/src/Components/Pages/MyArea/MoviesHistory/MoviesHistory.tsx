@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useGetMoviesHistory } from "../../../../Api/get/getMoviesHistory";
+import { useGetMoviesHistory } from "../../../../Api/ApiNode/get/getMoviesHistory";
 import LoadingSpinner from "../../../Utility/Loading/Loading";
 import MovieCard from "./MovieCard";
 import { useWatchlistLogic } from "../Watchlist/useWatchlistLogic";

@@ -1,14 +1,14 @@
 import { useIsOnline } from "../../Utility/Hooks/useIsOnline";
-import { useHandlePostWatchlist } from "../../../Api/post/postWatchlist";
+import { useHandlePostWatchlist } from "../../../Api/ApiNode/post/postWatchlist";
 
 import WatchlistButton from "../../Pages/MyArea/Watchlist/WatchlistButton";
 import ActionButton from "../../Utility/ActionButton";
 import { useMovieDetailsStore } from "./useMovieDetailsStore";
-import { useHandlePostMoviesHistory } from "../../../Api/post/postMoviesHistory";
+import { useHandlePostMoviesHistory } from "../../../Api/ApiNode/post/postMoviesHistory";
 import MoviesHistoryButton from "../../Pages/MyArea/MoviesHistory/MoviesHistoryButton";
 
 const BtnMovieDetails = () => {
-  const { closeModal, clearMovie, movieId } = useMovieDetailsStore();
+  const { closeMovieDetail, clearMovie, movieId } = useMovieDetailsStore();
   const { isOnline } = useIsOnline();
   const { loading, added, handlePostWatchlist } = useHandlePostWatchlist();
   const {
@@ -19,7 +19,7 @@ const BtnMovieDetails = () => {
 
   const handleClose = () => {
     clearMovie();
-    closeModal();
+    closeMovieDetail();
   };
 
   return (
