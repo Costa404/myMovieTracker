@@ -94,7 +94,9 @@ def recommend_movies(movie_id):
     for i in movie_indices:
         recommended.append({
             "title": movies['title'].iloc[i],
-            "poster_path": movies['poster_path'].iloc[i]
+            "poster_path": movies['poster_path'].iloc[i],
+            "movie_id": int(movies['id'].iloc[i])
+
         })
     
     return recommended

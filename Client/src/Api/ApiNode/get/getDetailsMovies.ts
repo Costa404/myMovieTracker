@@ -3,6 +3,7 @@ import { useMovieDetailsStore } from "../../../Components/Modals/ModalMovieDetai
 import { apiFetch } from "../api";
 
 type MovieDetails = {
+  movieId: number;
   title: string;
   poster_path: string;
   overview: string;
@@ -11,6 +12,7 @@ type MovieDetails = {
 
 export const useGetDetailsMovies = () => {
   const { movieId } = useMovieDetailsStore();
+  // console.log("movieId", movieId);
 
   const [movieDetails, setMovieDetails] = useState<MovieDetails | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
@@ -29,6 +31,7 @@ export const useGetDetailsMovies = () => {
       getMovieDetails();
     }
   }, [movieId]);
+  // console.log("movieDEtails", movieDetails);
 
   return { movieDetails, loading };
 };

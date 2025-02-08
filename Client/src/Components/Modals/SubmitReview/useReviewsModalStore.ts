@@ -10,7 +10,8 @@ export const useReviewsModalStore = create<ReviewsModal>((set) => ({
   isReviewModalOpen: false,
   openReviewModal: () => {
     set({ isReviewModalOpen: true });
-    document.body.style.overflow = "hidden";
+
+    // document.body.style.overflow = "hidden";
   },
   closeReviewModal: () => {
     set({ isReviewModalOpen: false });

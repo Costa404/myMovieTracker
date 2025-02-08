@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import apiRouter from "./src/Routes/routes.js";
+import pool from "./src/Database/db.js";
 
 dotenv.config();
 
@@ -32,5 +33,5 @@ app.use((req, res, next) => {
 });
 
 app.listen(3000, () => {
-  console.log("Server port 3000 ");
+  console.log("Server port 3000");
 });

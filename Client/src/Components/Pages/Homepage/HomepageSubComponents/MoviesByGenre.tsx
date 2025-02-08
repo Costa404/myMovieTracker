@@ -2,16 +2,28 @@ import { useMovieDetailsStore } from "../../../Modals/ModalMovieDetails/useMovie
 import LoadingSpinner from "../../../Utility/Loading/Loading";
 import { useGetMovies } from "../../../../Api/ApiNode/get/getMovies";
 import DisplayMoviesScroll from "./DisplayMoviesScroll";
-const MoviesByGenre = () => {
-  const { groupedMovies } = useGetMovies();
-  const { setMovieId, openMovieDetail } = useMovieDetailsStore();
+import { useNavigate } from "react-router-dom";
 
-  const handleMovieClick = (movieId: number) => {
+const MoviesByGenre = () => {
+  const { groupedMovies, loading } = useGetMovies();
+
+  const { setMovieName, setMovieId } = useMovieDetailsStore();
+
+  const navigate = useNavigate();
+  const handleMovieClick = (movieName: string, movieId: number) => {
+    setMovieName(movieName);
+
     setMovieId(movieId);
-    openMovieDetail();
+    const movieSlug = movieName.replace(/\s+/g, "-").toLowerCase(); // Usando movieName diretamente
+
+    navigate(`/movie/${movieSlug}`);
   };
 
   if (Object.keys(groupedMovies).length === 0) {
+    return <LoadingSpinner />;
+  }
+
+  if (loading) {
     return <LoadingSpinner />;
   }
 

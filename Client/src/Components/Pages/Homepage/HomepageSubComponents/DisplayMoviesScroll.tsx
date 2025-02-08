@@ -7,7 +7,7 @@ import { Movie } from "../../../Utility/Interface/geralInterfaces";
 interface DisplayMoviesScrollProps {
   genre: number;
   movies: Movie[];
-  onMovieClick: (movieId: number) => void;
+  onMovieClick: (movieName: string, movieId: number) => void;
 }
 
 const DisplayMoviesScroll: React.FC<DisplayMoviesScrollProps> = ({
@@ -35,6 +35,7 @@ const DisplayMoviesScroll: React.FC<DisplayMoviesScrollProps> = ({
       whileInView={{ opacity: 1, x: 0 }}
       initial={{ opacity: 0, x: -100 }}
       transition={{ duration: 1.5 }}
+      style={{ overflowY: "auto" }}
     >
       <h2 className="fw-semibold">{genreMapping[genre]}</h2>{" "}
       <div className="position-relative ">
@@ -43,7 +44,7 @@ const DisplayMoviesScroll: React.FC<DisplayMoviesScrollProps> = ({
         </button>
         <div
           ref={scrollRef}
-          className="d-flex flex-row overflow-auto pb-2 gap-2  overflow-hidden"
+          className="d-flex flex-row  pb-2 gap-2  overflow-hidden"
           style={{
             scrollBehavior: "smooth",
             scrollbarWidth: "none",
@@ -54,7 +55,7 @@ const DisplayMoviesScroll: React.FC<DisplayMoviesScrollProps> = ({
             <div
               key={movie.id}
               className="me-3 hover "
-              onClick={() => onMovieClick(movie.id)}
+              onClick={() => onMovieClick(movie.title, movie.id)}
             >
               <img
                 src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}

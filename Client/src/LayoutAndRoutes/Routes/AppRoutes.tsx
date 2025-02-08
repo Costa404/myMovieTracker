@@ -5,6 +5,8 @@ import CustomErrorPage from "../../Context/ThemeContext/errorContext/ErrorRoute.
 import { myAreaRoutes } from "./MyAreaRoutes.tsx";
 import AppLayout from "../Layout/AppLayout.tsx";
 
+import MovieDetails from "../../Components/Pages/MovieDetails/MovieDetails.tsx";
+
 const LazyHomepage = React.lazy(
   () => import("../../Components/Pages/Homepage/Homepage.tsx")
 );
@@ -34,6 +36,7 @@ export const useAppRoutes = () => {
         { path: "/", element: <LazyHomepage /> },
         { path: "/reviews", element: <LazyReviews /> },
         { path: "/profile/:username", element: <LazyUserProfile /> },
+        { path: "/movie/:movieName", element: <MovieDetails /> },
         { path: "/tvShows", element: <LazyTvShows /> },
         { path: "/feed", element: <LazyFeed /> },
         { path: "/search", element: <LazySearchResult /> },

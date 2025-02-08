@@ -18,6 +18,7 @@ import feedContent from "./feedContent.js";
 import postReviewsMovie from "./Reviews/postReviewsMovie.js";
 import moviesHistory from "./ProtectedRoutes/MoviesHistory/getMoviesHistory.js";
 import postMoviesHistory from "./ProtectedRoutes/MoviesHistory/postMoviesHistory.js";
+import movieReviews from "./getMovieReview.js";
 
 const apiRouter = Router();
 
@@ -49,5 +50,6 @@ apiRouter.use("/", feedContent);
 // moviesHistory
 apiRouter.use("/", moviesHistory);
 apiRouter.use("/", postMoviesHistory);
+apiRouter.use("/", movieReviews);
 
 export default apiRouter;

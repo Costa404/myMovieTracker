@@ -8,6 +8,8 @@ export const useHandlePostMoviesHistory = () => {
   const [loading, setLoading] = useState(false);
   const [added, setAdded] = useState(false);
 
+  const resetAddedMovieHistory = () => setAdded(false);
+
   const handlePostMoviesHistory =
     async (): Promise<ApiErrorResponse | null> => {
       if (!movieId || added || loading) return null;
@@ -36,5 +38,5 @@ export const useHandlePostMoviesHistory = () => {
       }
     };
 
-  return { loading, added, handlePostMoviesHistory };
+  return { loading, added, handlePostMoviesHistory, resetAddedMovieHistory };
 };

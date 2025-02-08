@@ -1,29 +1,35 @@
 import { useIsOnline } from "../../Utility/Hooks/useIsOnline";
 import { useHandlePostWatchlist } from "../../../Api/ApiNode/post/postWatchlist";
 
-import WatchlistButton from "../../Pages/MyArea/Watchlist/WatchlistButton";
-import ActionButton from "../../Utility/ActionButton";
-import { useMovieDetailsStore } from "./useMovieDetailsStore";
+import WatchlistButton from "../MyArea/Watchlist/WatchlistButton";
+
+import { useMovieDetailsStore } from "../../Modals/ModalMovieDetails/useMovieDetailsStore";
 import { useHandlePostMoviesHistory } from "../../../Api/ApiNode/post/postMoviesHistory";
-import MoviesHistoryButton from "../../Pages/MyArea/MoviesHistory/MoviesHistoryButton";
+import MoviesHistoryButton from "../MyArea/MoviesHistory/MoviesHistoryButton";
+import { useEffect } from "react";
 
 const BtnMovieDetails = () => {
-  const { closeMovieDetail, clearMovie, movieId } = useMovieDetailsStore();
+  const { movieId } = useMovieDetailsStore();
   const { isOnline } = useIsOnline();
-  const { loading, added, handlePostWatchlist } = useHandlePostWatchlist();
+  const { loading, added, handlePostWatchlist, resetAddedWatchlist } =
+    useHandlePostWatchlist();
   const {
     loading: historyLoading,
     added: historyAdded,
     handlePostMoviesHistory,
+    resetAddedMovieHistory,
   } = useHandlePostMoviesHistory();
 
-  const handleClose = () => {
-    clearMovie();
-    closeMovieDetail();
-  };
+  useEffect(() => {
+    resetAddedWatchlist();
+  }, [movieId]);
+
+  useEffect(() => {
+    resetAddedMovieHistory();
+  }, [movieId]);
 
   return (
-    <div className="d-flex flex-column gap-3 align-items-center">
+    <div className="d-flex flex-column gap-3 ">
       {!isOnline ? (
         <p className="fs-3">Please login first to add to your watchlist.</p>
       ) : (
@@ -44,7 +50,7 @@ const BtnMovieDetails = () => {
         added={historyAdded}
       />
 
-      <ActionButton
+      {/* <ActionButton
         onClick={handleClose}
         label="Close"
         className="p-2 fw-bold btn fs-4 px-4 rounded-5 btnTransform"
@@ -54,7 +60,7 @@ const BtnMovieDetails = () => {
           width: "20rem",
           height: "3.5rem",
         }}
-      />
+      /> */}
     </div>
   );
 };

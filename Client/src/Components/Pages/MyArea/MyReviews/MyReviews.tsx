@@ -1,12 +1,10 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import {
-  Review,
-  useGetReviews,
-} from "../../../../Api/ApiNode/get/getReviewsMovies";
+import { useGetReviews } from "../../../../Api/ApiNode/get/getReviewsMovies";
 import { useCurrentUser } from "../../../../Context/useCurrentUserAuth";
 import LoadingSpinner from "../../../Utility/Loading/Loading";
 import { useWatchlistLogic } from "../Watchlist/useWatchlistLogic";
+import { Review } from "../../../Utility/Interface/geralInterfaces";
 
 const MyReviews = () => {
   const { reviews: fetchedReviews, loading } = useGetReviews();

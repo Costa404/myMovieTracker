@@ -1,12 +1,14 @@
 import { useState, useEffect, useCallback } from "react";
 import { useMovieDetailsStore } from "../../Components/Modals/ModalMovieDetails/useMovieDetailsStore";
-import { Movie } from "../../Components/Utility/Interface/geralInterfaces";
+import { RecommendedMovie } from "../../Components/Utility/Interface/geralInterfaces";
 
 export const useGetRecommendMovies = () => {
   const { movieId } = useMovieDetailsStore();
   // console.log("movieId", movieId);
 
-  const [recommendedMovies, setRecommendedMovies] = useState<Movie[]>([]);
+  const [recommendedMovies, setRecommendedMovies] = useState<
+    RecommendedMovie[]
+  >([]);
   const [loadingRecommendations, setLoadingRecommendations] =
     useState<boolean>(false);
 

@@ -36,10 +36,23 @@ DATABASE_URL = os.getenv("DATABASE_URL")
 def get_movies_from_db():
     try:
         engine = create_engine(DATABASE_URL)
-        query = "SELECT id, title, overview, genre_ids, poster_path FROM movies;"
+        query = "SELECT * FROM movies;"
         movies = pd.read_sql(query, engine)
       
         return movies
     except Exception as e:
-        print("Erro ao conectar ao banco:", e)
+        print("Error conecting db", e)
         return pd.DataFrame([])
+
+def get_reviews_from_db():
+    try:
+        engine = create_engine(DATABASE_URL)
+        query = "SELECT * FROM reviews_from_TMDB"
+
+        reviewsFromTMDB = pd.read_sql(query, engine)
+
+        return reviewsFromTMDB 
+    except Exception as e:
+        print("Error conecting db", e)
+        return pd.DataFrame([])
+    

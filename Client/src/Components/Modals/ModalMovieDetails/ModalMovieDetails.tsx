@@ -3,7 +3,7 @@ import { useMovieDetailsStore } from "./useMovieDetailsStore";
 import { useTheme } from "../../../Context/ThemeContext/ThemeContext";
 import { AnimatePresence, motion } from "framer-motion";
 import { useGetDetailsMovies } from "../../../Api/ApiNode/get/getDetailsMovies";
-import BtnMovieDetails from "./BtnMovieDetails";
+import BtnMovieDetails from "../../Pages/MovieDetails/BtnMovieDetails";
 import ActionButton from "../../Utility/ActionButton";
 import { useModalRecommendedMovieStore } from "./ModalRecommendedMovies/useRecommendedMoviesStore";
 import LoadingSpinner from "../../Utility/Loading/Loading";

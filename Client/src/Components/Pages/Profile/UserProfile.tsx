@@ -3,6 +3,7 @@ import { useGetProfileUser } from "../../../Api/ApiNode/get/getProfileUser";
 import { useCurrentUser } from "../../../Context/useCurrentUserAuth";
 import AddFriendButton from "./AddFriendButton";
 import LoadingSpinner from "../../Utility/Loading/Loading";
+
 interface Review {
   id: number;
   movietitle?: string;

@@ -9,7 +9,7 @@ moviesDetails.get("/movies/:id", async (req, res) => {
   try {
     const query = `
         SELECT 
-          m.id, 
+          m.id AS "movieId", 
           m.title, 
           m.original_title,
           m.overview,
