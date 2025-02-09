@@ -56,3 +56,7 @@ def get_reviews_from_db():
         print("Error conecting db", e)
         return pd.DataFrame([])
     
+
+def get_id_from_movies():
+    movies = get_movies_from_db()
+    return movies["id"].tolist()  # Retorna a coluna 'id' como uma lista de IDs

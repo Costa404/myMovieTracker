@@ -12,7 +12,8 @@ moviesRoutes.get("/movies", async (req, res) => {
         m.title, 
         m.is_popular,
         m.poster_path,  
-        array_agg(g.name) AS genre
+        array_agg(g.name) AS genre,
+        m.fakeimdb AS "fakeImdb"
       FROM movies m
       JOIN movie_genres mg ON m.id = mg.movie_id
       JOIN genre g ON mg.genre_id = g.id
