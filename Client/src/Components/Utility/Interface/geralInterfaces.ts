@@ -4,6 +4,7 @@ export interface Movie {
   poster_path: string;
   genre: string[];
   is_popular: boolean;
+  fakeImdb: number;
 }
 
 export interface Review {

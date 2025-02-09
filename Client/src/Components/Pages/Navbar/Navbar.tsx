@@ -81,6 +81,14 @@ const Navbar = () => {
           >
             Feed
           </a>
+          <a
+            onClick={() => handleNavigation("/top100", "Feed")}
+            className={`hover btnTransform navbarChildMobile ${
+              page === "Top100" ? "active" : ""
+            }`}
+          >
+            Top 100
+          </a>
         </div>
         <div className=" d-flex gap-3 align-items-center">
           <div className="d-flex gap-3 align-items-center">

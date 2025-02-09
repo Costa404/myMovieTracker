@@ -14,6 +14,9 @@ const LazyHomepage = React.lazy(
 const LazyReviews = React.lazy(
   () => import("../../Components/Pages/Reviews/Reviews.tsx")
 );
+const LazyTop100 = React.lazy(
+  () => import("../../Components/Pages/Top100/Top100.tsx")
+);
 const LazyUserProfile = React.lazy(
   () => import("../../Components/Pages/Profile/UserProfile.tsx")
 );
@@ -39,6 +42,7 @@ export const useAppRoutes = () => {
         { path: "/movie/:movieName", element: <MovieDetails /> },
         { path: "/tvShows", element: <LazyTvShows /> },
         { path: "/feed", element: <LazyFeed /> },
+        { path: "/top100", element: <LazyTop100 /> },
         { path: "/search", element: <LazySearchResult /> },
         {
           path: "/myArea",

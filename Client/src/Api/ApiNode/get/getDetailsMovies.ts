@@ -8,6 +8,7 @@ type MovieDetails = {
   poster_path: string;
   overview: string;
   release_date: string;
+  fakeImdb: number;
 };
 
 export const useGetDetailsMovies = () => {
