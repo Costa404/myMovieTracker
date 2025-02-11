@@ -82,9 +82,9 @@ const Navbar = () => {
             Feed
           </a>
           <a
-            onClick={() => handleNavigation("/top100", "Feed")}
+            onClick={() => handleNavigation("/top100", "top100")}
             className={`hover btnTransform navbarChildMobile ${
-              page === "Top100" ? "active" : ""
+              page === "top100" ? "active" : ""
             }`}
           >
             Top 100
