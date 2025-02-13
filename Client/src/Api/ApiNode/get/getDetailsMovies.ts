@@ -13,7 +13,7 @@ type MovieDetails = {
 
 export const useGetDetailsMovies = () => {
   const { movieId } = useMovieDetailsStore();
-  // console.log("movieId", movieId);
+  console.log("movieId", movieId);
 
   const [movieDetails, setMovieDetails] = useState<MovieDetails | null>(null);
   const [loading, setLoading] = useState<boolean>(false);

@@ -89,7 +89,7 @@ const MovieList: React.FC<MovieListProps> = ({
     if (onSelectMovie) {
       onSelectMovie(movie);
     } else if (onMovieClick) {
-      onMovieClick(movie.id);
+      onMovieClick(movie.movie_id);
     }
   };
 
@@ -104,7 +104,7 @@ const MovieList: React.FC<MovieListProps> = ({
       {filteredMovies.length > 0 ? (
         filteredMovies.map((movie) => (
           <div
-            key={movie.id}
+            key={movie.movie_id}
             className="movie-item d-flex flex-column align-items-center reviewCard hover py-2 rounded-2 cardModalDisplayMovies text-center"
             style={{
               flex: "1 1 30%",

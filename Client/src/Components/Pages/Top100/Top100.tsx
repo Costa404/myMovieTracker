@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useGetMovies } from "../../../Api/ApiNode/get/getMovies";
 import LoadingSpinner from "../../Utility/Loading/Loading";
 import { genreMapping } from "../../../StaticContent/genreMapping ";
@@ -17,7 +17,7 @@ const Top100 = () => {
     setMovieName(movieName);
 
     setMovieId(movieId);
-    const movieSlug = movieName.replace(/\s+/g, "-").toLowerCase(); // Usando movieName diretamente
+    const movieSlug = movieName.replace(/\s+/g, "-").toLowerCase();
 
     navigate(`/movie/${movieSlug}`);
   };
@@ -66,12 +66,12 @@ const Top100 = () => {
           <motion.div
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.3 }}
-            key={movie.id}
+            key={movie.movie_id}
             className="col  "
           >
             <div
               className=" card h-100 hover"
-              onClick={() => handleMovieClick(movie.title, movie.id)}
+              onClick={() => handleMovieClick(movie.title, movie.movie_id)}
             >
               <div className="card-body text-center">
                 <img

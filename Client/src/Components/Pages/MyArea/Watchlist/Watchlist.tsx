@@ -47,7 +47,7 @@ const Watchlist = () => {
           <motion.div
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.3 }}
-            key={movie.id}
+            key={movie.movie_id}
             className="col-12 col-sm-6 col-md-3 col-lg-2"
           >
             <div
@@ -70,7 +70,7 @@ const Watchlist = () => {
                   <ActionButton label="New Review" onClick={openReviewModal} />
                   <FaRegTrashCan
                     className="text-danger fs-4 hover btnTransform"
-                    onClick={() => handleDelete(movie.id)}
+                    onClick={() => handleDelete(movie.movie_id)}
                     style={{ cursor: "pointer" }}
                   />
                 </div>

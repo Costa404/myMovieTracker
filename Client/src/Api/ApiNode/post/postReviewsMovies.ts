@@ -8,7 +8,7 @@ export const usePostReview = () => {
     review: string,
     rating: number
   ): Promise<ApiErrorResponse | null> => {
-    if (!selectedMovieId?.id) {
+    if (!selectedMovieId?.movie_id) {
       console.warn("No movie selected to add to Review.");
       return null;
     }
@@ -31,7 +31,7 @@ export const usePostReview = () => {
           Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify({
-          movie_id: selectedMovieId.id,
+          movie_id: selectedMovieId.movie_id,
           review,
           rating,
         }),

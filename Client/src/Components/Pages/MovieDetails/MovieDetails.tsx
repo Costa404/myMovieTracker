@@ -1,14 +1,13 @@
 import { useGetDetailsMovies } from "../../../Api/ApiNode/get/getDetailsMovies";
-import { useModalRecommendedMovieStore } from "../../Modals/ModalMovieDetails/ModalRecommendedMovies/useRecommendedMoviesStore";
+
 import BtnMovieDetails from "./BtnMovieDetails";
 
 import LoadingSpinner from "../../Utility/Loading/Loading";
 import MovieReviews from "./MovieReviews/MovieReviews";
+import MovieGraph from "../../Modals/ModalMovieGraph/ModalMovieGraph";
 
 const MovieDetails: React.FC = () => {
   const { movieDetails, loading } = useGetDetailsMovies();
-
-  const { openModalRecommendedMovie } = useModalRecommendedMovieStore();
 
   if (!movieDetails && loading) {
     return (
@@ -45,17 +44,18 @@ const MovieDetails: React.FC = () => {
           <p className="fs-4 fw-semibold text-warning">
             {movieDetails.release_date}
           </p>
-          <h5 className="fs-4 fw-semibold mb-5">
-            {`Recommended movies based on ${movieDetails.title} `}{" "}
-            <a href="#" onClick={openModalRecommendedMovie}>
-              here
-            </a>
-          </h5>
+          <div className="d-flex flex-column">
+            <h5 className="fs-4 fw-semibold ">
+              {`Recommended movies based on ${movieDetails.title}: `}
+            </h5>
+          </div>
 
           <BtnMovieDetails />
         </div>
       </div>
+
       <MovieReviews movieId={movieDetails.movieId} />
+      <MovieGraph movieId={movieDetails.movieId} title={movieDetails.title} />
     </div>
   );
 };

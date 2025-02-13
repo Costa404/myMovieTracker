@@ -17,7 +17,7 @@ export const useIsMovieInWatchlist = (movieId: number) => {
 
       if (Array.isArray(response) && response.length > 0) {
         const movieFound = response.some(
-          (movie: Movie) => Number(movie.id) === movieId
+          (movie: Movie) => Number(movie.movie_id) === movieId
         );
 
         setIsInWatchlist(movieFound);

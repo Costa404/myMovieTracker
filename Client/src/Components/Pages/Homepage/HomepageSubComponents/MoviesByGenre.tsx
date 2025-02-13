@@ -7,10 +7,13 @@ import { useNavigate } from "react-router-dom";
 const MoviesByGenre = () => {
   const { groupedMovies, loading } = useGetMovies();
 
-  const { setMovieName, setMovieId } = useMovieDetailsStore();
-
+  const { setMovieName, setMovieId, movieId, movieName } =
+    useMovieDetailsStore();
+  console.log("movieId", movieId);
+  console.log("movieName", movieName);
   const navigate = useNavigate();
   const handleMovieClick = (movieName: string, movieId: number) => {
+    console.log("Clicked movieId:", movieId);
     setMovieName(movieName);
 
     setMovieId(movieId);

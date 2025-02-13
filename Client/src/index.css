@@ -310,3 +310,17 @@ modalMovieDetails
     min-width: 90% !important;
   }
 }
+
+/* ==============
+
+modalMOVIEgraph
+
+============== */
+
+/* @media (max-width: 500px) {
+  .modalMovieGraphMobile {
+    transform: rotate(90deg);
+    width: 90%;
+    height: 100%; /* Ajusta a largura após a rotação */
+  }
+/* } */ 

@@ -12,6 +12,10 @@ import ModalReviews from "../../Components/Modals/SubmitReview/ModalReviews";
 import ModalDisplayMovies from "../../Components/Modals/ModalDisplayMovies/ModalDisplayMovies";
 import ModalRecommendedMovies from "../../Components/Modals/ModalMovieDetails/ModalRecommendedMovies/ModalRecommendedMovies";
 
+import ModalChatbot from "../../Components/Modals/ModalChatbot/ModalChatbot";
+import ModalChatList from "../../Components/Modals/ModalChatbot/ModalChatList";
+import ChatBotIcon from "../../Components/Utility/Hooks/ChatBotIcon";
+
 const AppLayout = () => {
   return (
     <section className="w-100 d-flex flex-column align-items-center">
@@ -28,6 +32,9 @@ const AppLayout = () => {
 Modals
 
 ==================== */}
+      <ModalChatList />
+      <ModalChatbot />
+      <ChatBotIcon />
       <BtnDarkLightMode />
       <Login />
       <Signup />

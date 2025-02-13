@@ -53,9 +53,9 @@ const DisplayMoviesScroll: React.FC<DisplayMoviesScrollProps> = ({
         >
           {movies.map((movie) => (
             <div
-              key={movie.id}
+              key={movie.movie_id}
               className="me-3 hover "
-              onClick={() => onMovieClick(movie.title, movie.id)}
+              onClick={() => onMovieClick(movie.title, movie.movie_id)}
             >
               <img
                 src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}

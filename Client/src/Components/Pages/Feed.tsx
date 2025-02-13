@@ -2,7 +2,6 @@ import { useGetFeedContent } from "../../Api/ApiNode/get/getFeedContent";
 import LoadingSpinner from "../Utility/Loading/Loading";
 import { motion } from "framer-motion";
 import { useMovieDetailsStore } from "../Modals/ModalMovieDetails/useMovieDetailsStore";
-import MovieSearch from "./MovieSearch";
 
 const FeedDisplay = () => {
   const { feedContent } = useGetFeedContent();
@@ -73,7 +72,6 @@ const FeedDisplay = () => {
           <LoadingSpinner />
         )}
       </div>
-      <MovieSearch />
     </div>
   );
 };

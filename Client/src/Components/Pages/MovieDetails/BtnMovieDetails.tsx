@@ -7,12 +7,18 @@ import { useMovieDetailsStore } from "../../Modals/ModalMovieDetails/useMovieDet
 import { useHandlePostMoviesHistory } from "../../../Api/ApiNode/post/postMoviesHistory";
 import MoviesHistoryButton from "../MyArea/MoviesHistory/MoviesHistoryButton";
 import { useEffect } from "react";
+import ActionButton from "../../Utility/ActionButton";
+import { useModalRecommendedMovieStore } from "../../Modals/ModalMovieDetails/ModalRecommendedMovies/useRecommendedMoviesStore";
+import { useMovieGraphModalStore } from "../../Modals/ModalMovieGraph/useMovieGraphModalStore";
 
 const BtnMovieDetails = () => {
   const { movieId } = useMovieDetailsStore();
   const { isOnline } = useIsOnline();
   const { loading, added, handlePostWatchlist, resetAddedWatchlist } =
     useHandlePostWatchlist();
+
+  const { openModalRecommendedMovie } = useModalRecommendedMovieStore();
+  const { openMovieGraphModal } = useMovieGraphModalStore();
   const {
     loading: historyLoading,
     added: historyAdded,
@@ -29,26 +35,40 @@ const BtnMovieDetails = () => {
   }, [movieId]);
 
   return (
-    <div className="d-flex flex-column gap-3 ">
-      {!isOnline ? (
-        <p className="fs-3">Please login first to add to your watchlist.</p>
-      ) : (
-        <WatchlistButton
-          movieId={movieId ? Number(movieId) : 0}
-          isOnline={isOnline}
-          handlePostWatchlist={handlePostWatchlist}
-          loading={loading}
-          added={added}
-        />
-      )}
-
-      <MoviesHistoryButton
-        movieId={movieId ? Number(movieId) : 0}
-        isOnline={isOnline}
-        handlePostWatchlist={handlePostMoviesHistory}
-        loading={historyLoading}
-        added={historyAdded}
+    <div className="d-flex flex-column gap-3 mt-3 ">
+      <ActionButton
+        label="Recommended movies"
+        onClick={openModalRecommendedMovie}
+        style={{ maxWidth: "20rem" }}
       />
+      <ActionButton
+        label="Movie Graph"
+        style={{ maxWidth: "20rem" }}
+        onClick={openMovieGraphModal}
+      />
+
+      {!isOnline ? (
+        <p className="fs-4 fw-semibold">
+          Please login first to add to your watchlist/MovieHistory.
+        </p>
+      ) : (
+        <>
+          <WatchlistButton
+            movieId={movieId ? Number(movieId) : 0}
+            isOnline={isOnline}
+            handlePostWatchlist={handlePostWatchlist}
+            loading={loading}
+            added={added}
+          />
+          <MoviesHistoryButton
+            movieId={movieId ? Number(movieId) : 0}
+            isOnline={isOnline}
+            handlePostWatchlist={handlePostMoviesHistory}
+            loading={historyLoading}
+            added={historyAdded}
+          />
+        </>
+      )}
 
       {/* <ActionButton
         onClick={handleClose}
