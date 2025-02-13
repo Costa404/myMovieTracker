@@ -15,13 +15,13 @@ moviesHistory.get("/moviesHistory", authMiddleware, async (req, res) => {
     const result = await pool.query(
       `SELECT 
             h.user_id, 
-            h.movie_id AS id, 
+            h.movie_id AS id,  
             m.title AS MovieTitle,
             m.genre_ids AS MovieGenre,
             m.poster_path AS MovieImg,
             DATE(h.watched_at) AS watched_at
         FROM history h
-        JOIN movies m ON h.movie_id = m.id
+        JOIN movies m ON h.movie_id = m.movie_id  
         WHERE h.user_id = $1
         ORDER BY h.watched_at DESC`,
       [userId]
@@ -33,4 +33,5 @@ moviesHistory.get("/moviesHistory", authMiddleware, async (req, res) => {
     res.status(500).json({ error: "Error in the server" });
   }
 });
+
 export default moviesHistory;

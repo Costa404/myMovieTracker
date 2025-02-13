@@ -16,7 +16,7 @@ getWatchlistRouter.get(
 
     try {
       const result = await pool.query(
-        "SELECT * FROM movies WHERE id IN (SELECT movie_id FROM watchlist WHERE user_id = $1)",
+        "SELECT * FROM movies WHERE movie_id IN (SELECT movie_id FROM watchlist WHERE user_id = $1)",
         [userId]
       );
       res.json(result.rows);

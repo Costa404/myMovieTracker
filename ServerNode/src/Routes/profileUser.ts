@@ -9,7 +9,7 @@ profileUser.get("/profile/:username", async (req, res) => {
   const query = `
   SELECT r.*, m.title AS movieTitle, u.profile_picture
   FROM reviews r
-  JOIN movies m ON r.movie_id = m.id
+  JOIN movies m ON r.movie_id = m.movie_id 
   JOIN users u ON r.username = u.username
   WHERE r.username = $1;
   `;

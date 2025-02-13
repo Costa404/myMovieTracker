@@ -29,7 +29,7 @@ FROM reviews r
 JOIN users u 
   ON r.username = u.username
 JOIN movies m 
-  ON r.movie_id = m.id
+      ON r.movie_id = m.movie_id 
 WHERE r.username IN (
   SELECT 
     CASE 

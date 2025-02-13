@@ -204,3 +204,85 @@
 // app.listen(3000, () => {
 //   console.log("Server port 3000");
 // });
+// =============================
+// Test
+// =============================
+
+// // 🔹 Buscar `movie_id` da tabela
+// const getMovieIds = async () => {
+//   try {
+//     const result = await pool.query("SELECT  movie_id FROM movies");
+//     return result.rows.map((row) => row.movie_id);
+//   } catch (error) {
+//     console.error("Erro ao buscar movie_id da base de dados:", error);
+//     return [];
+//   }
+// };
+
+// // 🔹 Buscar dados do TMDB
+// const fetchMovieData = async (movieId) => {
+//   try {
+//     console.log(`Buscando dados para o filme ID: ${movieId}`);
+//     const response = await fetch(
+//       `https://api.themoviedb.org/3/movie/${movieId}?api_key=d351f155e840f50339b0982ce6baccc7`
+//     );
+//     const data = await response.json();
+
+//     if (!data || data.status_code) {
+//       console.error(
+//         `Erro na API TMDB para o filme ${movieId}:`,
+//         data.status_message
+//       );
+//       return;
+//     }
+
+//     const { popularity, vote_average, vote_count, id } = data;
+//     await saveMovieData(id, popularity, vote_average, vote_count);
+//   } catch (error) {
+//     console.error(`Erro ao buscar dados do filme ${movieId}:`, error);
+//   }
+// };
+
+// // 🔹 Salvar dados no banco
+// // 🔹 Salvar dados no banco (agora em movie_history)
+// // 🔹 Salvar dados no banco (agora em movie_history com movie_id)
+// const saveMovieData = async (movie_id, popularity, voteAverage, voteCount) => {
+//   try {
+//     const query = `
+//       INSERT INTO movie_history (movie_id, popularity, vote_average, vote_count, date)
+//       VALUES ($1, $2, $3, $4, CURRENT_DATE)
+//       ON CONFLICT (movie_id, date) DO NOTHING
+//     `;
+
+//     await pool.query(query, [movie_id, popularity, voteAverage, voteCount]);
+//     console.log(`✅ Filme ${movie_id} salvo no histórico com sucesso.`);
+//   } catch (err) {
+//     console.error("Erro ao salvar no banco de dados:", err);
+//   }
+// };
+
+// // 🔹 Atualizar os filmes
+// const updateMoviesData = async () => {
+//   console.log("🔄 Iniciando atualização de filmes...");
+//   const movieIds = await getMovieIds();
+
+//   if (movieIds.length === 0) {
+//     console.log("⚠️ Nenhum filme encontrado no banco.");
+//     return;
+//   }
+
+//   for (const movieId of movieIds) {
+//     await fetchMovieData(movieId);
+//     await new Promise((resolve) => setTimeout(resolve, 1000)); // Delay para evitar limites da API
+//   }
+
+//   console.log("✅ Atualização concluída!");
+// };
+
+// // 🚀 Iniciar o servidor
+// app.listen(3000, async () => {
+//   console.log("🚀 Servidor rodando na porta 3000");
+
+//   // Chamar atualização após o servidor iniciar
+//   await updateMoviesData();
+// });
