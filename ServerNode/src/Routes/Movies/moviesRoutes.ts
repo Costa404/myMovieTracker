@@ -11,6 +11,7 @@ moviesRoutes.get("/movies", async (req, res) => {
         m.title, 
         m.is_popular,
         m.poster_path,  
+        m. vote_average AS "IMDBfromTMDB"
         array_agg(g.name) AS genre,
         m.fakeimdb AS "fakeImdb"
       FROM movies m
