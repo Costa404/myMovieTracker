@@ -2,7 +2,7 @@
 
 technicalDetails:
 
-I developed the entire app, including both the front-end and back-end, as well as the complete state management. It’s a fully custom-built project that allows me to track the movies I watch and monitor my viewing history. The application is still a work in progress, and this is just the first, more basic version. A movie tracking app where users can write reviews, add friends, and have a personalized feed based on their friends activities. Users can also keep a watchlist and track their movie history. The app is designed to help users manage their movie preferences, share recommendations with friends, and stay updated on the latest films they've watched or want to watch.
+I developed the entire app, including both the front-end and back-end, as well as the complete state management. It’s a fully custom-built project that allows me to track the movies I watch and monitor my viewing history. The application is still a work in progress, and this is just the first, more basic version. A movie tracking app where users can write reviews, add friends, talk to a bot and ask anything related with movies and many more features. Users can also keep a watchlist and track their movie history. The app is designed to help users manage their movie preferences, share recommendations with friends, and stay updated on the latest films they've watched or want to watch.
 
     ===================================================================================================================
                                                        Backend
