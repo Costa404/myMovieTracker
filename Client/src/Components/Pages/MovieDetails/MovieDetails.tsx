@@ -9,6 +9,8 @@ import MovieGraph from "../../Modals/ModalMovieGraph/ModalMovieGraph";
 const MovieDetails: React.FC = () => {
   const { movieDetails, loading } = useGetDetailsMovies();
 
+  console.log("fakeImdb", movieDetails?.fakeImdb);
+
   if (!movieDetails && loading) {
     return (
       <div className="d-flex justify-content-center align-items-center min-vh-100">
@@ -18,6 +20,10 @@ const MovieDetails: React.FC = () => {
   }
 
   if (!movieDetails) return null;
+
+  const formattedDate = new Date(movieDetails.release_date).toLocaleDateString(
+    "pt-PT"
+  );
 
   return (
     <div className="d-flex flex-column justify-content-center align-items-center ">
@@ -32,7 +38,7 @@ const MovieDetails: React.FC = () => {
           src={`https://image.tmdb.org/t/p/w500${movieDetails.poster_path}`}
           alt={movieDetails.title}
           className="img-fluid rounded"
-          style={{ maxWidth: "30rem", height: "40rem" }} // Ajustado para um tamanho médio
+          style={{ maxWidth: "30rem", height: "40rem" }}
         />
 
         <div className="col-md-8 text-white text-center text-md-start">
@@ -40,13 +46,21 @@ const MovieDetails: React.FC = () => {
           <p className="fs-5 fw-semibold text-warning">
             {movieDetails.overview}
           </p>
-          <h5 className="fs-4 fw-semibold">Release date:</h5>
-          <p className="fs-4 fw-semibold text-warning">
-            {movieDetails.release_date}
-          </p>
+          <div className="d-flex gap-3 align-items-center  text-warning">
+            <h5 className="fw-semibold fs-4 text-white"> Fake IMDB:</h5>
+            <h5 className="fw-semibold fs-4 text-warning">
+              {" "}
+              {Number(movieDetails.fakeImdb).toFixed(1)}
+            </h5>
+          </div>
+          <div className="d-flex gap-3 align-items-center  text-warning">
+            <h5 className="fs-4 fw-semibold text-white">Release date:</h5>
+            <h5 className="fs-4 fw-semibold ">{formattedDate}</h5>
+          </div>
           <div className="d-flex flex-column">
             <h5 className="fs-4 fw-semibold ">
-              {`Recommended movies based on ${movieDetails.title}: `}
+              {`Recommended movies based on `}
+              <span className="text-warning">{movieDetails.title}:</span>
             </h5>
           </div>
 

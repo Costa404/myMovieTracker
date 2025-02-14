@@ -46,7 +46,7 @@ def analyze_movie_sentiment(movie_id):
         review for _, review in reviewsFromTMDB.iterrows() if review['movie_id'] == movie_id
     ]
 
-    # Aplicando o cálculo do sentimento baseado no rating e no conteúdo
+
     rating_sentiments = []
     content_sentiments = []
 
@@ -55,18 +55,17 @@ def analyze_movie_sentiment(movie_id):
         rating_sentiments.append(rating_sentiment)
         content_sentiments.append(content_sentiment)
 
-    # Calculando a média dos sentimentos (ignorando None)
     rating_sentiments_filtered = [s for s in rating_sentiments if s is not None]
     content_sentiments_filtered = [s for s in content_sentiments if s is not None]
 
     average_rating_sentiment = sum(rating_sentiments_filtered) / len(rating_sentiments_filtered) if rating_sentiments_filtered else 0
     average_content_sentiment = sum(content_sentiments_filtered) / len(content_sentiments_filtered) if content_sentiments_filtered else 0
 
-    # Convertendo para a escala de 0 a 10
+
     final_rating_score = (average_rating_sentiment + 1) * 5
     final_content_score = (average_content_sentiment + 1) * 5
 
-    # Média combinada (50% rating, 50% conteúdo)
+   
     final_combined_score = (final_rating_score + final_content_score) / 2
 
     try:
@@ -88,7 +87,7 @@ def analyze_movie_sentiment(movie_id):
         "vote_average": vote_average
     }
 
-# Função para processar todos os filmes e salvar o fakeImdb no banco
+
 def generate_fakeImdb_movies(): 
     movie_ids = get_id_from_movies()
 
@@ -118,37 +117,37 @@ if __name__ == "__main__":
 
 
 
-import numpy as np
-from src.db.db_operations import get_movies_from_db
-from src.utility.embedding_utils import genre_mapping
-from sentence_transformers import util
-from src.utility.embedding_utils import model
+# import numpy as np
+# from src.db.db_operations import get_movies_from_db
+# from src.utility.embedding_utils import genre_mapping
+# from sentence_transformers import util
+# from src.utility.embedding_utils import model
 
-def find_similar_movies(user_input, movie_embeddings, movies, top_n=3):
-    """Encontra os filmes mais similares usando similaridade de cosseno."""
-    input_embedding = model.encode(user_input, convert_to_tensor=True)
-    similarities = util.pytorch_cos_sim(input_embedding, movie_embeddings)
-    sorted_indices = np.argsort(-similarities.numpy())[0]  # Ordena em ordem decrescente
+# def find_similar_movies(user_input, movie_embeddings, movies, top_n=3):
+#     """Encontra os filmes mais similares usando similaridade de cosseno."""
+#     input_embedding = model.encode(user_input, convert_to_tensor=True)
+#     similarities = util.pytorch_cos_sim(input_embedding, movie_embeddings)
+#     sorted_indices = np.argsort(-similarities.numpy())[0]  # Ordena em ordem decrescente
 
-    results = []
-    for i in range(top_n):
-        idx = sorted_indices[i]
+#     results = []
+#     for i in range(top_n):
+#         idx = sorted_indices[i]
         
    
-        movie = movies[idx]
+#         movie = movies[idx]
 
 
-        genre_ids = movie.get('genre_ids', [])
+#         genre_ids = movie.get('genre_ids', [])
         
     
-        genre_names = [genre_mapping.get(genre_id, "Unknown") for genre_id in genre_ids]
+#         genre_names = [genre_mapping.get(genre_id, "Unknown") for genre_id in genre_ids]
         
      
-        results.append({
-            "title": movie['title'],
-            "genres": genre_names,
-            "overview": movie['overview']
-        })
+#         results.append({
+#             "title": movie['title'],
+#             "genres": genre_names,
+#             "overview": movie['overview']
+#         })
     
-    return results
+#     return results
  

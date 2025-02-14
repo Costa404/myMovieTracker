@@ -1,5 +1,4 @@
 import io
-import psycopg2
 import pandas as pd
 import matplotlib
 matplotlib.use('Agg')  
@@ -15,7 +14,7 @@ def generate_movie_graph(movie_id: int, title: str):
     conn = get_db_connection()
     print("title", title)
 
-    # Consultar postgree pelo movie_id 
+   
     query = f"""
     SELECT 'Initial' AS source, m.date, m.vote_average, m.vote_count
     FROM movies m

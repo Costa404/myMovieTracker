@@ -80,9 +80,21 @@ const Top100 = () => {
                   className="card-img-top"
                   style={{ width: "100%", height: "auto" }}
                 />
-                <strong>
-                  {movie.fakeImdb ? movie.fakeImdb.toFixed(1) : "N/A"}
-                </strong>
+                <span className="d-flex justify-content-between align-items-center">
+                  <p className="fw-semibold fs-5">Fake IMDB</p>
+                  <p className="fw-semibold fs-5">
+                    {movie.fakeImdb ? movie.fakeImdb.toFixed(1) : "N/A"}
+                  </p>
+                </span>
+                <span className="d-flex justify-content-between align-items-center">
+                  <p className="fw-semibold fs-5">TMDB IMDB</p>
+                  <p className="fw-semibold fs-5">
+                    {Number(movie.IMDBfromTMDB)
+                      ? Number(movie.IMDBfromTMDB).toFixed(1)
+                      : "N/A"}
+                  </p>
+                </span>
+
                 <h5 className="card-title mt-2">{movie.title}</h5>
               </div>
             </div>

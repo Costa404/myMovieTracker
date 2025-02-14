@@ -39,11 +39,11 @@ const BtnMovieDetails = () => {
       <ActionButton
         label="Recommended movies"
         onClick={openModalRecommendedMovie}
-        style={{ maxWidth: "20rem" }}
+        style={{ maxWidth: "20rem", height: "3.5rem" }}
       />
       <ActionButton
         label="Movie Graph"
-        style={{ maxWidth: "20rem" }}
+        style={{ maxWidth: "20rem", height: "3.5rem" }}
         onClick={openMovieGraphModal}
       />
 

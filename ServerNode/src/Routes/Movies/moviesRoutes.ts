@@ -11,7 +11,7 @@ moviesRoutes.get("/movies", async (req, res) => {
         m.title, 
         m.is_popular,
         m.poster_path,  
-        m. vote_average AS "IMDBfromTMDB"
+        m. vote_average AS "IMDBfromTMDB",
         array_agg(g.name) AS genre,
         m.fakeimdb AS "fakeImdb"
       FROM movies m
@@ -24,7 +24,7 @@ moviesRoutes.get("/movies", async (req, res) => {
 
     res.json(rows);
   } catch (error) {
-    console.error("Erro ao buscar filmes:", error);
+    console.error("Error fetching movies:", error);
     res.status(500).json({ error: "Erro interno do servidor" });
   }
 });

@@ -1,16 +1,13 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS  
 import os
-
+from dotenv import load_dotenv
 import requests
-
-
-from sklearn.metrics.pairwise import cosine_similarity
-from src.db.db_operations import get_movies_from_db
-from src.utility.embedding_utils import genre_mapping
 
 app = Flask(__name__)
 CORS(app)
+
+load_dotenv()
 
 
 def query_groq_api(query):

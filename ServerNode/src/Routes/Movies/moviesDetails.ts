@@ -16,6 +16,7 @@ moviesDetails.get("/movies/:movie_id", async (req, res) => {
           m.poster_path, 
           m.backdrop_path,
           m.release_date,
+          m.fakeimdb AS "fakeImdb",
           array_agg(g.name) AS genres
         FROM movies m
         LEFT JOIN movie_genres mg ON m.movie_id = mg.movie_id

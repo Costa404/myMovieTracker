@@ -5,6 +5,7 @@ export interface Movie {
   genre: string[];
   is_popular: boolean;
   fakeImdb: number;
+  IMDBfromTMDB: number;
 }
 
 export interface Review {
