@@ -43,3 +43,71 @@
 # recommended_movies = recommend_movies(movie_id=movie_id_clicked)
 # print("Filmes recomendados para o filme clicado:")
 # print(recommended_movies)
+def update_fakeImdb(movie_id, fakeImdb):
+    # Certifique-se de que fakeImdb é do tipo float
+    fakeImdb = float(fakeImdb)  
+
+    # Conectando ao banco de dados
+ 
+    cursor = conn.cursor()
+
+    # Definindo a consulta SQL
+    query = """
+    UPDATE movies
+    SET fakeimdb = %s
+    WHERE id = %s;
+    """
+
+    # Executando a consulta com os valores
+    cursor.execute(query, (fakeImdb, movie_id))
+
+    # Comitando as mudanças e fechando a conexão
+    conn.commit()
+    cursor.close()
+    conn.close()
+
+
+
+import psycopg2
+import pandas as pd
+import matplotlib.pyplot as plt
+from src.db.db_connector import get_db_connection
+
+conn = get_db_connection()  
+# Consulta SQL
+query = """
+SELECT 'Initial' AS source, m.date, m.popularity, m.vote_average, m.vote_count
+FROM movies m
+WHERE m.title = 'Interstellar'
+
+UNION ALL
+
+SELECT 'History' AS source, mh.date, mh.popularity, mh.vote_average, mh.vote_count
+FROM movie_history mh
+WHERE mh.movie_id = (SELECT movie_id FROM movies WHERE title = 'Interstellar')
+ORDER BY date NULLS FIRST;
+
+
+
+"""
+
+# Carregar os dados no Pandas
+df = pd.read_sql(query, conn)
+conn.close()
+
+# Criar o gráfico de área
+plt.figure(figsize=(10, 5))
+plt.fill_between(df["date"], df["popularity"], color="b", alpha=0.3, label="Popularity Over Time")
+
+# Adicionar ponto inicial de popularidade
+plt.scatter(df["date"].iloc[0], df["popularity"].iloc[0], color="r", zorder=3, label="Initial Popularity")
+
+# Personalizar
+plt.xlabel("Date")
+plt.ylabel("Popularity")
+plt.title("Popularity of Interstellar Over Time (Area Plot)")
+plt.legend()
+plt.xticks(rotation=45)
+
+# Mostrar gráfico
+plt.show()
