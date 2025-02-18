@@ -35,15 +35,15 @@ const BtnMovieDetails = () => {
   }, [movieId]);
 
   return (
-    <div className="d-flex flex-column gap-3 mt-3 ">
+    <div className="d-flex flex-column gap-3 mt-3  btnMovieDetailsMobile ">
       <ActionButton
         label="Recommended movies"
         onClick={openModalRecommendedMovie}
-        style={{ maxWidth: "20rem", height: "3.5rem" }}
+        style={{ maxWidth: "20rem", minWidth: "20rem", height: "3.5rem" }}
       />
       <ActionButton
         label="Movie Graph"
-        style={{ maxWidth: "20rem", height: "3.5rem" }}
+        style={{ maxWidth: "20rem", minWidth: "20rem", height: "3.5rem" }}
         onClick={openMovieGraphModal}
       />
 

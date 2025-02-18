@@ -27,7 +27,7 @@ const ModalDisplayMovies = () => {
         ReactDOM.createPortal(
           <div className="modal-overlay overlayDisplayMovieReview d-flex justify-content-center align-items-center">
             <div
-              className="modal-content h-50 w-50 modalReviewsMobile"
+              className="modal-content h-75 w-50 modalReviewsMobile"
               style={{
                 background: theme === "dark" ? "#121212" : "#c7c7c7",
                 color: theme === "dark" ? "#333333" : "#e0e0e0",

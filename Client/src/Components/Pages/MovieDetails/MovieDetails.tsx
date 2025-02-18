@@ -28,7 +28,7 @@ const MovieDetails: React.FC = () => {
   return (
     <div className="d-flex flex-column justify-content-center align-items-center ">
       <div
-        className="modalMovieDetailsMobile d-flex gap-5 "
+        className="modalMovieDetailsMobile d-flex gap-5  justify-content-center "
         style={{
           overflow: "hidden",
           marginTop: "15rem",
@@ -41,7 +41,7 @@ const MovieDetails: React.FC = () => {
           style={{ maxWidth: "30rem", height: "40rem" }}
         />
 
-        <div className="col-md-8 text-white text-center text-md-start">
+        <div className="col-md-8 text-white text-center text-md-start  midContentMovieDetails">
           <h2 className="fw-semibold">{movieDetails.title}</h2>
           <p className="fs-5 fw-semibold text-warning">
             {movieDetails.overview}
